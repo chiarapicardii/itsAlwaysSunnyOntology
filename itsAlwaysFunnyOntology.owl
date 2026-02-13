@@ -13,6 +13,11 @@
 #    Object Properties
 #################################################################
 
+###  http://www.semanticweb.org/lachi/ontologies/2026/nameholder#describes
+:describes rdf:type owl:ObjectProperty ;
+           owl:inverseOf :isDescribedBy .
+
+
 ###  http://www.semanticweb.org/lachi/ontologies/2026/nameholder#hasQuality
 :hasQuality rdf:type owl:ObjectProperty ;
             rdfs:domain :HumorEntity ;
@@ -22,6 +27,8 @@
 
 ###  http://www.semanticweb.org/lachi/ontologies/2026/nameholder#includes
 :includes rdf:type owl:ObjectProperty ;
+          owl:inverseOf :isIncludedIn ;
+          rdf:type owl:TransitiveProperty ;
           rdfs:comment "This is the shape to model the inclusion for the blending, but as i understood is not possibile to use the same property for D&S seeing that one is a construction of a patter and the other of the real application of it" .
 
 
@@ -58,11 +65,20 @@
                rdfs:range :TheoreticalMechanism .
 
 
+###  http://www.semanticweb.org/lachi/ontologies/2026/nameholder#isIncludedIn
+:isIncludedIn rdf:type owl:ObjectProperty .
+
+
 ###  http://www.semanticweb.org/lachi/ontologies/2026/nameholder#isTriggeredBy
 :isTriggeredBy rdf:type owl:ObjectProperty ;
                rdfs:domain :TheoreticalMechanism ;
                rdfs:range :SubversiveOccurence ;
                rdfs:comment "TheoreticalMechanism to Subversion" .
+
+
+###  http://www.semanticweb.org/lachi/ontologies/2026/nameholder#isViolatedBy
+:isViolatedBy rdf:type owl:ObjectProperty ;
+              owl:inverseOf :violates .
 
 
 ###  http://www.semanticweb.org/lachi/ontologies/2026/nameholder#violates
@@ -76,12 +92,6 @@
 #    Data properties
 #################################################################
 
-###  http://www.semanticweb.org/lachi/ontologies/2026/nameholder#hasDefinition
-:hasDefinition rdf:type owl:DatatypeProperty ;
-               rdfs:domain :Description ;
-               rdfs:comment "To define what we mean with the specific terms" .
-
-
 ###  http://www.semanticweb.org/lachi/ontologies/2026/nameholder#hasDescription
 :hasDescription rdf:type owl:DatatypeProperty ;
                 rdfs:domain :Situation ;
@@ -92,7 +102,8 @@
 ###  http://www.semanticweb.org/lachi/ontologies/2026/nameholder#hasEpisodeNumber
 :hasEpisodeNumber rdf:type owl:DatatypeProperty ;
                   rdfs:domain :Situation ;
-                  rdfs:range xsd:integer .
+                  rdfs:range xsd:integer ;
+                  rdfs:comment "Episode number with the season: for ex. S01E09" .
 
 
 ###  http://www.semanticweb.org/lachi/ontologies/2026/nameholder#hasTimestamp
@@ -133,6 +144,7 @@
 
 ###  http://www.semanticweb.org/lachi/ontologies/2026/nameholder#Description
 :Description rdf:type owl:Class ;
+             owl:disjointWith :Situation ;
              rdfs:comment "The description part of all the frames converging to create the humorous situation" .
 
 
