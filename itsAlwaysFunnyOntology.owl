@@ -1,0 +1,233 @@
+@prefix : <http://www.semanticweb.org/lachi/ontologies/2026/nameholder#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/lachi/ontologies/2026/nameholder> .
+
+<http://www.semanticweb.org/lachi/ontologies/2026/nameholder> rdf:type owl:Ontology ;
+                                                               rdfs:comment "itsAlwaysSunnyOntology" .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/lachi/ontologies/2026/nameholder#hasQuality
+:hasQuality rdf:type owl:ObjectProperty ;
+            rdfs:domain :HumorEntity ;
+            rdfs:range :HumorQuality ;
+            rdfs:comment "connecting HumorQuality to HumorEntity" .
+
+
+###  http://www.semanticweb.org/lachi/ontologies/2026/nameholder#includes
+:includes rdf:type owl:ObjectProperty ;
+          rdfs:comment "This is the shape to model the inclusion for the blending, but as i understood is not possibile to use the same property for D&S seeing that one is a construction of a patter and the other of the real application of it" .
+
+
+###  http://www.semanticweb.org/lachi/ontologies/2026/nameholder#includesDescription
+:includesDescription rdf:type owl:ObjectProperty ;
+                     rdfs:subPropertyOf :includes ;
+                     rdfs:domain :HumorousFrame ;
+                     rdfs:range :EthicalRule ,
+                                :ExpectedSocialFrame ,
+                                :SubversiveFrame ;
+                     rdfs:comment "All the elements that, blended, make the DescriptionFrame of the humor" .
+
+
+###  http://www.semanticweb.org/lachi/ontologies/2026/nameholder#includesSituation
+:includesSituation rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf :includes ;
+                   rdfs:domain :HumorousSituation ;
+                   rdfs:range :NormOccurence ,
+                              :SocialOccurence ,
+                              :SubversiveOccurence ;
+                   rdfs:comment "The actual application in the situation of the blending of the elements" .
+
+
+###  http://www.semanticweb.org/lachi/ontologies/2026/nameholder#isDescribedBy
+:isDescribedBy rdf:type owl:ObjectProperty ;
+               rdfs:domain :Situation ;
+               rdfs:range :Description ;
+               rdfs:comment "Important to connect the situations with the corresponding descriptions" .
+
+
+###  http://www.semanticweb.org/lachi/ontologies/2026/nameholder#isExplainedBy
+:isExplainedBy rdf:type owl:ObjectProperty ;
+               rdfs:domain :HumorousSituation ;
+               rdfs:range :TheoreticalMechanism .
+
+
+###  http://www.semanticweb.org/lachi/ontologies/2026/nameholder#isTriggeredBy
+:isTriggeredBy rdf:type owl:ObjectProperty ;
+               rdfs:domain :TheoreticalMechanism ;
+               rdfs:range :SubversiveOccurence ;
+               rdfs:comment "TheoreticalMechanism to Subversion" .
+
+
+###  http://www.semanticweb.org/lachi/ontologies/2026/nameholder#violates
+:violates rdf:type owl:ObjectProperty ;
+          rdfs:domain :SubversiveOccurence ;
+          rdfs:range :NormOccurence ;
+          rdfs:comment "connecting SubversiveOccurrence to NormOccurence" .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/lachi/ontologies/2026/nameholder#hasDefinition
+:hasDefinition rdf:type owl:DatatypeProperty ;
+               rdfs:domain :Description ;
+               rdfs:comment "To define what we mean with the specific terms" .
+
+
+###  http://www.semanticweb.org/lachi/ontologies/2026/nameholder#hasDescription
+:hasDescription rdf:type owl:DatatypeProperty ;
+                rdfs:domain :Situation ;
+                rdfs:range xsd:string ;
+                rdfs:comment "Description of the scene" .
+
+
+###  http://www.semanticweb.org/lachi/ontologies/2026/nameholder#hasEpisodeNumber
+:hasEpisodeNumber rdf:type owl:DatatypeProperty ;
+                  rdfs:domain :Situation ;
+                  rdfs:range xsd:integer .
+
+
+###  http://www.semanticweb.org/lachi/ontologies/2026/nameholder#hasTimestamp
+:hasTimestamp rdf:type owl:DatatypeProperty ;
+              rdfs:domain :Situation ;
+              rdfs:range xsd:string ;
+              rdfs:comment "Where to find the specific moment" .
+
+
+###  http://www.semanticweb.org/lachi/ontologies/2026/nameholder#hasTitle
+:hasTitle rdf:type owl:DatatypeProperty ;
+          rdfs:domain :Situation ;
+          rdfs:range xsd:string ;
+          rdfs:comment "Title of the episode" .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/lachi/ontologies/2026/nameholder#AestheticQuality
+:AestheticQuality rdf:type owl:Class ;
+                  rdfs:subClassOf :HumorQuality ;
+                  rdfs:comment "how they are dressed, how they appear" .
+
+
+###  http://www.semanticweb.org/lachi/ontologies/2026/nameholder#Agent
+:Agent rdf:type owl:Class ;
+       rdfs:subClassOf :HumorEntity ;
+       rdfs:comment "Who does the action" .
+
+
+###  http://www.semanticweb.org/lachi/ontologies/2026/nameholder#BehavioralQuality
+:BehavioralQuality rdf:type owl:Class ;
+                   rdfs:subClassOf :HumorQuality ;
+                   rdfs:comment "expressions, strange behaviours" .
+
+
+###  http://www.semanticweb.org/lachi/ontologies/2026/nameholder#Description
+:Description rdf:type owl:Class ;
+             rdfs:comment "The description part of all the frames converging to create the humorous situation" .
+
+
+###  http://www.semanticweb.org/lachi/ontologies/2026/nameholder#EthicalRule
+:EthicalRule rdf:type owl:Class ;
+             rdfs:subClassOf :Description ;
+             rdfs:comment "the BEHAVIOURAL rules of the corresponding frame (Social decorum, professionalism, respect)" .
+
+
+###  http://www.semanticweb.org/lachi/ontologies/2026/nameholder#ExpectedSocialFrame
+:ExpectedSocialFrame rdf:type owl:Class ;
+                     rdfs:subClassOf :Description ;
+                     rdfs:comment "the normal social frame (a funeral, a job interview)" .
+
+
+###  http://www.semanticweb.org/lachi/ontologies/2026/nameholder#HumorEntity
+:HumorEntity rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/lachi/ontologies/2026/nameholder#HumorQuality
+:HumorQuality rdf:type owl:Class ;
+              rdfs:comment "This make the blend possibile: through this precise actions the character make the breaking of the social norm funny" .
+
+
+###  http://www.semanticweb.org/lachi/ontologies/2026/nameholder#HumorousFrame
+:HumorousFrame rdf:type owl:Class ;
+               rdfs:subClassOf :Description ;
+               rdfs:comment "This is the BLENDING class, keeping all the descriptions together" .
+
+
+###  http://www.semanticweb.org/lachi/ontologies/2026/nameholder#HumorousSituation
+:HumorousSituation rdf:type owl:Class ;
+                   rdfs:subClassOf :Situation ;
+                   rdfs:comment "The situation BLENDING all the other situations (Social, Norm e Subversive)" .
+
+
+###  http://www.semanticweb.org/lachi/ontologies/2026/nameholder#IncongruityTheory
+:IncongruityTheory rdf:type owl:Class ;
+                   rdfs:subClassOf :TheoreticalMechanism .
+
+
+###  http://www.semanticweb.org/lachi/ontologies/2026/nameholder#NormOccurence
+:NormOccurence rdf:type owl:Class ;
+               rdfs:subClassOf :Situation ;
+               rdfs:comment "How the characters apply this norm realated to the frame" .
+
+
+###  http://www.semanticweb.org/lachi/ontologies/2026/nameholder#PhysicalQuality
+:PhysicalQuality rdf:type owl:Class ;
+                 rdfs:subClassOf :HumorQuality ;
+                 rdfs:comment "In what pysical condition the characters are (naked, sweating, dirty)" .
+
+
+###  http://www.semanticweb.org/lachi/ontologies/2026/nameholder#ReliefTheory
+:ReliefTheory rdf:type owl:Class ;
+              rdfs:subClassOf :TheoreticalMechanism .
+
+
+###  http://www.semanticweb.org/lachi/ontologies/2026/nameholder#Situation
+:Situation rdf:type owl:Class ;
+           rdfs:comment "The real description of what happens in the episodes" .
+
+
+###  http://www.semanticweb.org/lachi/ontologies/2026/nameholder#SocialOccurence
+:SocialOccurence rdf:type owl:Class ;
+                 rdfs:subClassOf :Situation ;
+                 rdfs:comment "The occurrence of the scene" .
+
+
+###  http://www.semanticweb.org/lachi/ontologies/2026/nameholder#SubversiveFrame
+:SubversiveFrame rdf:type owl:Class ;
+                 rdfs:subClassOf :Description .
+
+
+###  http://www.semanticweb.org/lachi/ontologies/2026/nameholder#SubversiveOccurence
+:SubversiveOccurence rdf:type owl:Class ;
+                     rdfs:subClassOf :Situation ;
+                     rdfs:comment "The real act of subversion (what are the characters doing)" .
+
+
+###  http://www.semanticweb.org/lachi/ontologies/2026/nameholder#SuperiorityTheory
+:SuperiorityTheory rdf:type owl:Class ;
+                   rdfs:subClassOf :TheoreticalMechanism .
+
+
+###  http://www.semanticweb.org/lachi/ontologies/2026/nameholder#Target
+:Target rdf:type owl:Class ;
+        rdfs:subClassOf :HumorEntity ;
+        rdfs:comment "The victim of the joke" .
+
+
+###  http://www.semanticweb.org/lachi/ontologies/2026/nameholder#TheoreticalMechanism
+:TheoreticalMechanism rdf:type owl:Class ;
+                      rdfs:subClassOf :Description ;
+                      rdfs:comment "This is related to the literature around the construction oh humor)" .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
