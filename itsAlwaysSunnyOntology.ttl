@@ -16,106 +16,106 @@
 #################################################################
 
 ###  http://www.loa-cnr.it/ontologies/DUL.owl#isDescribedBy
-<http://www.loa-cnr.it/ontologies/DUL.owl#isDescribedBy> owl:equivalentProperty <http://www.semanticweb.org/lachi/ontologies/2026/nameholder#isDescribedBy> .
+<http://www.loa-cnr.it/ontologies/DUL.owl#isDescribedBy> owl:equivalentProperty <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#isDescribedBy> .
 
 
-###  http://www.semanticweb.org/lachi/ontologies/2026/nameholder#describes
-<http://www.semanticweb.org/lachi/ontologies/2026/nameholder#describes> rdf:type owl:ObjectProperty ;
-                                                                        owl:inverseOf <http://www.semanticweb.org/lachi/ontologies/2026/nameholder#isDescribedBy> .
+###  https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#describes
+<https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#describes> rdf:type owl:ObjectProperty ;
+                                                                        owl:inverseOf <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#isDescribedBy> .
 
 
-###  http://www.semanticweb.org/lachi/ontologies/2026/nameholder#hasAgent
-<http://www.semanticweb.org/lachi/ontologies/2026/nameholder#hasAgent> rdf:type owl:ObjectProperty ;
+###  https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#hasAgent
+<https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#hasAgent> rdf:type owl:ObjectProperty ;
                                                                        rdfs:subPropertyOf <http://www.loa-cnr.it/ontologies/DUL.owl#hasParticipant> ;
-                                                                       owl:inverseOf <http://www.semanticweb.org/lachi/ontologies/2026/nameholder#isAgentIn> ;
-                                                                       rdfs:domain <http://www.semanticweb.org/lachi/ontologies/2026/nameholder#HumorousSituation> ;
-                                                                       rdfs:range <http://www.semanticweb.org/lachi/ontologies/2026/nameholder#Agent> .
+                                                                       owl:inverseOf <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#isAgentIn> ;
+                                                                       rdfs:domain <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#HumorousSituation> ;
+                                                                       rdfs:range <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#Agent> .
 
 
-###  http://www.semanticweb.org/lachi/ontologies/2026/nameholder#hasQuality
-<http://www.semanticweb.org/lachi/ontologies/2026/nameholder#hasQuality> rdf:type owl:ObjectProperty ;
-                                                                         rdfs:domain <http://www.semanticweb.org/lachi/ontologies/2026/nameholder#HumorEntity> ;
-                                                                         rdfs:range <http://www.semanticweb.org/lachi/ontologies/2026/nameholder#HumorQuality> ;
+###  https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#hasQuality
+<https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#hasQuality> rdf:type owl:ObjectProperty ;
+                                                                         rdfs:domain <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#HumorEntity> ;
+                                                                         rdfs:range <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#HumorQuality> ;
                                                                          rdfs:comment "connecting HumorQuality to HumorEntity" .
 
 
-###  http://www.semanticweb.org/lachi/ontologies/2026/nameholder#hasTarget
-<http://www.semanticweb.org/lachi/ontologies/2026/nameholder#hasTarget> rdf:type owl:ObjectProperty ;
+###  https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#hasTarget
+<https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#hasTarget> rdf:type owl:ObjectProperty ;
                                                                         rdfs:subPropertyOf <http://www.loa-cnr.it/ontologies/DUL.owl#hasParticipant> ;
-                                                                        owl:inverseOf <http://www.semanticweb.org/lachi/ontologies/2026/nameholder#isTargetIn> ;
-                                                                        rdfs:domain <http://www.semanticweb.org/lachi/ontologies/2026/nameholder#HumorousSituation> ;
-                                                                        rdfs:range <http://www.semanticweb.org/lachi/ontologies/2026/nameholder#Target> .
+                                                                        owl:inverseOf <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#isTargetIn> ;
+                                                                        rdfs:domain <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#HumorousSituation> ;
+                                                                        rdfs:range <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#Target> .
 
 
-###  http://www.semanticweb.org/lachi/ontologies/2026/nameholder#includes
-<http://www.semanticweb.org/lachi/ontologies/2026/nameholder#includes> rdf:type owl:ObjectProperty ;
-                                                                       owl:inverseOf <http://www.semanticweb.org/lachi/ontologies/2026/nameholder#isIncludedIn> ;
+###  https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#includes
+<https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#includes> rdf:type owl:ObjectProperty ;
+                                                                       owl:inverseOf <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#isIncludedIn> ;
                                                                        rdf:type owl:TransitiveProperty ;
                                                                        rdfs:comment "This is the shape to model the inclusion for the blending, but as i understood is not possibile to use the same property for D&S seeing that one is a construction of a patter and the other of the real application of it" .
 
 
-###  http://www.semanticweb.org/lachi/ontologies/2026/nameholder#includesDescription
-<http://www.semanticweb.org/lachi/ontologies/2026/nameholder#includesDescription> rdf:type owl:ObjectProperty ;
+###  https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#includesDescription
+<https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#includesDescription> rdf:type owl:ObjectProperty ;
                                                                                   rdfs:subPropertyOf <http://www.loa-cnr.it/ontologies/DUL.owl#hasComponent> ,
-                                                                                                     <http://www.semanticweb.org/lachi/ontologies/2026/nameholder#includes> ;
-                                                                                  rdfs:domain <http://www.semanticweb.org/lachi/ontologies/2026/nameholder#HumorousFrame> ;
-                                                                                  rdfs:range <http://www.semanticweb.org/lachi/ontologies/2026/nameholder#EthicalRule> ,
-                                                                                             <http://www.semanticweb.org/lachi/ontologies/2026/nameholder#ExpectedSocialFrame> ,
-                                                                                             <http://www.semanticweb.org/lachi/ontologies/2026/nameholder#SubversiveFrame> ;
+                                                                                                     <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#includes> ;
+                                                                                  rdfs:domain <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#HumorousFrame> ;
+                                                                                  rdfs:range <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#EthicalRule> ,
+                                                                                             <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#ExpectedSocialFrame> ,
+                                                                                             <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#SubversiveFrame> ;
                                                                                   rdfs:comment "All the elements that, blended, make the DescriptionFrame of the humor" .
 
 
-###  http://www.semanticweb.org/lachi/ontologies/2026/nameholder#includesSituation
-<http://www.semanticweb.org/lachi/ontologies/2026/nameholder#includesSituation> rdf:type owl:ObjectProperty ;
+###  https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#includesSituation
+<https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#includesSituation> rdf:type owl:ObjectProperty ;
                                                                                 rdfs:subPropertyOf <http://www.loa-cnr.it/ontologies/DUL.owl#hasComponent> ,
-                                                                                                   <http://www.semanticweb.org/lachi/ontologies/2026/nameholder#includes> ;
-                                                                                rdfs:domain <http://www.semanticweb.org/lachi/ontologies/2026/nameholder#HumorousSituation> ;
-                                                                                rdfs:range <http://www.semanticweb.org/lachi/ontologies/2026/nameholder#NormOccurence> ,
-                                                                                           <http://www.semanticweb.org/lachi/ontologies/2026/nameholder#SubversiveOccurence> ;
+                                                                                                   <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#includes> ;
+                                                                                rdfs:domain <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#HumorousSituation> ;
+                                                                                rdfs:range <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#NormOccurence> ,
+                                                                                           <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#SubversiveOccurence> ;
                                                                                 rdfs:comment "The actual application in the situation of the blending of the elements" .
 
 
-###  http://www.semanticweb.org/lachi/ontologies/2026/nameholder#isAgentIn
-<http://www.semanticweb.org/lachi/ontologies/2026/nameholder#isAgentIn> rdf:type owl:ObjectProperty .
+###  https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#isAgentIn
+<https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#isAgentIn> rdf:type owl:ObjectProperty .
 
 
-###  http://www.semanticweb.org/lachi/ontologies/2026/nameholder#isDescribedBy
-<http://www.semanticweb.org/lachi/ontologies/2026/nameholder#isDescribedBy> rdf:type owl:ObjectProperty ;
-                                                                            rdfs:domain <http://www.semanticweb.org/lachi/ontologies/2026/nameholder#Situation> ;
-                                                                            rdfs:range <http://www.semanticweb.org/lachi/ontologies/2026/nameholder#Description> ;
+###  https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#isDescribedBy
+<https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#isDescribedBy> rdf:type owl:ObjectProperty ;
+                                                                            rdfs:domain <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#Situation> ;
+                                                                            rdfs:range <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#Description> ;
                                                                             rdfs:comment "Important to connect the situations with the corresponding descriptions" .
 
 
-###  http://www.semanticweb.org/lachi/ontologies/2026/nameholder#isExplainedBy
-<http://www.semanticweb.org/lachi/ontologies/2026/nameholder#isExplainedBy> rdf:type owl:ObjectProperty ;
-                                                                            rdfs:domain <http://www.semanticweb.org/lachi/ontologies/2026/nameholder#HumorousSituation> ;
-                                                                            rdfs:range <http://www.semanticweb.org/lachi/ontologies/2026/nameholder#TheoreticalMechanism> .
+###  https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#isExplainedBy
+<https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#isExplainedBy> rdf:type owl:ObjectProperty ;
+                                                                            rdfs:domain <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#HumorousSituation> ;
+                                                                            rdfs:range <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#TheoreticalMechanism> .
 
 
-###  http://www.semanticweb.org/lachi/ontologies/2026/nameholder#isIncludedIn
-<http://www.semanticweb.org/lachi/ontologies/2026/nameholder#isIncludedIn> rdf:type owl:ObjectProperty .
+###  https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#isIncludedIn
+<https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#isIncludedIn> rdf:type owl:ObjectProperty .
 
 
-###  http://www.semanticweb.org/lachi/ontologies/2026/nameholder#isTargetIn
-<http://www.semanticweb.org/lachi/ontologies/2026/nameholder#isTargetIn> rdf:type owl:ObjectProperty .
+###  https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#isTargetIn
+<https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#isTargetIn> rdf:type owl:ObjectProperty .
 
 
-###  http://www.semanticweb.org/lachi/ontologies/2026/nameholder#isTriggeredBy
-<http://www.semanticweb.org/lachi/ontologies/2026/nameholder#isTriggeredBy> rdf:type owl:ObjectProperty ;
-                                                                            rdfs:domain <http://www.semanticweb.org/lachi/ontologies/2026/nameholder#TheoreticalMechanism> ;
-                                                                            rdfs:range <http://www.semanticweb.org/lachi/ontologies/2026/nameholder#SubversiveOccurence> ;
+###  https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#isTriggeredBy
+<https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#isTriggeredBy> rdf:type owl:ObjectProperty ;
+                                                                            rdfs:domain <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#TheoreticalMechanism> ;
+                                                                            rdfs:range <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#SubversiveOccurence> ;
                                                                             rdfs:comment "TheoreticalMechanism to Subversion" .
 
 
-###  http://www.semanticweb.org/lachi/ontologies/2026/nameholder#isViolatedBy
-<http://www.semanticweb.org/lachi/ontologies/2026/nameholder#isViolatedBy> rdf:type owl:ObjectProperty ;
-                                                                           owl:inverseOf <http://www.semanticweb.org/lachi/ontologies/2026/nameholder#violates> .
+###  https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#isViolatedBy
+<https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#isViolatedBy> rdf:type owl:ObjectProperty ;
+                                                                           owl:inverseOf <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#violates> .
 
 
-###  http://www.semanticweb.org/lachi/ontologies/2026/nameholder#violates
-<http://www.semanticweb.org/lachi/ontologies/2026/nameholder#violates> rdf:type owl:ObjectProperty ;
-                                                                       rdfs:domain <http://www.semanticweb.org/lachi/ontologies/2026/nameholder#SubversiveOccurence> ;
-                                                                       rdfs:range <http://www.semanticweb.org/lachi/ontologies/2026/nameholder#NormOccurence> ;
+###  https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#violates
+<https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#violates> rdf:type owl:ObjectProperty ;
+                                                                       rdfs:domain <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#SubversiveOccurence> ;
+                                                                       rdfs:range <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#NormOccurence> ;
                                                                        rdfs:comment "connecting SubversiveOccurrence to NormOccurence" .
 
 
@@ -123,30 +123,30 @@
 #    Data properties
 #################################################################
 
-###  http://www.semanticweb.org/lachi/ontologies/2026/nameholder#hasDescription
-<http://www.semanticweb.org/lachi/ontologies/2026/nameholder#hasDescription> rdf:type owl:DatatypeProperty ;
-                                                                             rdfs:domain <http://www.semanticweb.org/lachi/ontologies/2026/nameholder#Situation> ;
+###  https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#hasDescription
+<https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#hasDescription> rdf:type owl:DatatypeProperty ;
+                                                                             rdfs:domain <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#Situation> ;
                                                                              rdfs:range xsd:string ;
                                                                              rdfs:comment "Description of the scene" .
 
 
-###  http://www.semanticweb.org/lachi/ontologies/2026/nameholder#hasEpisodeNumber
-<http://www.semanticweb.org/lachi/ontologies/2026/nameholder#hasEpisodeNumber> rdf:type owl:DatatypeProperty ;
-                                                                               rdfs:domain <http://www.semanticweb.org/lachi/ontologies/2026/nameholder#Situation> ;
+###  https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#hasEpisodeNumber
+<https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#hasEpisodeNumber> rdf:type owl:DatatypeProperty ;
+                                                                               rdfs:domain <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#Situation> ;
                                                                                rdfs:range xsd:integer ;
                                                                                rdfs:comment "Episode number with the season: for ex. S01E09" .
 
 
-###  http://www.semanticweb.org/lachi/ontologies/2026/nameholder#hasTimestamp
-<http://www.semanticweb.org/lachi/ontologies/2026/nameholder#hasTimestamp> rdf:type owl:DatatypeProperty ;
-                                                                           rdfs:domain <http://www.semanticweb.org/lachi/ontologies/2026/nameholder#Situation> ;
+###  https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#hasTimestamp
+<https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#hasTimestamp> rdf:type owl:DatatypeProperty ;
+                                                                           rdfs:domain <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#Situation> ;
                                                                            rdfs:range xsd:string ;
                                                                            rdfs:comment "Where to find the specific moment" .
 
 
-###  http://www.semanticweb.org/lachi/ontologies/2026/nameholder#hasTitle
-<http://www.semanticweb.org/lachi/ontologies/2026/nameholder#hasTitle> rdf:type owl:DatatypeProperty ;
-                                                                       rdfs:domain <http://www.semanticweb.org/lachi/ontologies/2026/nameholder#Situation> ;
+###  https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#hasTitle
+<https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#hasTitle> rdf:type owl:DatatypeProperty ;
+                                                                       rdfs:domain <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#Situation> ;
                                                                        rdfs:range xsd:string ;
                                                                        rdfs:comment "Title of the episode" .
 
@@ -156,126 +156,126 @@
 #################################################################
 
 ###  http://www.loa-cnr.it/ontologies/DUL.owl#Description
-<http://www.loa-cnr.it/ontologies/DUL.owl#Description> owl:equivalentClass <http://www.semanticweb.org/lachi/ontologies/2026/nameholder#Description> .
+<http://www.loa-cnr.it/ontologies/DUL.owl#Description> owl:equivalentClass <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#Description> .
 
 
 ###  http://www.loa-cnr.it/ontologies/DUL.owl#Situation
-<http://www.loa-cnr.it/ontologies/DUL.owl#Situation> owl:equivalentClass <http://www.semanticweb.org/lachi/ontologies/2026/nameholder#Situation> .
+<http://www.loa-cnr.it/ontologies/DUL.owl#Situation> owl:equivalentClass <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#Situation> .
 
 
-###  http://www.semanticweb.org/lachi/ontologies/2026/nameholder#AestheticQuality
-<http://www.semanticweb.org/lachi/ontologies/2026/nameholder#AestheticQuality> rdf:type owl:Class ;
-                                                                               rdfs:subClassOf <http://www.semanticweb.org/lachi/ontologies/2026/nameholder#HumorQuality> ;
+###  https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#AestheticQuality
+<https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#AestheticQuality> rdf:type owl:Class ;
+                                                                               rdfs:subClassOf <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#HumorQuality> ;
                                                                                rdfs:comment "how they are dressed, how they appear" .
 
 
-###  http://www.semanticweb.org/lachi/ontologies/2026/nameholder#Agent
-<http://www.semanticweb.org/lachi/ontologies/2026/nameholder#Agent> rdf:type owl:Class ;
-                                                                    rdfs:subClassOf <http://www.semanticweb.org/lachi/ontologies/2026/nameholder#HumorEntity> ;
+###  https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#Agent
+<https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#Agent> rdf:type owl:Class ;
+                                                                    rdfs:subClassOf <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#HumorEntity> ;
                                                                     rdfs:comment "Who does the action" .
 
 
-###  http://www.semanticweb.org/lachi/ontologies/2026/nameholder#BehavioralQuality
-<http://www.semanticweb.org/lachi/ontologies/2026/nameholder#BehavioralQuality> rdf:type owl:Class ;
-                                                                                rdfs:subClassOf <http://www.semanticweb.org/lachi/ontologies/2026/nameholder#HumorQuality> ;
+###  https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#BehavioralQuality
+<https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#BehavioralQuality> rdf:type owl:Class ;
+                                                                                rdfs:subClassOf <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#HumorQuality> ;
                                                                                 rdfs:comment "expressions, strange behaviours" .
 
 
-###  http://www.semanticweb.org/lachi/ontologies/2026/nameholder#Description
-<http://www.semanticweb.org/lachi/ontologies/2026/nameholder#Description> rdf:type owl:Class ;
-                                                                          owl:disjointWith <http://www.semanticweb.org/lachi/ontologies/2026/nameholder#Situation> ;
+###  https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#Description
+<https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#Description> rdf:type owl:Class ;
+                                                                          owl:disjointWith <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#Situation> ;
                                                                           rdfs:comment "The description part of all the frames converging to create the humorous situation" .
 
 
-###  http://www.semanticweb.org/lachi/ontologies/2026/nameholder#EthicalRule
-<http://www.semanticweb.org/lachi/ontologies/2026/nameholder#EthicalRule> rdf:type owl:Class ;
-                                                                          rdfs:subClassOf <http://www.semanticweb.org/lachi/ontologies/2026/nameholder#Description> ;
+###  https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#EthicalRule
+<https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#EthicalRule> rdf:type owl:Class ;
+                                                                          rdfs:subClassOf <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#Description> ;
                                                                           rdfs:comment "the BEHAVIOURAL rules of the corresponding frame (Social decorum, professionalism, respect)" .
 
 
-###  http://www.semanticweb.org/lachi/ontologies/2026/nameholder#ExpectedSocialFrame
-<http://www.semanticweb.org/lachi/ontologies/2026/nameholder#ExpectedSocialFrame> rdf:type owl:Class ;
-                                                                                  rdfs:subClassOf <http://www.semanticweb.org/lachi/ontologies/2026/nameholder#Description> ;
+###  https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#ExpectedSocialFrame
+<https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#ExpectedSocialFrame> rdf:type owl:Class ;
+                                                                                  rdfs:subClassOf <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#Description> ;
                                                                                   rdfs:comment "the normal social frame (a funeral, a job interview)" .
 
 
-###  http://www.semanticweb.org/lachi/ontologies/2026/nameholder#HumorEntity
-<http://www.semanticweb.org/lachi/ontologies/2026/nameholder#HumorEntity> rdf:type owl:Class ;
+###  https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#HumorEntity
+<https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#HumorEntity> rdf:type owl:Class ;
                                                                           rdfs:subClassOf <http://www.loa-cnr.it/ontologies/DUL.owl#SocialAgent> .
 
 
-###  http://www.semanticweb.org/lachi/ontologies/2026/nameholder#HumorQuality
-<http://www.semanticweb.org/lachi/ontologies/2026/nameholder#HumorQuality> rdf:type owl:Class ;
+###  https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#HumorQuality
+<https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#HumorQuality> rdf:type owl:Class ;
                                                                            rdfs:subClassOf <http://www.loa-cnr.it/ontologies/DUL.owl#Quality> ;
                                                                            rdfs:comment "This make the blend possibile: through this precise actions the character make the breaking of the social norm funny" .
 
 
-###  http://www.semanticweb.org/lachi/ontologies/2026/nameholder#HumorousFrame
-<http://www.semanticweb.org/lachi/ontologies/2026/nameholder#HumorousFrame> rdf:type owl:Class ;
-                                                                            rdfs:subClassOf <http://www.semanticweb.org/lachi/ontologies/2026/nameholder#Description> ;
+###  https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#HumorousFrame
+<https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#HumorousFrame> rdf:type owl:Class ;
+                                                                            rdfs:subClassOf <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#Description> ;
                                                                             rdfs:comment "This is the BLENDING class, keeping all the descriptions together" .
 
 
-###  http://www.semanticweb.org/lachi/ontologies/2026/nameholder#HumorousSituation
-<http://www.semanticweb.org/lachi/ontologies/2026/nameholder#HumorousSituation> rdf:type owl:Class ;
-                                                                                rdfs:subClassOf <http://www.semanticweb.org/lachi/ontologies/2026/nameholder#Situation> ;
+###  https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#HumorousSituation
+<https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#HumorousSituation> rdf:type owl:Class ;
+                                                                                rdfs:subClassOf <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#Situation> ;
                                                                                 rdfs:comment "The situation BLENDING all the other situations (Social, Norm e Subversive)" .
 
 
-###  http://www.semanticweb.org/lachi/ontologies/2026/nameholder#IncongruityTheory
-<http://www.semanticweb.org/lachi/ontologies/2026/nameholder#IncongruityTheory> rdf:type owl:Class ;
-                                                                                rdfs:subClassOf <http://www.semanticweb.org/lachi/ontologies/2026/nameholder#TheoreticalMechanism> .
+###  https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#IncongruityTheory
+<https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#IncongruityTheory> rdf:type owl:Class ;
+                                                                                rdfs:subClassOf <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#TheoreticalMechanism> .
 
 
-###  http://www.semanticweb.org/lachi/ontologies/2026/nameholder#NormOccurence
-<http://www.semanticweb.org/lachi/ontologies/2026/nameholder#NormOccurence> rdf:type owl:Class ;
-                                                                            rdfs:subClassOf <http://www.semanticweb.org/lachi/ontologies/2026/nameholder#Situation> ;
+###  https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#NormOccurence
+<https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#NormOccurence> rdf:type owl:Class ;
+                                                                            rdfs:subClassOf <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#Situation> ;
                                                                             rdfs:comment "How the characters apply this norm realated to the frame" .
 
 
-###  http://www.semanticweb.org/lachi/ontologies/2026/nameholder#PhysicalQuality
-<http://www.semanticweb.org/lachi/ontologies/2026/nameholder#PhysicalQuality> rdf:type owl:Class ;
-                                                                              rdfs:subClassOf <http://www.semanticweb.org/lachi/ontologies/2026/nameholder#HumorQuality> ;
+###  https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#PhysicalQuality
+<https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#PhysicalQuality> rdf:type owl:Class ;
+                                                                              rdfs:subClassOf <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#HumorQuality> ;
                                                                               rdfs:comment "In what pysical condition the characters are (naked, sweating, dirty)" .
 
 
-###  http://www.semanticweb.org/lachi/ontologies/2026/nameholder#ReliefTheory
-<http://www.semanticweb.org/lachi/ontologies/2026/nameholder#ReliefTheory> rdf:type owl:Class ;
-                                                                           rdfs:subClassOf <http://www.semanticweb.org/lachi/ontologies/2026/nameholder#TheoreticalMechanism> .
+###  https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#ReliefTheory
+<https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#ReliefTheory> rdf:type owl:Class ;
+                                                                           rdfs:subClassOf <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#TheoreticalMechanism> .
 
 
-###  http://www.semanticweb.org/lachi/ontologies/2026/nameholder#Situation
-<http://www.semanticweb.org/lachi/ontologies/2026/nameholder#Situation> rdf:type owl:Class ;
+###  https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#Situation
+<https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#Situation> rdf:type owl:Class ;
                                                                         rdfs:comment "The real description of what happens in the episodes" .
 
 
-###  http://www.semanticweb.org/lachi/ontologies/2026/nameholder#SubversiveFrame
-<http://www.semanticweb.org/lachi/ontologies/2026/nameholder#SubversiveFrame> rdf:type owl:Class ;
-                                                                              rdfs:subClassOf <http://www.semanticweb.org/lachi/ontologies/2026/nameholder#Description> ;
+###  https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#SubversiveFrame
+<https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#SubversiveFrame> rdf:type owl:Class ;
+                                                                              rdfs:subClassOf <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#Description> ;
                                                                               rdfs:comment "Important to note that this is the only element in the description without a corrisponding class in the SItuation, becaue this is just a throretical description of the - already distorted - context the characters live in. In this sense, the whole situation is just an explanation of what we are describing here" .
 
 
-###  http://www.semanticweb.org/lachi/ontologies/2026/nameholder#SubversiveOccurence
-<http://www.semanticweb.org/lachi/ontologies/2026/nameholder#SubversiveOccurence> rdf:type owl:Class ;
+###  https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#SubversiveOccurence
+<https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#SubversiveOccurence> rdf:type owl:Class ;
                                                                                   rdfs:subClassOf <http://www.loa-cnr.it/ontologies/DUL.owl#Action> ,
-                                                                                                  <http://www.semanticweb.org/lachi/ontologies/2026/nameholder#Situation> ;
+                                                                                                  <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#Situation> ;
                                                                                   rdfs:comment "The real act of subversion (what are the characters doing)" .
 
 
-###  http://www.semanticweb.org/lachi/ontologies/2026/nameholder#SuperiorityTheory
-<http://www.semanticweb.org/lachi/ontologies/2026/nameholder#SuperiorityTheory> rdf:type owl:Class ;
-                                                                                rdfs:subClassOf <http://www.semanticweb.org/lachi/ontologies/2026/nameholder#TheoreticalMechanism> .
+###  https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#SuperiorityTheory
+<https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#SuperiorityTheory> rdf:type owl:Class ;
+                                                                                rdfs:subClassOf <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#TheoreticalMechanism> .
 
 
-###  http://www.semanticweb.org/lachi/ontologies/2026/nameholder#Target
-<http://www.semanticweb.org/lachi/ontologies/2026/nameholder#Target> rdf:type owl:Class ;
-                                                                     rdfs:subClassOf <http://www.semanticweb.org/lachi/ontologies/2026/nameholder#HumorEntity> ;
+###  https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#Target
+<https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#Target> rdf:type owl:Class ;
+                                                                     rdfs:subClassOf <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#HumorEntity> ;
                                                                      rdfs:comment "The victim of the joke" .
 
 
-###  http://www.semanticweb.org/lachi/ontologies/2026/nameholder#TheoreticalMechanism
-<http://www.semanticweb.org/lachi/ontologies/2026/nameholder#TheoreticalMechanism> rdf:type owl:Class ;
-                                                                                   rdfs:subClassOf <http://www.semanticweb.org/lachi/ontologies/2026/nameholder#Description> ;
+###  https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#TheoreticalMechanism
+<https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#TheoreticalMechanism> rdf:type owl:Class ;
+                                                                                   rdfs:subClassOf <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#Description> ;
                                                                                    rdfs:comment "This is related to the literature around the construction oh humor)" .
 
 

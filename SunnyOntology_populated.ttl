@@ -1,7 +1,18 @@
+@prefix dul: <http://www.loa-cnr.it/ontologies/DUL.owl#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix sunny: <http://www.semanticweb.org/lachi/ontologies/2026/nameholder#> .
+@prefix sunny: <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dul:Description owl:equivalentClass sunny:Description .
+
+dul:Situation owl:equivalentClass sunny:Situation .
+
+dul:isDescribedBy owl:equivalentProperty sunny:isDescribedBy .
+
+<https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl> a owl:Ontology ;
+    rdfs:comment "itsAlwaysSunnyOntology url: \"https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl\"" ;
+    owl:imports <http://www.loa-cnr.it/ontologies/DUL.owl> .
 
 sunny:AestheticQuality a owl:Class ;
     rdfs:comment "how they are dressed, how they appear" ;
@@ -9,11 +20,11 @@ sunny:AestheticQuality a owl:Class ;
 
 sunny:HS_001 a sunny:HumorousSituation ;
     sunny:hasAgent sunny:Mac_and_Dee ;
-    sunny:hasDescription "Mac and Dee insult a lifeguard who tells them they are too big for the children's slide, then they force their way down and get painfully stuck."^^xsd:string ;
-    sunny:hasEpisodeNumber "S12E02"^^xsd:string ;
+    sunny:hasDescription "Mac and Dee insult a lifeguard who tells them they are too big for the children's slide, then they force their way down and get painfully stuck." ;
+    sunny:hasEpisodeNumber "S12E02" ;
     sunny:hasTarget sunny:Lifeguard ;
-    sunny:hasTimestamp "00:02:32"^^xsd:string ;
-    sunny:hasTitle "The Gang Goes to a Water Park"^^xsd:string ;
+    sunny:hasTimestamp "00:02:32" ;
+    sunny:hasTitle "The Gang Goes to a Water Park" ;
     sunny:includesSituation sunny:HS_001_norm,
         sunny:HS_001_subversive ;
     sunny:isDescribedBy sunny:HS_001_frame ;
@@ -21,11 +32,11 @@ sunny:HS_001 a sunny:HumorousSituation ;
 
 sunny:HS_002 a sunny:HumorousSituation ;
     sunny:hasAgent sunny:Dee_and_the_Gang ;
-    sunny:hasDescription "Dee brings the entire gang into her therapy session, and Frank dumps dirty dishes on the floor, demanding the therapist decide who should wash them"^^xsd:string ;
-    sunny:hasEpisodeNumber "S08E05"^^xsd:string ;
+    sunny:hasDescription "Dee brings the entire gang into her therapy session, and Frank dumps dirty dishes on the floor, demanding the therapist decide who should wash them" ;
+    sunny:hasEpisodeNumber "S08E05" ;
     sunny:hasTarget sunny:The_Therapist ;
-    sunny:hasTimestamp "00:00:46"^^xsd:string ;
-    sunny:hasTitle "The Gang Gets Analyzed"^^xsd:string ;
+    sunny:hasTimestamp "00:00:46" ;
+    sunny:hasTitle "The Gang Gets Analyzed" ;
     sunny:includesSituation sunny:HS_002_norm,
         sunny:HS_002_subversive ;
     sunny:isDescribedBy sunny:HS_002_frame ;
@@ -33,11 +44,11 @@ sunny:HS_002 a sunny:HumorousSituation ;
 
 sunny:HS_003 a sunny:HumorousSituation ;
     sunny:hasAgent sunny:Mac_and_Dennis ;
-    sunny:hasDescription "Mac and Dennis in their yard and aggressively stare in silence at a friendly neighbor who comes over to welcome them"^^xsd:string ;
-    sunny:hasEpisodeNumber "S11E05"^^xsd:string ;
+    sunny:hasDescription "Mac and Dennis in their yard and aggressively stare in silence at a friendly neighbor who comes over to welcome them" ;
+    sunny:hasEpisodeNumber "S11E05" ;
     sunny:hasTarget sunny:Wally_\(The_Neighbor\) ;
-    sunny:hasTimestamp "00:05:08"^^xsd:string ;
-    sunny:hasTitle "Mac & Dennis Move to the Suburbs"^^xsd:string ;
+    sunny:hasTimestamp "00:05:08" ;
+    sunny:hasTitle "Mac & Dennis Move to the Suburbs" ;
     sunny:includesSituation sunny:HS_003_norm,
         sunny:HS_003_subversive ;
     sunny:isDescribedBy sunny:HS_003_frame ;
@@ -45,11 +56,11 @@ sunny:HS_003 a sunny:HumorousSituation ;
 
 sunny:HS_004 a sunny:HumorousSituation ;
     sunny:hasAgent sunny:Charlie ;
-    sunny:hasDescription "Mac and Dennis try to create an online dating profile for Charlie, but get frustrated when he gives absurd answers"^^xsd:string ;
-    sunny:hasEpisodeNumber "S05E05"^^xsd:string ;
+    sunny:hasDescription "Mac and Dennis try to create an online dating profile for Charlie, but get frustrated when he gives absurd answers" ;
+    sunny:hasEpisodeNumber "S05E05" ;
     sunny:hasTarget sunny:Mac_and_Dennis ;
-    sunny:hasTimestamp "00:06:18"^^xsd:string ;
-    sunny:hasTitle "The Waitress Is Getting Married"^^xsd:string ;
+    sunny:hasTimestamp "00:06:18" ;
+    sunny:hasTitle "The Waitress Is Getting Married" ;
     sunny:includesSituation sunny:HS_004_norm,
         sunny:HS_004_subversive ;
     sunny:isDescribedBy sunny:HS_004_frame ;
@@ -57,11 +68,11 @@ sunny:HS_004 a sunny:HumorousSituation ;
 
 sunny:HS_005 a sunny:HumorousSituation ;
     sunny:hasAgent sunny:Mac_and_Charlie ;
-    sunny:hasDescription "Mac and Charlie confront the thief who stole their bike, but intimidated by him, they retreat and instead brutally beat up his kid and friends to take the bike back"^^xsd:string ;
-    sunny:hasEpisodeNumber "S13E05"^^xsd:string ;
+    sunny:hasDescription "Mac and Charlie confront the thief who stole their bike, but intimidated by him, they retreat and instead brutally beat up his kid and friends to take the bike back" ;
+    sunny:hasEpisodeNumber "S13E05" ;
     sunny:hasTarget sunny:The_Kids ;
-    sunny:hasTimestamp "00:16:50"^^xsd:string ;
-    sunny:hasTitle "The Gang Gets New Wheels"^^xsd:string ;
+    sunny:hasTimestamp "00:16:50" ;
+    sunny:hasTitle "The Gang Gets New Wheels" ;
     sunny:includesSituation sunny:HS_005_norm,
         sunny:HS_005_subversive ;
     sunny:isDescribedBy sunny:HS_005_frame ;
@@ -72,6 +83,12 @@ sunny:ReliefTheory a owl:Class ;
 
 sunny:describes a owl:ObjectProperty ;
     owl:inverseOf sunny:isDescribedBy .
+
+sunny:hasAgent a owl:ObjectProperty ;
+    rdfs:domain sunny:HumorousSituation ;
+    rdfs:range sunny:Agent ;
+    rdfs:subPropertyOf dul:hasParticipant ;
+    owl:inverseOf sunny:isAgentIn .
 
 sunny:hasDescription a owl:DatatypeProperty ;
     rdfs:comment "Description of the scene" ;
@@ -87,6 +104,12 @@ sunny:hasQuality a owl:ObjectProperty ;
     rdfs:comment "connecting HumorQuality to HumorEntity" ;
     rdfs:domain sunny:HumorEntity ;
     rdfs:range sunny:HumorQuality .
+
+sunny:hasTarget a owl:ObjectProperty ;
+    rdfs:domain sunny:HumorousSituation ;
+    rdfs:range sunny:Target ;
+    rdfs:subPropertyOf dul:hasParticipant ;
+    owl:inverseOf sunny:isTargetIn .
 
 sunny:hasTimestamp a owl:DatatypeProperty ;
     rdfs:comment "Where to find the specific moment" ;
@@ -104,15 +127,16 @@ sunny:includesDescription a owl:ObjectProperty ;
     rdfs:range sunny:EthicalRule,
         sunny:ExpectedSocialFrame,
         sunny:SubversiveFrame ;
-    rdfs:subPropertyOf sunny:includes .
+    rdfs:subPropertyOf dul:hasComponent,
+        sunny:includes .
 
 sunny:includesSituation a owl:ObjectProperty ;
     rdfs:comment "The actual application in the situation of the blending of the elements" ;
     rdfs:domain sunny:HumorousSituation ;
     rdfs:range sunny:NormOccurence,
-        sunny:SocialOccurence,
         sunny:SubversiveOccurence ;
-    rdfs:subPropertyOf sunny:includes .
+    rdfs:subPropertyOf dul:hasComponent,
+        sunny:includes .
 
 sunny:isExplainedBy a owl:ObjectProperty ;
     rdfs:domain sunny:HumorousSituation ;
@@ -125,9 +149,6 @@ sunny:isTriggeredBy a owl:ObjectProperty ;
 
 sunny:isViolatedBy a owl:ObjectProperty ;
     owl:inverseOf sunny:violates .
-
-<https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysFunnyOntology.owl> a owl:Ontology ;
-    rdfs:comment "itsAlwaysSunnyOntology" .
 
 sunny:Charlie a sunny:Agent ;
     sunny:hasQuality sunny:BehavioralQuality .
@@ -228,10 +249,6 @@ sunny:PhysicalQuality a owl:Class ;
     rdfs:comment "In what pysical condition the characters are (naked, sweating, dirty)" ;
     rdfs:subClassOf sunny:HumorQuality .
 
-sunny:SocialOccurence a owl:Class ;
-    rdfs:comment "The occurrence of the scene" ;
-    rdfs:subClassOf sunny:Situation .
-
 sunny:SubF_BizarreUnrelatability a sunny:SubversiveFrame ;
     rdfs:label "Absurd and Repellent Personal Tastes"^^xsd:string ;
     rdfs:comment "The genuine expression of nonsensical, grotesque, or deeply unsettling preferences that guarantee immediate social rejection"^^xsd:string .
@@ -264,12 +281,11 @@ sunny:The_Therapist a sunny:Target ;
 sunny:Wally_\(The_Neighbor\) a sunny:Target ;
     sunny:hasQuality sunny:BehavioralQuality .
 
-sunny:isDescribedBy a owl:ObjectProperty ;
-    rdfs:comment "Important to connect the situations with the corresponding descriptions" ;
-    rdfs:domain sunny:Situation ;
-    rdfs:range sunny:Description .
+sunny:isAgentIn a owl:ObjectProperty .
 
 sunny:isIncludedIn a owl:ObjectProperty .
+
+sunny:isTargetIn a owl:ObjectProperty .
 
 sunny:violates a owl:ObjectProperty ;
     rdfs:comment "connecting SubversiveOccurrence to NormOccurence" ;
@@ -280,37 +296,37 @@ sunny:HS_001_norm a sunny:NormOccurence ;
     rdfs:comment "Mac and Dee should respect the lifeguard's instructions, accept that the slide is for children only, and walk away to use the adult attractions"^^xsd:string .
 
 sunny:HS_001_subversive a sunny:SubversiveOccurence ;
-    sunny:violates sunny:HS_001_norm ;
     rdfs:comment """Mac and Dee dismiss the lifeguard's warning, selfishly push their way down the slide, and get wedged in the tube.
-"""^^xsd:string .
+"""^^xsd:string ;
+    sunny:violates sunny:HS_001_norm .
 
 sunny:HS_002_norm a sunny:NormOccurence ;
     rdfs:comment "Dee should use the private session to explore her personal feelings about the dinner conflict and work on her own psychological growth alone"^^xsd:string .
 
 sunny:HS_002_subversive a sunny:SubversiveOccurence ;
-    sunny:violates sunny:HS_002_norm ;
-    rdfs:comment "Dee hijacks the session by bringing in the gang, while Frank dumps a tablecloth of dirty dishes on the therapist's floor to demand a ruling on a chore"^^xsd:string .
+    rdfs:comment "Dee hijacks the session by bringing in the gang, while Frank dumps a tablecloth of dirty dishes on the therapist's floor to demand a ruling on a chore"^^xsd:string ;
+    sunny:violates sunny:HS_002_norm .
 
 sunny:HS_003_norm a sunny:NormOccurence ;
     rdfs:comment "Mac and Dennis should smile back, introduce themselves, and exchange polite pleasantries with the neighbor welcoming them."^^xsd:string .
 
 sunny:HS_003_subversive a sunny:SubversiveOccurence ;
-    sunny:violates sunny:HS_003_norm ;
-    rdfs:comment "Mac and Dennis stare aggressively in dead silence at the greeting neighbor, refusing to speak, and later express genuine outrage that he dared to talk to them"^^xsd:string .
+    rdfs:comment "Mac and Dennis stare aggressively in dead silence at the greeting neighbor, refusing to speak, and later express genuine outrage that he dared to talk to them"^^xsd:string ;
+    sunny:violates sunny:HS_003_norm .
 
 sunny:HS_004_norm a sunny:NormOccurence ;
     rdfs:comment "Charlie should provide normal, attractive answers like \"traveling,\" \"movies,\" or \"pizza\" to make himself appealing to women"^^xsd:string .
 
 sunny:HS_004_subversive a sunny:SubversiveOccurence ;
-    sunny:violates sunny:HS_004_norm ;
-    rdfs:comment "Charlie answers the questions with absurd, repellent things like \"milk steak,\" \"magnets,\" and \"ghouls,\" completely ruining the profile"^^xsd:string .
+    rdfs:comment "Charlie answers the questions with absurd, repellent things like \"milk steak,\" \"magnets,\" and \"ghouls,\" completely ruining the profile"^^xsd:string ;
+    sunny:violates sunny:HS_004_norm .
 
 sunny:HS_005_norm a sunny:NormOccurence ;
     rdfs:comment "Mac and Charlie should confront the intimidating father who stole their bike or call the police to resolve the theft legally"^^xsd:string .
 
 sunny:HS_005_subversive a sunny:SubversiveOccurence ;
-    sunny:violates sunny:HS_005_norm ;
-    rdfs:comment "Too terrified to fight the adult thief, Mac and Charlie return and brutally beat up his young children instead to steal the bike back"^^xsd:string .
+    rdfs:comment "Too terrified to fight the adult thief, Mac and Charlie return and brutally beat up his young children instead to steal the bike back"^^xsd:string ;
+    sunny:violates sunny:HS_005_norm .
 
 sunny:Mac_and_Dennis a sunny:Agent,
         sunny:Target ;
@@ -321,29 +337,28 @@ sunny:includes a owl:ObjectProperty,
     rdfs:comment "This is the shape to model the inclusion for the blending, but as i understood is not possibile to use the same property for D&S seeing that one is a construction of a patter and the other of the real application of it" ;
     owl:inverseOf sunny:isIncludedIn .
 
-sunny:HumorEntity a owl:Class .
+sunny:isDescribedBy a owl:ObjectProperty ;
+    rdfs:comment "Important to connect the situations with the corresponding descriptions" ;
+    rdfs:domain sunny:Situation ;
+    rdfs:range sunny:Description .
+
+sunny:HumorEntity a owl:Class ;
+    rdfs:subClassOf dul:SocialAgent .
 
 sunny:HumorQuality a owl:Class ;
-    rdfs:comment "This make the blend possibile: through this precise actions the character make the breaking of the social norm funny" .
+    rdfs:comment "This make the blend possibile: through this precise actions the character make the breaking of the social norm funny" ;
+    rdfs:subClassOf dul:Quality .
 
 sunny:IncongruityTheory a owl:Class ;
     rdfs:subClassOf sunny:TheoreticalMechanism .
-
-sunny:Agent a owl:Class ;
-    rdfs:comment "Who does the action" ;
-    rdfs:subClassOf sunny:HumorEntity .
-
-sunny:Target a owl:Class ;
-    rdfs:comment "The victim of the joke" ;
-    rdfs:subClassOf sunny:HumorEntity .
 
 sunny:TheoreticalMechanism a owl:Class ;
     rdfs:comment "This is related to the literature around the construction oh humor)" ;
     rdfs:subClassOf sunny:Description .
 
-sunny:Description a owl:Class ;
-    rdfs:comment "The description part of all the frames converging to create the humorous situation" ;
-    owl:disjointWith sunny:Situation .
+sunny:Agent a owl:Class ;
+    rdfs:comment "Who does the action" ;
+    rdfs:subClassOf sunny:HumorEntity .
 
 sunny:EthicalRule a owl:Class ;
     rdfs:comment "the BEHAVIOURAL rules of the corresponding frame (Social decorum, professionalism, respect)" ;
@@ -358,11 +373,16 @@ sunny:HumorousFrame a owl:Class ;
     rdfs:subClassOf sunny:Description .
 
 sunny:SubversiveFrame a owl:Class ;
+    rdfs:comment "Important to note that this is the only element in the description without a corrisponding class in the SItuation, becaue this is just a throretical description of the - already distorted - context the characters live in. In this sense, the whole situation is just an explanation of what we are describing here" ;
     rdfs:subClassOf sunny:Description .
 
-sunny:HumorousSituation a owl:Class ;
-    rdfs:comment "The situation BLENDING all the other situations (Social, Norm e Subversive)" ;
-    rdfs:subClassOf sunny:Situation .
+sunny:Target a owl:Class ;
+    rdfs:comment "The victim of the joke" ;
+    rdfs:subClassOf sunny:HumorEntity .
+
+sunny:Description a owl:Class ;
+    rdfs:comment "The description part of all the frames converging to create the humorous situation" ;
+    owl:disjointWith sunny:Situation .
 
 sunny:NormOccurence a owl:Class ;
     rdfs:comment "How the characters apply this norm realated to the frame" ;
@@ -374,6 +394,11 @@ sunny:BehavioralQuality a owl:Class ;
 
 sunny:SubversiveOccurence a owl:Class ;
     rdfs:comment "The real act of subversion (what are the characters doing)" ;
+    rdfs:subClassOf dul:Action,
+        sunny:Situation .
+
+sunny:HumorousSituation a owl:Class ;
+    rdfs:comment "The situation BLENDING all the other situations (Social, Norm e Subversive)" ;
     rdfs:subClassOf sunny:Situation .
 
 sunny:Situation a owl:Class ;
