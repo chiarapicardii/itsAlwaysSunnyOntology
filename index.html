@@ -349,6 +349,25 @@
             <a href="#kr" class="tag blue">Knowledge Representation</a>
             <a href="#ke" class="tag white">Knowledge Extraction</a>
         </div>
+        <a href="https://github.com/chiarapicardii/itsAlwaysSunnyOntology" target="_blank" style="
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 24px;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.72rem;
+            color: var(--muted);
+            text-decoration: none;
+            border: 1px solid var(--border);
+            padding: 8px 16px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            transition: color 0.2s, border-color 0.2s;
+        " onmouseover="this.style.color='var(--yellow)'; this.style.borderColor='var(--yellow)'" 
+        onmouseout="this.style.color='var(--muted)'; this.style.borderColor='var(--border)'">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.38.6.11.82-.26.82-.58v-2.03c-3.34.72-4.04-1.61-4.04-1.61-.54-1.38-1.33-1.75-1.33-1.75-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 3-.4c1.02 0 2.04.14 3 .4 2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.25 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.82.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+            GitHub Repository
+        </a>
     </section>
 
     <!-- 1. THEORETICAL FRAMEWORK -->
@@ -531,27 +550,58 @@
                     </div></div>
                 </div>
             </div>
-        </div></div></div>
+        
+        <div style="margin-top: 32px; text-align: center;">
+            <img src="imgs/itsAlwaysGraph.png" alt="Ontology Graph" style="max-width: 100%; border: 1px solid var(--border); padding: 24px; background: #fff;">
+            <p style="font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem; color: var(--muted); margin-top: 12px;">Figure 1 — A representation of the classes and properties. It can be seen better <a href="https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/imgs/itsAlwaysGraph.png" target="_blank" style="color: var(--yellow)"> here</a></p>
+        </div>
+
+        <div class="scene-card">
+            <p class="scene-id">HS_001 · S12E02 · 00:02:32</p>
+            <p class="scene-title" style="margin-bottom: 8px;">The Gang Goes to a Water Park</p>
+            <p class="scene-desc" style="margin-bottom: 20px;">Mac and Dee insult a lifeguard who tells them they are too big for the children's slide, then force their way down and get painfully stuck.</p>
+            <div class="scene-triples">
+                <div>
+                    <p class="triple-group-title">Description Layer</p>
+                    <p class="triple"><span class="s">ESF_RecreationalSafety</span><span class="p"> a </span><span class="o">ExpectedSocialFrame</span></p>
+                    <p class="triple"><span class="s">ER_SafetyCompliance</span><span class="p"> a </span><span class="o">EthicalRule</span></p>
+                    <p class="triple"><span class="s">SubF_ChildishRebellion</span><span class="p"> a </span><span class="o">SubversiveFrame</span></p>
+                    <p class="triple"><span class="s">HS_001_frame</span><span class="p"> includesDescription </span><span class="o">all three above</span></p>
+                </div>
+                <div>
+                    <p class="triple-group-title">Situation Layer</p>
+                    <p class="triple"><span class="s">HS_001_norm</span><span class="p"> a </span><span class="o">NormOccurence</span></p>
+                    <p class="triple"><span class="s">HS_001_subversive</span><span class="p"> a </span><span class="o">SubversiveOccurence</span></p>
+                    <p class="triple"><span class="s">HS_001_subversive</span><span class="p"> violates </span><span class="o">HS_001_norm</span></p>
+                    <p class="triple"><span class="s">HS_001_mechanism</span><span class="p"> a </span><span class="o">SuperiorityTheory</span></p>
+                </div>
+            </div>
+        </div></div></div></div>
+
+        
 
         <!-- 3.2 DUL Alignment -->
         <div class="nacc-item" id="alignment">
             <input type="checkbox" id="kr2" class="nacc-toggle">
             <label for="kr2" class="nacc-label">3.2 — DUL Alignment<span class="nacc-icon">+</span></label>
             <div class="nacc-body"><div class="nacc-inner">
-                <p class="prose">The ontology imports <strong>DOLCE-UltraLite</strong> (<code>http://www.loa-cnr.it/ontologies/DUL.owl</code>). Classes and properties are aligned where a genuine semantic correspondence exists — not forced.</p>
-                <table class="alignment-table">
-                    <thead><tr><th>Local</th><th>Relation</th><th>DUL</th><th>Rationale</th></tr></thead>
+            <p class="prose">Since the core of the ontology relies on Description &amp; Situation, wanting to model human-centered knowledge, the most organic and logical choice was to align it with <em>DOLCE-UltraLite (DUL)</em>, as was also used by Carriero et al. (2021). The perfect integration between the pattern and the corresponding ontology allows the project to have a more solid structure — preventing inconsistencies — and more importantly, ensuring interoperability and authoritativeness.</p>
+            <p class="prose">One small detail is that DUL is imported from <code>http://www.loa-cnr.it/ontologies/DUL.owl</code>, hosted by the LOA-CNR server, but is a perfect mirror of the more canonical endpoint; the only difference is that it was more easily downloadable to be integrated into Protégé for a smoother alignment.</p>                <table class="alignment-table">
+            <p class="prose">Finally, to avoid inconsistencies, the alignment followed one logic: the only classes aligned as <code>owl:equivalentClass</code> are <code>Description</code> and <code>Situation</code>, along with the corresponding object property <code>isDescribedBy</code> as <code>owl:equivalentProperty</code>. All the others are considered <code>rdfs:subClassOf</code>, leaving more room for semantic differences between the SunnyOntology and DOLCE-UltraLite.</p>
+
+            <table class="alignment-table">
+                <thead><tr><th>Local</th><th>Relation</th><th>DUL</th><th>Rationale</th></tr></thead>
                     <tbody>
                         <tr><td class="local-cls">:Description</td><td class="rel">≡ equivalentClass</td><td class="dul-cls">dul:Description</td><td class="rationale">Identical concept — the abstract layer of D&S.</td></tr>
                         <tr><td class="local-cls">:Situation</td><td class="rel">≡ equivalentClass</td><td class="dul-cls">dul:Situation</td><td class="rationale">Identical concept — the concrete layer of D&S.</td></tr>
                         <tr><td class="local-cls">:SubversiveOccurence</td><td class="rel">⊆ subClassOf</td><td class="dul-cls">dul:Action</td><td class="rationale">The subversion is always intentional — an agent deliberately acts against the norm.</td></tr>
-                        <tr><td class="local-cls">:HumorEntity</td><td class="rel">⊆ subClassOf</td><td class="dul-cls">dul:SocialAgent</td><td class="rationale">Characters are social agents operating within shared norms.</td></tr>
+                        <tr><td class="local-cls">:HumorEntity</td><td class="rel">⊆ subClassOf</td><td class="dul-cls">dul:SocialAgent</td><td class="rationale">Characters are social agents.</td></tr>
                         <tr><td class="local-cls">:HumorQuality</td><td class="rel">⊆ subClassOf</td><td class="dul-cls">dul:Quality</td><td class="rationale">Behavioral, aesthetic and physical traits are inherent qualities of entities.</td></tr>
                         <tr><td class="local-cls">:isDescribedBy</td><td class="rel">≡ equivalentProperty</td><td class="dul-cls">dul:isDescribedBy</td><td class="rationale">Same domain (Situation) and range (Description).</td></tr>
-                        <tr><td class="local-cls">:hasAgent · :hasTarget</td><td class="rel">⊆ subPropertyOf</td><td class="dul-cls">dul:hasParticipant</td><td class="rationale">Both agent and target participate in the humorous situation.</td></tr>
+                        <tr><td class="local-cls">:hasAgent :hasTarget</td><td class="rel">⊆ subPropertyOf</td><td class="dul-cls">dul:hasParticipant</td><td class="rationale">Both agent and target participate in the humorous situation.</td></tr>
                         <tr><td class="local-cls">:includesSituation<br>:includesDescription</td><td class="rel">⊆ subPropertyOf</td><td class="dul-cls">dul:hasComponent</td><td class="rationale">Part-whole composition within their respective layers.</td></tr>
                     </tbody>
-                </table>
+            </table>
             </div></div>
         </div>
     </div></div>
@@ -567,7 +617,6 @@
             </p>
         </div></div>
     </div>
-
     </section> <!-- fine page-section kr -->
 
 
@@ -575,6 +624,17 @@
     <section class="page-section" id="ke">
         <p class="section-eyebrow">04 — Knowledge Extraction</p>
         <h2 class="section-heading">The Gang Queries the Graph</h2>
+        <p class="prose">The ontology was populated with 10 scenes from the series. The full graph is available at <a href="https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/SunnyOntology_populated.ttl" target="_blank" style="color: var(--green);">SunnyOntology_populated.ttl</a>. Both the <a href="https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/ontologia_IASIP.csv" target="_blank" style="color: var(--green);">csv file</a> and the <a href="https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/from_csv_to_rdf.py" target="_blank" style="color: var(--green);">Python script</a> used to populate the graph are available on the GitHub repository.</p>
+
+        <div class="nacc-item" style="margin-top: 16px;">
+            <input type="checkbox" id="vowl" class="nacc-toggle">
+            <label for="vowl" class="nacc-label" style="padding: 12px 24px;">WebVOWL Visualization<span class="nacc-icon">+</span></label>
+            <div class="nacc-body"><div class="nacc-inner">
+                <img src="imgs/itsAlwaysPopulatedGraph.svg" alt="WebVOWL visualization" style="max-width: 100%; background: #fff; padding: 24px;">
+                <p style="font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem; color: var(--muted); margin-top: 12px;">Figure 2 — Populated ontology visualized via WebVOWL. For a better visualization <a href="https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/imgs/itsAlwaysPopulatedGraph.svg" target="_blank" style="color: var(--green);"></a>> click here </a></p>
+            </div></div>
+        </div>       
+        
         <p class="prose">Competency questions answered against the populated graph. All queries use <code>PREFIX sunny: &lt;...itsAlwaysSunnyOntology.ttl#&gt;</code>.</p>
 
         <div class="nested-acc">
@@ -661,7 +721,9 @@
     </section>
 
     <footer>
-        <span>© 2026 — Knowledge Representation &amp; Knowledge Extraction</span>
+        <span> Project made for a University project for the <a href="https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2024/490896" target="_blank"> Knowledge Representation &amp; Knowledge Extraction </a> course at the <em> Digital Humanities and Digital Knowledge</em> master's degree in Bologna.</span>
+        <span>©itsAlwaysSunnyOntology</span>
+        <p>Realized by<a href="mailto:chiara.picardi2@studio.unibo.it" target="_blank"> Chiara Picardi</a></span> and <a href="mailto:cecilia.vesci@studio.unibo.it" target="_blank"> Cecilia Vesci</p>
         <span><a href="https://github.com/chiarapicardii/itsAlwaysSunnyOntology" target="_blank">github.com/chiarapicardii/itsAlwaysSunnyOntology</a></span>
     </footer>
 
