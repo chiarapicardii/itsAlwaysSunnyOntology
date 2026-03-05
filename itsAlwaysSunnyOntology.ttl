@@ -70,7 +70,7 @@ dul:isDescribedBy owl:equivalentProperty :isDescribedBy .
                    rdfs:subPropertyOf dul:hasComponent ,
                                       :includes ;
                    rdfs:domain :HumorousSituation ;
-                   rdfs:range :NormOccurence ,
+                   rdfs:range :NormOccurrence ,
                               :SubversiveOccurence ;
                    rdfs:comment "The actual application in the situation of the blending of the elements" .
 
@@ -115,8 +115,8 @@ dul:isDescribedBy owl:equivalentProperty :isDescribedBy .
 ###  https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#violates
 :violates rdf:type owl:ObjectProperty ;
           rdfs:domain :SubversiveOccurence ;
-          rdfs:range :NormOccurence ;
-          rdfs:comment "connecting SubversiveOccurrence to NormOccurence" .
+          rdfs:range :NormOccurrence ;
+          rdfs:comment "connecting SubversiveOccurrence to NormOccurrence" .
 
 
 #################################################################
@@ -154,6 +154,7 @@ dul:isDescribedBy owl:equivalentProperty :isDescribedBy .
 #################################################################
 #    Classes
 #################################################################
+
 
 ###  http://www.loa-cnr.it/ontologies/DUL.owl#Description
 dul:Description owl:equivalentClass :Description .
@@ -227,8 +228,8 @@ dul:Situation owl:equivalentClass :Situation .
                    rdfs:subClassOf :TheoreticalMechanism .
 
 
-###  https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#NormOccurence
-:NormOccurence rdf:type owl:Class ;
+###  https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#NormOccurrence
+:NormOccurrence rdf:type owl:Class ;
                rdfs:subClassOf :Situation ;
                rdfs:comment "How the characters apply this norm realated to the frame" .
 
