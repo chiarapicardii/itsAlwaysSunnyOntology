@@ -29,4 +29,4 @@ The full project documentation is available at: chiarapicardii.github.io/itsAlwa
 
 **Course**
 
-Knowledge Representation and Knowledge Extraction — University of Bologna, 2026
+Knowledge Representation and Knowledge Extraction course — University of Bologna, 2026.
