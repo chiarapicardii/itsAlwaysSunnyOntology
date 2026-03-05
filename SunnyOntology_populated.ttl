@@ -563,8 +563,11 @@ sunny:Dee a sunny:Agent,
         sunny:PhysicalQuality .
 
 sunny:TheoreticalMechanism a owl:Class ;
-    rdfs:comment "This is related to the literature around the construction oh humor)" ;
-    rdfs:subClassOf sunny:Description .
+    rdfs:comment "This is related to the literature around the construction oh humor" .
+
+sunny:Description a owl:Class ;
+    rdfs:comment "The description part of all the frames converging to create the humorous situation" ;
+    owl:disjointWith sunny:Situation .
 
 sunny:IncongruityTheory a owl:Class ;
     rdfs:subClassOf sunny:TheoreticalMechanism .
@@ -576,10 +579,6 @@ sunny:Mac a sunny:Agent,
 sunny:Agent a owl:Class ;
     rdfs:comment "Who does the action" ;
     rdfs:subClassOf sunny:HumorEntity .
-
-sunny:Description a owl:Class ;
-    rdfs:comment "The description part of all the frames converging to create the humorous situation" ;
-    owl:disjointWith sunny:Situation .
 
 sunny:Situation a owl:Class ;
     rdfs:comment "The real description of what happens in the episodes" .

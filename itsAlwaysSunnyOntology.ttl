@@ -16,107 +16,107 @@
 #################################################################
 
 ###  http://www.loa-cnr.it/ontologies/DUL.owl#isDescribedBy
-<http://www.loa-cnr.it/ontologies/DUL.owl#isDescribedBy> owl:equivalentProperty <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#isDescribedBy> .
+dul:isDescribedBy owl:equivalentProperty :isDescribedBy .
 
 
 ###  https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#describes
-<https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#describes> rdf:type owl:ObjectProperty ;
-                                                                        owl:inverseOf <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#isDescribedBy> .
+:describes rdf:type owl:ObjectProperty ;
+           owl:inverseOf :isDescribedBy .
 
 
 ###  https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#hasAgent
-<https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#hasAgent> rdf:type owl:ObjectProperty ;
-                                                                       rdfs:subPropertyOf <http://www.loa-cnr.it/ontologies/DUL.owl#hasParticipant> ;
-                                                                       owl:inverseOf <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#isAgentIn> ;
-                                                                       rdfs:domain <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#HumorousSituation> ;
-                                                                       rdfs:range <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#Agent> .
+:hasAgent rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf dul:hasParticipant ;
+          owl:inverseOf :isAgentIn ;
+          rdfs:domain :HumorousSituation ;
+          rdfs:range :Agent .
 
 
 ###  https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#hasQuality
-<https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#hasQuality> rdf:type owl:ObjectProperty ;
-                                                                         rdfs:domain <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#HumorEntity> ;
-                                                                         rdfs:range <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#HumorQuality> ;
-                                                                         rdfs:comment "connecting HumorQuality to HumorEntity" .
+:hasQuality rdf:type owl:ObjectProperty ;
+            rdfs:domain :HumorEntity ;
+            rdfs:range :HumorQuality ;
+            rdfs:comment "connecting HumorQuality to HumorEntity" .
 
 
 ###  https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#hasTarget
-<https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#hasTarget> rdf:type owl:ObjectProperty ;
-                                                                        rdfs:subPropertyOf <http://www.loa-cnr.it/ontologies/DUL.owl#hasParticipant> ;
-                                                                        owl:inverseOf <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#isTargetIn> ;
-                                                                        rdfs:domain <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#HumorousSituation> ;
-                                                                        rdfs:range <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#Target> .
+:hasTarget rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf dul:hasParticipant ;
+           owl:inverseOf :isTargetIn ;
+           rdfs:domain :HumorousSituation ;
+           rdfs:range :Target .
 
 
 ###  https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#includes
-<https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#includes> rdf:type owl:ObjectProperty ;
-                                                                       owl:inverseOf <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#isIncludedIn> ;
-                                                                       rdf:type owl:TransitiveProperty ;
-                                                                       rdfs:comment "This is the shape to model the inclusion for the blending, but as i understood is not possibile to use the same property for D&S seeing that one is a construction of a patter and the other of the real application of it" .
+:includes rdf:type owl:ObjectProperty ;
+          owl:inverseOf :isIncludedIn ;
+          rdf:type owl:TransitiveProperty ;
+          rdfs:comment "This is the shape to model the inclusion for the blending, but as i understood is not possibile to use the same property for D&S seeing that one is a construction of a patter and the other of the real application of it" .
 
 
 ###  https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#includesDescription
-<https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#includesDescription> rdf:type owl:ObjectProperty ;
-                                                                                  rdfs:subPropertyOf <http://www.loa-cnr.it/ontologies/DUL.owl#hasComponent> ,
-                                                                                                     <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#includes> ;
-                                                                                  rdfs:domain <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#HumorousFrame> ;
-                                                                                  rdfs:range <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#EthicalRule> ,
-                                                                                             <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#ExpectedSocialFrame> ,
-                                                                                             <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#SubversiveFrame> ;
-                                                                                  rdfs:comment "All the elements that, blended, make the DescriptionFrame of the humor" .
+:includesDescription rdf:type owl:ObjectProperty ;
+                     rdfs:subPropertyOf dul:hasComponent ,
+                                        :includes ;
+                     rdfs:domain :HumorousFrame ;
+                     rdfs:range :EthicalRule ,
+                                :ExpectedSocialFrame ,
+                                :SubversiveFrame ;
+                     rdfs:comment "All the elements that, blended, make the DescriptionFrame of the humor" .
 
 
 ###  https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#includesSituation
-<https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#includesSituation> rdf:type owl:ObjectProperty ;
-                                                                                rdfs:subPropertyOf <http://www.loa-cnr.it/ontologies/DUL.owl#hasComponent> ,
-                                                                                                   <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#includes> ;
-                                                                                rdfs:domain <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#HumorousSituation> ;
-                                                                                rdfs:range <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#NormOccurence> ,
-                                                                                           <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#SubversiveOccurence> ;
-                                                                                rdfs:comment "The actual application in the situation of the blending of the elements" .
+:includesSituation rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf dul:hasComponent ,
+                                      :includes ;
+                   rdfs:domain :HumorousSituation ;
+                   rdfs:range :NormOccurence ,
+                              :SubversiveOccurence ;
+                   rdfs:comment "The actual application in the situation of the blending of the elements" .
 
 
 ###  https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#isAgentIn
-<https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#isAgentIn> rdf:type owl:ObjectProperty .
+:isAgentIn rdf:type owl:ObjectProperty .
 
 
 ###  https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#isDescribedBy
-<https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#isDescribedBy> rdf:type owl:ObjectProperty ;
-                                                                            rdfs:domain <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#Situation> ;
-                                                                            rdfs:range <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#Description> ;
-                                                                            rdfs:comment "Important to connect the situations with the corresponding descriptions" .
+:isDescribedBy rdf:type owl:ObjectProperty ;
+               rdfs:domain :Situation ;
+               rdfs:range :Description ;
+               rdfs:comment "Important to connect the situations with the corresponding descriptions" .
 
 
 ###  https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#isExplainedBy
-<https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#isExplainedBy> rdf:type owl:ObjectProperty ;
-                                                                            rdfs:domain <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#HumorousSituation> ;
-                                                                            rdfs:range <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#TheoreticalMechanism> .
+:isExplainedBy rdf:type owl:ObjectProperty ;
+               rdfs:domain :HumorousSituation ;
+               rdfs:range :TheoreticalMechanism .
 
 
 ###  https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#isIncludedIn
-<https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#isIncludedIn> rdf:type owl:ObjectProperty .
+:isIncludedIn rdf:type owl:ObjectProperty .
 
 
 ###  https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#isTargetIn
-<https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#isTargetIn> rdf:type owl:ObjectProperty .
+:isTargetIn rdf:type owl:ObjectProperty .
 
 
 ###  https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#isTriggeredBy
-<https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#isTriggeredBy> rdf:type owl:ObjectProperty ;
-                                                                            rdfs:domain <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#TheoreticalMechanism> ;
-                                                                            rdfs:range <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#SubversiveOccurence> ;
-                                                                            rdfs:comment "TheoreticalMechanism to Subversion" .
+:isTriggeredBy rdf:type owl:ObjectProperty ;
+               rdfs:domain :TheoreticalMechanism ;
+               rdfs:range :SubversiveOccurence ;
+               rdfs:comment "TheoreticalMechanism to Subversion" .
 
 
 ###  https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#isViolatedBy
-<https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#isViolatedBy> rdf:type owl:ObjectProperty ;
-                                                                           owl:inverseOf <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#violates> .
+:isViolatedBy rdf:type owl:ObjectProperty ;
+              owl:inverseOf :violates .
 
 
 ###  https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#violates
-<https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#violates> rdf:type owl:ObjectProperty ;
-                                                                       rdfs:domain <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#SubversiveOccurence> ;
-                                                                       rdfs:range <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#NormOccurence> ;
-                                                                       rdfs:comment "connecting SubversiveOccurrence to NormOccurence" .
+:violates rdf:type owl:ObjectProperty ;
+          rdfs:domain :SubversiveOccurence ;
+          rdfs:range :NormOccurence ;
+          rdfs:comment "connecting SubversiveOccurrence to NormOccurence" .
 
 
 #################################################################
@@ -124,31 +124,31 @@
 #################################################################
 
 ###  https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#hasDescription
-<https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#hasDescription> rdf:type owl:DatatypeProperty ;
-                                                                             rdfs:domain <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#Situation> ;
-                                                                             rdfs:range xsd:string ;
-                                                                             rdfs:comment "Description of the scene" .
+:hasDescription rdf:type owl:DatatypeProperty ;
+                rdfs:domain :Situation ;
+                rdfs:range xsd:string ;
+                rdfs:comment "Description of the scene" .
 
 
 ###  https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#hasEpisodeNumber
-<https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#hasEpisodeNumber> rdf:type owl:DatatypeProperty ;
-                                                                               rdfs:domain <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#Situation> ;
-                                                                               rdfs:range xsd:integer ;
-                                                                               rdfs:comment "Episode number with the season: for ex. S01E09" .
+:hasEpisodeNumber rdf:type owl:DatatypeProperty ;
+                  rdfs:domain :Situation ;
+                  rdfs:range xsd:integer ;
+                  rdfs:comment "Episode number with the season: for ex. S01E09" .
 
 
 ###  https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#hasTimestamp
-<https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#hasTimestamp> rdf:type owl:DatatypeProperty ;
-                                                                           rdfs:domain <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#Situation> ;
-                                                                           rdfs:range xsd:string ;
-                                                                           rdfs:comment "Where to find the specific moment" .
+:hasTimestamp rdf:type owl:DatatypeProperty ;
+              rdfs:domain :Situation ;
+              rdfs:range xsd:string ;
+              rdfs:comment "Where to find the specific moment" .
 
 
 ###  https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#hasTitle
-<https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#hasTitle> rdf:type owl:DatatypeProperty ;
-                                                                       rdfs:domain <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#Situation> ;
-                                                                       rdfs:range xsd:string ;
-                                                                       rdfs:comment "Title of the episode" .
+:hasTitle rdf:type owl:DatatypeProperty ;
+          rdfs:domain :Situation ;
+          rdfs:range xsd:string ;
+          rdfs:comment "Title of the episode" .
 
 
 #################################################################
@@ -156,127 +156,126 @@
 #################################################################
 
 ###  http://www.loa-cnr.it/ontologies/DUL.owl#Description
-<http://www.loa-cnr.it/ontologies/DUL.owl#Description> owl:equivalentClass <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#Description> .
+dul:Description owl:equivalentClass :Description .
 
 
 ###  http://www.loa-cnr.it/ontologies/DUL.owl#Situation
-<http://www.loa-cnr.it/ontologies/DUL.owl#Situation> owl:equivalentClass <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#Situation> .
+dul:Situation owl:equivalentClass :Situation .
 
 
 ###  https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#AestheticQuality
-<https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#AestheticQuality> rdf:type owl:Class ;
-                                                                               rdfs:subClassOf <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#HumorQuality> ;
-                                                                               rdfs:comment "how they are dressed, how they appear" .
+:AestheticQuality rdf:type owl:Class ;
+                  rdfs:subClassOf :HumorQuality ;
+                  rdfs:comment "how they are dressed, how they appear" .
 
 
 ###  https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#Agent
-<https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#Agent> rdf:type owl:Class ;
-                                                                    rdfs:subClassOf <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#HumorEntity> ;
-                                                                    rdfs:comment "Who does the action" .
+:Agent rdf:type owl:Class ;
+       rdfs:subClassOf :HumorEntity ;
+       rdfs:comment "Who does the action" .
 
 
 ###  https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#BehavioralQuality
-<https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#BehavioralQuality> rdf:type owl:Class ;
-                                                                                rdfs:subClassOf <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#HumorQuality> ;
-                                                                                rdfs:comment "expressions, strange behaviours" .
+:BehavioralQuality rdf:type owl:Class ;
+                   rdfs:subClassOf :HumorQuality ;
+                   rdfs:comment "expressions, strange behaviours" .
 
 
 ###  https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#Description
-<https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#Description> rdf:type owl:Class ;
-                                                                          owl:disjointWith <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#Situation> ;
-                                                                          rdfs:comment "The description part of all the frames converging to create the humorous situation" .
+:Description rdf:type owl:Class ;
+             owl:disjointWith :Situation ;
+             rdfs:comment "The description part of all the frames converging to create the humorous situation" .
 
 
 ###  https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#EthicalRule
-<https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#EthicalRule> rdf:type owl:Class ;
-                                                                          rdfs:subClassOf <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#Description> ;
-                                                                          rdfs:comment "the BEHAVIOURAL rules of the corresponding frame (Social decorum, professionalism, respect)" .
+:EthicalRule rdf:type owl:Class ;
+             rdfs:subClassOf :Description ;
+             rdfs:comment "the BEHAVIOURAL rules of the corresponding frame (Social decorum, professionalism, respect)" .
 
 
 ###  https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#ExpectedSocialFrame
-<https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#ExpectedSocialFrame> rdf:type owl:Class ;
-                                                                                  rdfs:subClassOf <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#Description> ;
-                                                                                  rdfs:comment "the normal social frame (a funeral, a job interview)" .
+:ExpectedSocialFrame rdf:type owl:Class ;
+                     rdfs:subClassOf :Description ;
+                     rdfs:comment "the normal social frame (a funeral, a job interview)" .
 
 
 ###  https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#HumorEntity
-<https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#HumorEntity> rdf:type owl:Class ;
-                                                                          rdfs:subClassOf <http://www.loa-cnr.it/ontologies/DUL.owl#SocialAgent> .
+:HumorEntity rdf:type owl:Class ;
+             rdfs:subClassOf dul:SocialAgent .
 
 
 ###  https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#HumorQuality
-<https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#HumorQuality> rdf:type owl:Class ;
-                                                                           rdfs:subClassOf <http://www.loa-cnr.it/ontologies/DUL.owl#Quality> ;
-                                                                           rdfs:comment "This make the blend possibile: through this precise actions the character make the breaking of the social norm funny" .
+:HumorQuality rdf:type owl:Class ;
+              rdfs:subClassOf dul:Quality ;
+              rdfs:comment "This make the blend possibile: through this precise actions the character make the breaking of the social norm funny" .
 
 
 ###  https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#HumorousFrame
-<https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#HumorousFrame> rdf:type owl:Class ;
-                                                                            rdfs:subClassOf <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#Description> ;
-                                                                            rdfs:comment "This is the BLENDING class, keeping all the descriptions together" .
+:HumorousFrame rdf:type owl:Class ;
+               rdfs:subClassOf :Description ;
+               rdfs:comment "This is the BLENDING class, keeping all the descriptions together" .
 
 
 ###  https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#HumorousSituation
-<https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#HumorousSituation> rdf:type owl:Class ;
-                                                                                rdfs:subClassOf <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#Situation> ;
-                                                                                rdfs:comment "The situation BLENDING all the other situations (Social, Norm e Subversive)" .
+:HumorousSituation rdf:type owl:Class ;
+                   rdfs:subClassOf :Situation ;
+                   rdfs:comment "The situation BLENDING all the other situations (Social, Norm e Subversive)" .
 
 
 ###  https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#IncongruityTheory
-<https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#IncongruityTheory> rdf:type owl:Class ;
-                                                                                rdfs:subClassOf <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#TheoreticalMechanism> .
+:IncongruityTheory rdf:type owl:Class ;
+                   rdfs:subClassOf :TheoreticalMechanism .
 
 
 ###  https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#NormOccurence
-<https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#NormOccurence> rdf:type owl:Class ;
-                                                                            rdfs:subClassOf <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#Situation> ;
-                                                                            rdfs:comment "How the characters apply this norm realated to the frame" .
+:NormOccurence rdf:type owl:Class ;
+               rdfs:subClassOf :Situation ;
+               rdfs:comment "How the characters apply this norm realated to the frame" .
 
 
 ###  https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#PhysicalQuality
-<https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#PhysicalQuality> rdf:type owl:Class ;
-                                                                              rdfs:subClassOf <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#HumorQuality> ;
-                                                                              rdfs:comment "In what pysical condition the characters are (naked, sweating, dirty)" .
+:PhysicalQuality rdf:type owl:Class ;
+                 rdfs:subClassOf :HumorQuality ;
+                 rdfs:comment "In what pysical condition the characters are (naked, sweating, dirty)" .
 
 
 ###  https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#ReliefTheory
-<https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#ReliefTheory> rdf:type owl:Class ;
-                                                                           rdfs:subClassOf <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#TheoreticalMechanism> .
+:ReliefTheory rdf:type owl:Class ;
+              rdfs:subClassOf :TheoreticalMechanism .
 
 
 ###  https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#Situation
-<https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#Situation> rdf:type owl:Class ;
-                                                                        rdfs:comment "The real description of what happens in the episodes" .
+:Situation rdf:type owl:Class ;
+           rdfs:comment "The real description of what happens in the episodes" .
 
 
 ###  https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#SubversiveFrame
-<https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#SubversiveFrame> rdf:type owl:Class ;
-                                                                              rdfs:subClassOf <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#Description> ;
-                                                                              rdfs:comment "Important to note that this is the only element in the description without a corrisponding class in the SItuation, becaue this is just a throretical description of the - already distorted - context the characters live in. In this sense, the whole situation is just an explanation of what we are describing here" .
+:SubversiveFrame rdf:type owl:Class ;
+                 rdfs:subClassOf :Description ;
+                 rdfs:comment "Important to note that this is the only element in the description without a corrisponding class in the SItuation, becaue this is just a throretical description of the - already distorted - context the characters live in. In this sense, the whole situation is just an explanation of what we are describing here" .
 
 
 ###  https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#SubversiveOccurence
-<https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#SubversiveOccurence> rdf:type owl:Class ;
-                                                                                  rdfs:subClassOf <http://www.loa-cnr.it/ontologies/DUL.owl#Action> ,
-                                                                                                  <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#Situation> ;
-                                                                                  rdfs:comment "The real act of subversion (what are the characters doing)" .
+:SubversiveOccurence rdf:type owl:Class ;
+                     rdfs:subClassOf dul:Action ,
+                                     :Situation ;
+                     rdfs:comment "The real act of subversion (what are the characters doing)" .
 
 
 ###  https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#SuperiorityTheory
-<https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#SuperiorityTheory> rdf:type owl:Class ;
-                                                                                rdfs:subClassOf <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#TheoreticalMechanism> .
+:SuperiorityTheory rdf:type owl:Class ;
+                   rdfs:subClassOf :TheoreticalMechanism .
 
 
 ###  https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#Target
-<https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#Target> rdf:type owl:Class ;
-                                                                     rdfs:subClassOf <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#HumorEntity> ;
-                                                                     rdfs:comment "The victim of the joke" .
+:Target rdf:type owl:Class ;
+        rdfs:subClassOf :HumorEntity ;
+        rdfs:comment "The victim of the joke" .
 
 
 ###  https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#TheoreticalMechanism
-<https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#TheoreticalMechanism> rdf:type owl:Class ;
-                                                                                   rdfs:subClassOf <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#Description> ;
-                                                                                   rdfs:comment "This is related to the literature around the construction oh humor)" .
+:TheoreticalMechanism rdf:type owl:Class ;
+                      rdfs:comment "This is related to the literature around the construction oh humor" .
 
 
 ###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
