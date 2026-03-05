@@ -10,12 +10,12 @@ The model is designed to be flexible, allowing future mapping of the entire seri
 
 **Repository Structure**
 
-itsAlwaysSunnyOntology.ttl — ontology schema
-SunnyOntology_populated.ttl — populated graph (10 scenes)
-ontologia_IASIP.csv — dataset
-from_csv_to_rdf.py — Python script used to populate the graph
-imgs/ — ontology graph and WebVOWL visualization
-index.html — project documentation website
+* itsAlwaysSunnyOntology.ttl — ontology schema
+* SunnyOntology_populated.ttl — populated graph (10 scenes)
+* ontologia_IASIP.csv — dataset
+* from_csv_to_rdf.py — Python script used to populate the graph
+* imgs/ — ontology graph and WebVOWL visualization
+* index.html — project documentation website
 
 ---
 
