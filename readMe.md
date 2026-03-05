@@ -21,7 +21,7 @@ The model is designed to be flexible, allowing future mapping of the entire seri
 
 **Documentation**
 
-The full project documentation is available at: chiarapicardii.github.io/itsAlwaysSunnyOntology
+The full project documentation is available at: (chiarapicardii.github.io/itsAlwaysSunnyOntology)[itsAlwaysSunnyOntology]
 
 ---
 
