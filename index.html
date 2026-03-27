@@ -624,94 +624,171 @@
     <section class="page-section" id="ke">
         <p class="section-eyebrow">04 — Knowledge Extraction</p>
         <h2 class="section-heading">The Gang Queries the Graph</h2>
-        <p class="prose">The ontology was populated with 10 scenes from the series. The full graph is available at <a href="https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/SunnyOntology_populated.ttl" target="_blank" style="color: var(--green);">SunnyOntology_populated.ttl</a>. Both the <a href="https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/ontologia_IASIP.csv" target="_blank" style="color: var(--green);">csv file</a> and the <a href="https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/from_csv_to_rdf.py" target="_blank" style="color: var(--green);">Python script</a> used to populate the graph are available on the GitHub repository.</p>
-
-        <div class="nacc-item" style="margin-top: 16px;">
-            <input type="checkbox" id="vowl" class="nacc-toggle">
-            <label for="vowl" class="nacc-label" style="padding: 12px 24px;">WebVOWL Visualization<span class="nacc-icon">+</span></label>
-            <div class="nacc-body"><div class="nacc-inner">
-                <img src="imgs/itsAlwaysPopulatedGraph.svg" alt="WebVOWL visualization" style="max-width: 100%; background: #fff; padding: 24px;">
-                <p style="font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem; color: var(--muted); margin-top: 12px;">Figure 2 — Populated ontology visualized via WebVOWL. For a better visualization <a href="https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/imgs/itsAlwaysPopulatedGraph.svg" target="_blank" style="color: var(--green);"></a> click here </a></p>
-            </div></div>
-        </div>       
-        
-        <p class="prose">Competency questions answered against the populated graph. All queries use <code>PREFIX sunny: &lt;...itsAlwaysSunnyOntology.ttl#&gt;</code>.</p>
+        <p class="prose">The ontology was populated with 10 scenes from the series. The full graph is available at <a href="https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/SunnyOntology_populated.ttl" target="_blank" style="color: var(--green);">SunnyOntology_populated.ttl</a>. Below are the <strong>complete</strong> results and logic for each Competency Question.</p>
 
         <div class="nested-acc">
+            
             <div class="nacc-item">
                 <input type="checkbox" id="ke1" class="nacc-toggle">
-                <label for="ke1" class="nacc-label">CQ1 — SuperiorityTheory scenes &amp; agents<span class="nacc-icon">+</span></label>
+                <label for="ke1" class="nacc-label">CQ1 — Vulnerability & Incongruity Theory<span class="nacc-icon">+</span></label>
                 <div class="nacc-body"><div class="nacc-inner">
                     <div class="sparql-block">
-                        <div class="sparql-question"><span class="cq-label">CQ1</span>Which scenes involve a SuperiorityTheory mechanism, and who are the agents?</div>
-                        <div class="code-box"><div class="code-header">SPARQL</div><pre><span class="kw">SELECT</span> <span class="var">?scene</span> <span class="var">?agent</span> <span class="kw">WHERE</span> {
-  <span class="var">?mech</span>  <span class="pfx">a</span>                   <span class="cls">sunny:SuperiorityTheory</span> .
-  <span class="var">?scene</span> <span class="prop">sunny:isExplainedBy</span> <span class="var">?mech</span> ;
-         <span class="prop">sunny:hasAgent</span>      <span class="var">?agent</span> .
-}</pre></div>
+                        <div class="sparql-question"><span class="cq-label">CQ1</span>Which Agents enact subversive actions, and which ethical rules do they violate, when the mechanism is "Incongruity Theory" and the Target possesses a specific quality?</div>
+                        <div class="code-box"><div class="code-header">SPARQL</div><pre><span class="kw">SELECT DISTINCT</span> <span class="var">?scene ?agent ?targetQuality ?ethicalRuleName ?subversiveAction</span>
+    <span class="kw">WHERE</span> {
+    <span class="var">?scene</span> <span class="pfx">a</span> <span class="cls">sunny:HumorousSituation</span> .
+    <span class="var">?scene</span> <span class="prop">sunny:isExplainedBy</span> <span class="var">?mechanism</span> .
+    <span class="var">?scene</span> <span class="prop">sunny:hasTarget</span> <span class="var">?target</span> .
+    <span class="var">?scene</span> <span class="prop">sunny:hasAgent</span> <span class="var">?agent</span> .
+    <span class="var">?scene</span> <span class="prop">sunny:isDescribedBy</span> <span class="var">?frame</span> .
+    <span class="var">?scene</span> <span class="prop">sunny:includesSituation</span> <span class="var">?subversiveOcc</span> .
+    <span class="var">?mechanism</span> <span class="pfx">a</span> <span class="cls">sunny:IncongruityTheory</span> .
+    <span class="var">?target</span> <span class="pfx">a</span> <span class="cls">sunny:Target</span> ;
+            <span class="prop">sunny:hasQuality</span> <span class="var">?targetQuality</span> .
+    <span class="var">?frame</span> <span class="prop">sunny:includesDescription</span> <span class="var">?ethicalRule</span> .
+    <span class="var">?ethicalRule</span> <span class="pfx">a</span> <span class="cls">sunny:EthicalRule</span> ;
+                <span class="pfx">rdfs:label</span> <span class="var">?ethicalRuleName</span> .
+    <span class="var">?subversiveOcc</span> <span class="pfx">a</span> <span class="cls">sunny:SubversiveOccurence</span> ;
+                    <span class="pfx">rdfs:comment</span> <span class="var">?subversiveAction</span> .
+    }</pre></div>
                     </div>
+                    <table class="alignment-table">
+                        <thead><tr><th>Scene</th><th>Agent</th><th>targetQuality</th><th>ethicalRuleName</th><th>subversiveAction</th></tr></thead>
+                        <tbody>
+                            <tr><td>HS_002</td><td>Gang</td><td>BehavioralQuality</td><td>Respect for Clinical Purpose and Boundaries</td><td>Dee hijacks the session by bringing in the gang, while Frank dumps a tablecloth of dirty dishes on the therapist's floor</td></tr>
+                            <tr><td>HS_002</td><td>Dee</td><td>BehavioralQuality</td><td>Respect for Clinical Purpose and Boundaries</td><td>Dee hijacks the session by bringing in the gang, while Frank dumps a tablecloth of dirty dishes</td></tr>
+                            <tr><td>HS_006</td><td>Charlie</td><td>BehavioralQuality</td><td>Basic Self-Preservation and Health</td><td>Charlie plans to serve paint to customers, reveals his green tongue, and dismisses toxicity</td></tr>
+                            <tr><td>HS_005</td><td>Charlie</td><td>PhysicalQuality</td><td>Protection of Minors from Adult Violence</td><td>Too terrified to fight the adult thief, they brutally beat up his young children instead</td></tr>
+                            <tr><td>HS_005</td><td>Mac</td><td>PhysicalQuality</td><td>Protection of Minors from Adult Violence</td><td>Too terrified to fight the adult thief, they brutally beat up his young children instead</td></tr>
+                            <tr><td>HS_003</td><td>Dennis</td><td>BehavioralQuality</td><td>Good Neighbor Etiquette and Basic Politeness</td><td>Mac and Dennis stare aggressively in dead silence at the greeting neighbor</td></tr>
+                            <tr><td>HS_003</td><td>Mac</td><td>BehavioralQuality</td><td>Good Neighbor Etiquette and Basic Politeness</td><td>Mac and Dennis stare aggressively in dead silence at the greeting neighbor</td></tr>
+                            <tr><td>HS_009</td><td>Dennis</td><td>BehavioralQuality</td><td>Personal Independence and Maturity</td><td>Dennis demands Dee peel his apple, cites absurd fears of toxins, and throws a tantrum</td></tr>
+                            <tr><td>HS_004</td><td>Charlie</td><td>BehavioralQuality</td><td>Relatability and Social Appeal in Dating</td><td>Charlie answers questions with "milk steak", "magnets", and "ghouls", ruining the profile</td></tr>
+                        </tbody>
+                    </table>
                 </div></div>
             </div>
 
             <div class="nacc-item">
                 <input type="checkbox" id="ke2" class="nacc-toggle">
-                <label for="ke2" class="nacc-label">CQ2 — Norm vs Subversive act per scene<span class="nacc-icon">+</span></label>
+                <label for="ke2" class="nacc-label">CQ2 — Psychological Profiling & Superiority<span class="nacc-icon">+</span></label>
                 <div class="nacc-body"><div class="nacc-inner">
                     <div class="sparql-block">
-                        <div class="sparql-question"><span class="cq-label">CQ2</span>For each scene, what is the subversive act that violates the expected norm?</div>
-                        <div class="code-box"><div class="code-header">SPARQL</div><pre><span class="kw">SELECT</span> <span class="var">?scene</span> <span class="var">?normDesc</span> <span class="var">?subversiveDesc</span> <span class="kw">WHERE</span> {
-  <span class="var">?scene</span> <span class="pfx">a</span>                       <span class="cls">sunny:HumorousSituation</span> .
-  <span class="var">?scene</span> <span class="prop">sunny:includesSituation</span> <span class="var">?norm</span> .
-  <span class="var">?scene</span> <span class="prop">sunny:includesSituation</span> <span class="var">?sub</span> .
-  <span class="var">?norm</span>  <span class="pfx">a</span>                       <span class="cls">sunny:NormOccurence</span> .
-  <span class="var">?sub</span>   <span class="pfx">a</span>                       <span class="cls">sunny:SubversiveOccurence</span> .
-  <span class="var">?sub</span>   <span class="prop">sunny:violates</span>          <span class="var">?norm</span> .
-  <span class="var">?norm</span>  <span class="pfx">rdfs:comment</span>            <span class="var">?normDesc</span> .
-  <span class="var">?sub</span>   <span class="pfx">rdfs:comment</span>            <span class="var">?subversiveDesc</span> .
-}</pre></div>
+                        <div class="sparql-question"><span class="cq-label">CQ2</span>Which subversive frames are enacted by agents characterised by a "Behavioral" defect when the comedic outcome leverages the Superiority Theory?</div>
+                        <div class="code-box"><div class="code-header">SPARQL</div><pre><span class="kw">SELECT DISTINCT</span> <span class="var">?scene ?agent ?agentQuality ?subversiveFrameName</span>
+    <span class="kw">WHERE</span> {
+    <span class="var">?scene</span> <span class="pfx">a</span> <span class="cls">sunny:HumorousSituation</span> .
+    <span class="var">?scene</span> <span class="prop">sunny:hasAgent</span> <span class="var">?agent</span> .
+    <span class="var">?scene</span> <span class="prop">sunny:isDescribedBy</span> <span class="var">?frame</span> .
+    <span class="var">?scene</span> <span class="prop">sunny:isExplainedBy</span> <span class="var">?mechanism</span> .
+    <span class="var">?mechanism</span> <span class="pfx">a</span> <span class="cls">sunny:SuperiorityTheory</span> .
+    <span class="var">?agent</span> <span class="pfx">a</span> <span class="cls">sunny:Agent</span> ;
+            <span class="prop">sunny:hasQuality</span> <span class="var">?agentQuality</span> .
+    <span class="var">?frame</span> <span class="prop">sunny:includesDescription</span> <span class="var">?subversiveFrame</span> .
+    <span class="var">?subversiveFrame</span> <span class="pfx">a</span> <span class="cls">sunny:SubversiveFrame</span> ;
+                    <span class="pfx">rdfs:label</span> <span class="var">?subversiveFrameName</span> .
+    }</pre></div>
                     </div>
+                    <table class="alignment-table">
+                        <thead><tr><th>scene</th><th>agent</th><th>agentQuality</th><th>subversiveFrameName</th></tr></thead>
+                        <tbody>
+                            <tr><td>HS_001</td><td>Mac</td><td>BehavioralQuality</td><td>"Childish Rebellion by Adults"</td></tr>
+                            <tr><td>HS_001</td><td>Dee</td><td>BehavioralQuality</td><td>"Childish Rebellion by Adults"</td></tr>
+                            <tr><td>HS_010</td><td>Mac</td><td>BehavioralQuality</td><td>"Callous Apathy and Cruel Mockery"</td></tr>
+                            <tr><td>HS_010</td><td>Charlie</td><td>BehavioralQuality</td><td>"Callous Apathy and Cruel Mockery"</td></tr>
+                        </tbody>
+                    </table>
                 </div></div>
             </div>
 
             <div class="nacc-item">
                 <input type="checkbox" id="ke3" class="nacc-toggle">
-                <label for="ke3" class="nacc-label">CQ3 — Agent vs Target appearances per character<span class="nacc-icon">+</span></label>
+                <label for="ke3" class="nacc-label">CQ3 — The Anatomy of Chaos<span class="nacc-icon">+</span></label>
                 <div class="nacc-body"><div class="nacc-inner">
                     <div class="sparql-block">
-                        <div class="sparql-question"><span class="cq-label">CQ3</span>In how many scenes does each character appear as agent vs target?</div>
-                        <div class="code-box"><div class="code-header">SPARQL</div><pre><span class="kw">SELECT</span> <span class="var">?character</span>
-       (<span class="kw">COUNT</span>(<span class="kw">DISTINCT</span> <span class="var">?asAgent</span>)  <span class="kw">AS</span> <span class="var">?timesAsAgent</span>)
-       (<span class="kw">COUNT</span>(<span class="kw">DISTINCT</span> <span class="var">?asTarget</span>) <span class="kw">AS</span> <span class="var">?timesAsTarget</span>)
-<span class="kw">WHERE</span> {
-  { <span class="var">?asAgent</span>  <span class="prop">sunny:hasAgent</span>  <span class="var">?character</span> }
-  <span class="kw">UNION</span>
-  { <span class="var">?asTarget</span> <span class="prop">sunny:hasTarget</span> <span class="var">?character</span> }
-}
-<span class="kw">GROUP BY</span> <span class="var">?character</span>
-<span class="kw">ORDER BY</span> <span class="kw">DESC</span>(<span class="var">?timesAsAgent</span>)</pre></div>
+                        <div class="sparql-question"><span class="cq-label">CQ3</span>When an Agent with behavioral flaws attacks a physically vulnerable Target, what is the social expectation and how is it brutally violated?</div>
+                        <div class="code-box"><div class="code-header">SPARQL</div><pre><span class="kw">SELECT DISTINCT</span> <span class="var">?scene ?agent ?target ?normExpected ?subversiveAction</span>
+    <span class="kw">WHERE</span> {
+    <span class="var">?scene</span> <span class="pfx">a</span> <span class="cls">sunny:HumorousSituation</span> .
+    <span class="var">?scene</span> <span class="prop">sunny:hasAgent</span> <span class="var">?agent</span> ;
+            <span class="prop">sunny:hasTarget</span> <span class="var">?target</span> .
+    <span class="var">?scene</span> <span class="prop">sunny:includesSituation</span> <span class="var">?normOcc</span> ;
+            <span class="prop">sunny:includesSituation</span> <span class="var">?subvOcc</span> .
+    <span class="var">?agent</span> <span class="prop">sunny:hasQuality</span> <span class="cls">sunny:BehavioralQuality</span> .
+    <span class="var">?target</span> <span class="prop">sunny:hasQuality</span> <span class="cls">sunny:PhysicalQuality</span> .
+    <span class="var">?normOcc</span> <span class="pfx">a</span> <span class="cls">sunny:NormOccurence</span> ;
+            <span class="pfx">rdfs:comment</span> <span class="var">?normExpected</span> .
+    <span class="var">?subvOcc</span> <span class="pfx">a</span> <span class="cls">sunny:SubversiveOccurence</span> ;
+            <span class="pfx">rdfs:comment</span> <span class="var">?subversiveAction</span> .
+    }</pre></div>
                     </div>
+                    <table class="alignment-table">
+                        <thead><tr><th>scene</th><th>agent</th><th>target</th><th>normExpected</th><th>subversiveAction</th></tr></thead>
+                        <tbody>
+                            <tr><td>HS_005</td><td>Charlie</td><td>The_Kids</td><td>Confront the intimidating father or call the police</td><td>Brutally beat up his young children instead to steal the bike back</td></tr>
+                            <tr><td>HS_005</td><td>Mac</td><td>The_Kids</td><td>Confront the intimidating father or call the police</td><td>Brutally beat up his young children instead to steal the bike back</td></tr>
+                            <tr><td>HS_010</td><td>Mac</td><td>Dee</td><td>Express deep shock and concern, offer immediate help</td><td>Laugh at their friends' degraded state and pantomime them crying for crack</td></tr>
+                            <tr><td>HS_010</td><td>Mac</td><td>Dennis</td><td>Express deep shock and concern, offer immediate help</td><td>Laugh at their friends' degraded state and pantomime them crying for crack</td></tr>
+                            <tr><td>HS_010</td><td>Charlie</td><td>Dee</td><td>Express deep shock and concern, offer immediate help</td><td>Laugh at their friends' degraded state and pantomime them crying for crack</td></tr>
+                            <tr><td>HS_010</td><td>Charlie</td><td>Dennis</td><td>Express deep shock and concern, offer immediate help</td><td>Laugh at their friends' degraded state and pantomime them crying for crack</td></tr>
+                        </tbody>
+                    </table>
                 </div></div>
             </div>
 
             <div class="nacc-item">
                 <input type="checkbox" id="ke4" class="nacc-toggle">
-                <label for="ke4" class="nacc-label">CQ4 — Most frequent theoretical mechanism<span class="nacc-icon">+</span></label>
+                <label for="ke4" class="nacc-label">CQ4 — The Universal "Karma" Effect<span class="nacc-icon">+</span></label>
                 <div class="nacc-body"><div class="nacc-inner">
                     <div class="sparql-block">
-                        <div class="sparql-question"><span class="cq-label">CQ4</span>Which theoretical mechanism is most frequent across all scenes?</div>
-                        <div class="code-box"><div class="code-header">SPARQL</div><pre><span class="kw">SELECT</span> <span class="var">?mechType</span> (<span class="kw">COUNT</span>(<span class="var">?mech</span>) <span class="kw">AS</span> <span class="var">?count</span>) <span class="kw">WHERE</span> {
-  <span class="var">?mech</span>     <span class="pfx">a</span>               <span class="var">?mechType</span> .
-  <span class="var">?mechType</span> <span class="pfx">rdfs:subClassOf</span>  <span class="cls">sunny:TheoreticalMechanism</span> .
-}
-<span class="kw">GROUP BY</span> <span class="var">?mechType</span>
-<span class="kw">ORDER BY</span> <span class="kw">DESC</span>(<span class="var">?count</span>)</pre></div>
+                        <div class="sparql-question"><span class="cq-label">CQ4</span>Across the different episodes, which characters experience a "karmic role reversal" by acting as the instigator (Agent) in one episode, only to become the victim (Target) in another?</div>
+                        <div class="code-box"><div class="code-header">SPARQL</div><pre><span class="kw">SELECT DISTINCT</span> <span class="var">?character ?agentEpisode ?targetEpisode</span>
+    <span class="kw">WHERE</span> {
+    <span class="var">?scene1</span> <span class="pfx">a</span> <span class="cls">sunny:HumorousSituation</span> ;
+            <span class="prop">sunny:hasTitle</span> <span class="var">?agentEpisodeTitle</span> ;
+            <span class="prop">sunny:hasAgent</span> <span class="var">?agentNode</span> .
+    <span class="var">?agentNode</span> <span class="pfx">rdfs:label</span> <span class="var">?characterName</span> .
+    <span class="var">?scene2</span> <span class="pfx">a</span> <span class="cls">sunny:HumorousSituation</span> ;
+            <span class="prop">sunny:hasTitle</span> <span class="var">?targetEpisodeTitle</span> ;
+            <span class="prop">sunny:hasTarget</span> <span class="var">?targetNode</span> .
+    <span class="var">?targetNode</span> <span class="pfx">rdfs:label</span> <span class="var">?characterName</span> .
+    <span class="kw">FILTER</span>(<span class="var">?scene1</span> != <span class="var">?scene2</span>)
+    <span class="kw">BIND</span>(<span class="kw">STR</span>(<span class="var">?characterName</span>) <span class="kw">AS</span> <span class="var">?character</span>)
+    <span class="kw">BIND</span>(<span class="kw">STR</span>(<span class="var">?agentEpisodeTitle</span>) <span class="kw">AS</span> <span class="var">?agentEpisode</span>)
+    <span class="kw">BIND</span>(<span class="kw">STR</span>(<span class="var">?targetEpisodeTitle</span>) <span class="kw">AS</span> <span class="var">?targetEpisode</span>)
+    }</pre></div>
                     </div>
+                    <table class="alignment-table">
+                        <thead><tr><th>Character</th><th>agentEpisode</th><th>targetEpisode</th></tr></thead>
+                        <tbody>
+                            <tr><td>Charlie</td><td>The Gang Gets New Wheels</td><td>Charlie's Mom Has Cancer</td></tr>
+                            <tr><td>Mac</td><td>The Gang Gets New Wheels</td><td>Charlie Catches a Leprechaun</td></tr>
+                            <tr><td>Mac</td><td>The Gang Gets New Wheels</td><td>The Waitress Is Getting Married</td></tr>
+                            <tr><td>Charlie</td><td>Charlie Catches a Leprechaun</td><td>Charlie's Mom Has Cancer</td></tr>
+                            <tr><td>Charlie</td><td>The Waitress Is Getting Married</td><td>Charlie's Mom Has Cancer</td></tr>
+                            <tr><td>Mac</td><td>Dennis and Dee Go on Welfare</td><td>Charlie Catches a Leprechaun</td></tr>
+                            <tr><td>Mac</td><td>Dennis and Dee Go on Welfare</td><td>The Waitress Is Getting Married</td></tr>
+                            <tr><td>Charlie</td><td>Dennis and Dee Go on Welfare</td><td>Charlie's Mom Has Cancer</td></tr>
+                            <tr><td>Dennis</td><td>Mac and Dennis Break Up</td><td>The Waitress Is Getting Married</td></tr>
+                            <tr><td>Dennis</td><td>Mac and Dennis Break Up</td><td>Dennis and Dee Go on Welfare</td></tr>
+                            <tr><td>Mac</td><td>The Gang Goes to a Water Park</td><td>Charlie Catches a Leprechaun</td></tr>
+                            <tr><td>Mac</td><td>The Gang Goes to a Water Park</td><td>The Waitress Is Getting Married</td></tr>
+                            <tr><td>Dee</td><td>The Gang Goes to a Water Park</td><td>Dennis and Dee Go on Welfare</td></tr>
+                            <tr><td>Dee</td><td>The Gang Goes to a Water Park</td><td>Mac and Dennis Break Up</td></tr>
+                            <tr><td>Dee</td><td>The Gang Gets Analyzed</td><td>Dennis and Dee Go on Welfare</td></tr>
+                            <tr><td>Dee</td><td>The Gang Gets Analyzed</td><td>Mac and Dennis Break Up</td></tr>
+                            <tr><td>Dennis</td><td>Mac & Dennis Move to the Suburbs</td><td>The Waitress Is Getting Married</td></tr>
+                            <tr><td>Dennis</td><td>Mac & Dennis Move to the Suburbs</td><td>Dennis and Dee Go on Welfare</td></tr>
+                            <tr><td>Mac</td><td>Mac & Dennis Move to the Suburbs</td><td>Charlie Catches a Leprechaun</td></tr>
+                            <tr><td>Mac</td><td>Mac & Dennis Move to the Suburbs</td><td>The Waitress Is Getting Married</td></tr>
+                        </tbody>
+                    </table>
                 </div></div>
             </div>
         </div>
-    </section>
+    </section>    
 
-    <!-- 5. CONCLUSION -->
+<!-- 5. CONCLUSION -->
     <section class="page-section" id="conclusion">
         <p class="section-eyebrow">05 — Conclusion</p>
         <h2 class="section-heading">The Gang Wraps It Up</h2>
