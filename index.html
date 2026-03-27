@@ -643,10 +643,29 @@
     <p class="section-eyebrow">04 — Knowledge Extraction</p>
     <h2 class="section-heading">The Gang Queries the Graph</h2>
     <p class="prose">
-        The ontology was populated with 10 scenes from the series. The full graph is available at 
-        <a href="https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/SunnyOntology_populated.ttl" target="_blank" style="color: var(--green);">SunnyOntology_populated.ttl</a>.</p>
+        The ontology was populated with 10 scenes from the series. The full Turtle file is available at <a href="https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/SunnyOntology_populated.ttl" target="_blank" style="color: var(--green);">SunnyOntology_populated.ttl</a>.</p>
+</p>
+    
+        <div class="nacc-item">
+            <input type="checkbox" id="visual-graph" class="nacc-toggle">
+            <label for="visual-graph" class="nacc-label">4.2 — Visualized Populated Graph<span class="nacc-icon">+</span></label>
+            <div class="nacc-body">
+                <div class="nacc-inner">
+                    <div style="text-align: center;">
+                        <img src="imgs/itsAlwaysPopulatedGraph.svg" alt="Populated Ontology Graph" style="max-width: 100%; border: 1px solid var(--border); padding: 12px; background: #fff;">
+                        <p class="prose" style="margin-top: 20px; font-size: 0.8rem; text-align: left;">
+                            Visual representation of the populated graph realized with <strong>WebVOWL</strong>: 
+                            <a href="https://service.tib.eu/webvowl/#" target="_blank" style="color: var(--yellow);">https://service.tib.eu/webvowl/#</a>
+                        </p>
+                        <p class="prose" style="margin-top: 20px; font-size: 0.8rem; text-align: left;"> Full graph available con <a href="https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/imgs/itsAlwaysPopulatedGraph.svg" target="_blank" style="color: var(--yellow)">itsAlwaysPopulatedGraph.svg</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
         
-    <p class="prose"> To automate this process and ensure ontological consistency, we developed a Python script. 
+    
+    <p class="prose">
+        To automate this process and ensure ontological consistency, we developed a Python script. 
         While the structure of the ontology was consciously left more flexible and open (just connecting the superclasses Description and Situation), 
         in this population part the logic was made stricter, <strong>expliciting</strong> the relationship between the specific instances of the Descriptions and their correspondent in the Situation part. 
         This also helps understanding the <strong>misalignment</strong> previously cited, seeing how the two classes, in the real occurrence, contrast one another.
@@ -659,9 +678,9 @@
 <span class="code-comment"># Linking the SubversiveOccurence (S) to the SubversiveFrame (D)</span>
 <span class="code-keyword">if</span> <span class="code-var">subversive_frame_uri</span>:
     <span class="code-var">g</span>.<span class="code-func">add</span>((<span class="code-var">subversive_uri</span>, <span class="code-const">SUNNY</span>.isDescribedBy, <span class="code-var">subversive_frame_uri</span>))</code></pre>
-        <p class="prose">
-            Below are the <strong>complete</strong> results and logic for each Competency Question.
-        </p>
+       
+    
+    <p class="prose"> Below are the <strong>complete</strong> results and logic for each Competency Question. </p>
 
         <div class="nested-acc">
             
