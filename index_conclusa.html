@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>itsAlwaysSunnyOntology</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:ital,wght@0,400;0,600;1,400&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --yellow: #F2D027;
+            --black: #0a0a0a;
+            --dark: #111;
+            --mid: #1c1c1c;
+            --border: #2a2a2a;
+            --green: #7EC8A4;
+            --red: #E05252;
+            --blue: #6BAED6;
+            --text: #f9f9f9;
+            --muted: #999;
+            --sidebar-w: 280px;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { background: var(--black); color: var(--text); font-family: 'Syne', sans-serif; display: flex; min-height: 100vh; }
+
+        /* ── SIDEBAR TOGGLE ── */
+        .sidebar-toggle {
+            position: fixed;
+            top: 20px; left: 20px;
+            z-index: 200;
+            background: var(--dark);
+            color: var(--yellow);
+            border: 1px solid var(--border);
+            padding: 8px 14px;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .sidebar-toggle:hover { background: var(--mid); }
+
+        /* ── SIDEBAR ── */
+        .sidebar {
+            width: var(--sidebar-w);
+            min-height: 100vh;
+            background: var(--dark);
+            border-right: 1px solid var(--border);
+            padding: 48px 0;
+            position: fixed;
+            top: 0; left: 0;
+            overflow-y: auto;
+            z-index: 100;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
+
+        .sidebar.open {
+            transform: translateX(0);
+        }
+
+        .sidebar-brand {
+            padding: 0 28px 40px;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 32px;
+        }
+
+        .sidebar-brand-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.4rem;
+            color: var(--yellow);
+            line-height: 1.1;
+        }
+
+        .sidebar-brand-sub {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.62rem;
+            color: var(--muted);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-top: 6px;
+        }
+
+        .sidebar-section-label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.58rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--muted);
+            padding: 0 28px;
+            margin-bottom: 8px;
+            margin-top: 24px;
+        }
+
+        .sidebar-nav a {
+            display: block;
+            padding: 9px 28px;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.78rem;
+            color: var(--muted);
+            text-decoration: none;
+            transition: color 0.2s, background 0.2s;
+            border-left: 2px solid transparent;
+        }
+
+        .sidebar-nav a:hover {
+            color: var(--text);
+            background: var(--mid);
+        }
+
+        .sidebar-nav a.active {
+            color: var(--yellow);
+            border-left-color: var(--yellow);
+            background: rgba(242,208,39,0.05);
+        }
+
+        .sidebar-nav a.sub {
+            padding-left: 44px;
+            font-size: 0.72rem;
+        }
+
+        .sidebar-footer {
+            padding: 32px 28px 0;
+            margin-top: 40px;
+            border-top: 1px solid var(--border);
+        }
+
+        .sidebar-footer a {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.68rem;
+            color: var(--muted);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .sidebar-footer a:hover { color: var(--yellow); }
+
+        /* ── MAIN CONTENT ── */
+        .main {
+            margin-left: 0;
+            flex: 1;
+            min-width: 0;
+        }
+
+        /* ── HERO ── */
+        .hero {
+            min-height: 100vh;
+            display: flex; flex-direction: column; justify-content: center; align-items: flex-start;
+            padding: 80px 80px;
+            position: relative; border-bottom: 1px solid var(--border); overflow: hidden;
+        }
+
+        .hero::before {
+            content: ''; position: absolute; top: -200px; right: -200px;
+            width: 600px; height: 600px;
+            background: radial-gradient(circle, rgba(242,208,39,0.07) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-label { font-family: 'IBM Plex Mono', monospace; font-size: 0.72rem; letter-spacing: 0.2em; color: var(--yellow); text-transform: uppercase; margin-bottom: 24px; opacity: 0; animation: fadeUp 0.6s 0.2s forwards; }
+        .hero-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(4rem, 8vw, 8rem); line-height: 0.92; color: var(--yellow); text-transform: uppercase; margin-bottom: 32px; opacity: 0; animation: fadeUp 0.7s 0.4s forwards; }
+        .hero-title span { color: var(--text); display: block; }
+        .hero-desc { font-size: 0.95rem; font-size: small; color: var(--muted); max-width: 650px; line-height: 1.8; font-family: 'IBM Plex Mono', monospace; opacity: 0; animation: fadeUp 0.7s 0.6s forwards; }
+        .hero-desc em { color: var(--yellow); font-style: normal; }
+        .hero-desc strong {color:var(--text)}
+        .hero-tag { margin-top: 40px; display: flex; gap: 10px; flex-wrap: wrap; opacity: 0; animation: fadeUp 0.7s 0.8s forwards; }
+        .tag { font-family: 'IBM Plex Mono', monospace; font-size: 0.68rem; padding: 5px 12px; border: 1px solid var(--border); border-radius: 2px; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; transition: background 0.2s, color 0.2s; cursor: pointer; }
+        .tag.yellow { border-color: var(--yellow); color: var(--yellow); }
+        .tag.yellow:hover { background: var(--yellow); color: var(--black); }
+        .tag.green  { border-color: var(--green);  color: var(--green);  }
+        .tag.green:hover  { background: var(--green);  color: var(--black); }
+        .tag.blue   { border-color: var(--blue);   color: var(--blue);   }
+        .tag.blue:hover   { background: var(--blue);   color: var(--black); }
+        .tag.white  { border-color: var(--muted);  color: var(--muted);  }
+        .tag.white:hover  { background: var(--text);   color: var(--black); }
+
+        /* ── PAGE SECTION ── */
+        .page-section {
+            padding: 80px 80px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .section-eyebrow {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.65rem;
+            letter-spacing: 0.25em;
+            color: var(--yellow);
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .section-heading {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(2.2rem, 4vw, 3.5rem);
+            color: var(--text);
+            line-height: 1;
+            margin-bottom: 32px;
+        }
+
+        .prose {
+            font-size: 0.88rem;
+            color: var(--muted);
+            line-height: 1.95;
+            max-width: 720px;
+            margin-bottom: 24px;
+        }
+
+        .prose strong { color: var(--text); }
+        .prose em { color: var(--yellow); font-style: normal; }
+        .prose code { font-family: 'IBM Plex Mono', monospace; font-size: 0.8rem; color: var(--green); background: #000; padding: 2px 6px; border-radius: 2px; }
+
+        /* ── NESTED ACCORDION ── */
+        .nested-acc { margin-top: 40px; }
+
+        .nacc-item { border: 1px solid var(--border); margin-bottom: 8px; }
+        .nacc-toggle { display: none; }
+
+        .nacc-label {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 20px 24px;
+            cursor: pointer; transition: background 0.2s;
+            font-family: 'IBM Plex Mono', monospace;
+            font-style: italic;
+            font-size: 0.95rem;
+            color: var(--text);
+            user-select: none;
+        }
+
+        .nacc-label:hover { background: var(--mid); }
+        .nacc-icon { color: var(--yellow); font-size: 1rem; transition: transform 0.3s; }
+        .nacc-toggle:checked ~ .nacc-label { color: var(--yellow); background: var(--mid); }
+        .nacc-toggle:checked ~ .nacc-label .nacc-icon { transform: rotate(45deg); }
+
+        .nacc-body { max-height: 0; overflow: hidden; transition: max-height 0.5s cubic-bezier(0.4,0,0.2,1); }
+        .nacc-toggle:checked ~ .nacc-body { max-height: 5000px; }
+        .nacc-inner { padding: 28px 24px; background: #000; border-top: 1px solid var(--border); }
+
+        /* ── D&S GRID ── */
+        .ds-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin: 28px 0; }
+        .ds-col { background: var(--mid); padding: 24px; }
+        .ds-col-title { font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 18px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
+        .ds-col-title.yellow { color: var(--yellow); }
+        .ds-col-title.green  { color: var(--green);  }
+        .ds-item { display: flex; gap: 10px; margin-bottom: 16px; }
+        .ds-dot { width: 6px; height: 6px; border-radius: 50%; margin-top: 6px; flex-shrink: 0; }
+        .ds-dot.yellow { background: var(--yellow); }
+        .ds-dot.green  { background: var(--green);  }
+        .ds-item-name { font-family: 'IBM Plex Mono', monospace; font-size: 0.8rem; font-weight: 600; margin-bottom: 3px; }
+        .ds-item-desc { font-size: 0.76rem; color: var(--muted); line-height: 1.5; }
+
+        .arrow-row { display: flex; align-items: center; gap: 12px; padding: 14px 20px; background: #000; font-family: 'IBM Plex Mono', monospace; font-size: 0.76rem; color: var(--muted); margin-bottom: 2px; flex-wrap: wrap; border: 1px solid var(--border); }
+        .arrow-row strong { color: var(--text); }
+        .arrow { color: var(--yellow); }
+
+        /* SCENE CARD */
+        .scene-card { background: var(--mid); border: 1px solid var(--border); padding: 24px; margin-top: 24px; }
+        .scene-id { font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem; color: var(--yellow); letter-spacing: 0.2em; margin-bottom: 8px; }
+        .scene-title { font-size: 1rem; font-weight: 800; margin-bottom: 6px; }
+        .scene-desc { font-size: 0.8rem; color: var(--muted); line-height: 1.6; margin-bottom: 20px; }
+        .scene-triples { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .triple-group-title { font-family: 'IBM Plex Mono', monospace; font-size: 0.62rem; color: var(--muted); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 8px; }
+        .triple { font-family: 'IBM Plex Mono', monospace; font-size: 0.72rem; margin-bottom: 5px; line-height: 1.5; }
+        .triple .s { color: var(--yellow); }
+        .triple .p { color: var(--red); }
+        .triple .o { color: var(--green); }
+
+        /* ALIGNMENT TABLE */
+        .alignment-table { width: 100%; border-collapse: collapse; font-family: 'IBM Plex Mono', monospace; font-size: 0.78rem; }
+        .alignment-table th { text-align: left; padding: 10px 14px; border-bottom: 1px solid var(--yellow); color: var(--yellow); font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; }
+        .alignment-table td { padding: 12px 14px; border-bottom: 1px solid var(--border); vertical-align: top; }
+        .alignment-table tr:hover td { background: var(--mid); }
+        .local-cls { color: var(--yellow); }
+        .dul-cls   { color: var(--green);  }
+        .rel       { color: var(--muted); font-size: 0.7rem; }
+        .rationale { color: var(--muted); font-size: 0.74rem; line-height: 1.5; }
+
+        /* SPARQL */
+        .sparql-block { margin-bottom: 36px; }
+        .sparql-question { font-size: 0.9rem; font-weight: 700; margin-bottom: 12px; padding-left: 14px; border-left: 3px solid var(--yellow); line-height: 1.6; max-width: 680px; }
+        .cq-label { font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem; color: var(--yellow); letter-spacing: 0.15em; display: block; margin-bottom: 4px; }
+        .code-box { background: #000; border: 1px solid var(--border); border-radius: 2px; overflow: hidden; }
+        .code-header { background: var(--mid); padding: 8px 14px; font-family: 'IBM Plex Mono', monospace; font-size: 0.62rem; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; border-bottom: 1px solid var(--border); }
+        .code-box pre { padding: 18px; font-family: 'IBM Plex Mono', monospace; font-size: 0.78rem; line-height: 1.75; color: #ccc; overflow-x: auto; }
+        .kw  { color: #82b1ff; }
+        .var { color: #F2D027; }
+        .cls { color: #7EC8A4; }
+        .prop{ color: #E05252; }
+        .pfx { color: #b0b0b0; }
+
+        /* FOOTER */
+        footer { padding: 40px 80px; font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem; color: var(--muted); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; border-top: 1px solid var(--border); }
+        footer a { color: var(--yellow); text-decoration: none; }
+
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        @media (max-width: 900px) {
+            .sidebar { display: none; }
+            .main { margin-left: 0; }
+            .hero, .page-section, footer { padding-left: 24px; padding-right: 24px; }
+            .ds-grid, .scene-triples { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<button class="sidebar-toggle" onclick="document.querySelector('.sidebar').classList.toggle('open')">☰</button>
+
+<!-- ── SIDEBAR ── -->
+<nav class="sidebar">
+    <div class="sidebar-brand">
+        <div class="sidebar-brand-title">It's Always<br>Sunny Ontology</div>
+        <div class="sidebar-brand-sub">KRKE 2026</div>
+    </div>
+
+    <div class="sidebar-nav">
+        <p class="sidebar-section-label">Chapters</p>
+        <a href="#home">Home</a>
+        <a href="#theoretical">1. Theoretical Framework</a>
+        <a href="#methodology">2. Methodology</a>
+        <a href="#kr">3. Knowledge Representation</a>
+        <a href="#kr" class="sub">3.1 Ontology Design</a>
+        <a href="#alignment" class="sub">3.2 DUL Alignment</a>
+        <a href="#ke">4. Knowledge Extraction</a>
+        <a href="#conclusion">5. Conclusion</a>
+    </div>
+
+    <div class="sidebar-footer">
+        <a href="https://github.com/chiarapicardii/itsAlwaysSunnyOntology" target="_blank">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.38.6.11.82-.26.82-.58v-2.03c-3.34.72-4.04-1.61-4.04-1.61-.54-1.38-1.33-1.75-1.33-1.75-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 3-.4c1.02 0 2.04.14 3 .4 2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.25 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.82.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+            GitHub repository
+        </a>
+    </div>
+</nav>
+
+<!-- ── MAIN ── -->
+<main class="main">
+
+    <!-- HOME -->
+    <section class="hero" id="home">
+        <p class="hero-label">Knowledge Representation and Extraction 2026 — University Project</p>
+        <h1 class="hero-title">It's Always<br><span>Sunny</span>Ontology</h1>
+        <p class="hero-desc">This ontology provides a semantic model of comedy generated by the <strong> subversion of ethical and social </strong> rules in television. More specifically, it maps the epitome of immoral-humor sitcoms: <strong>It's Always Sunny in Philadelphia</strong>. 
+        <p class="hero-desc"> By applying the Description and Situation (D&amp;S) pattern, we aim to answer one underlying question we aim to answer is: <em>if this is behaviour is so wrong, what makes it funny? </em> </p>
+        <p class="hero-desc">The model is designed to be flexible, allowing future mapping both of the entire series or other comedic work that share the same strucure of subversion. </p>
+        <div class="hero-tag">
+            <a href="#theoretical" class="tag yellow">Theoretical Framework</a>
+            <a href="#methodology" class="tag green">Methodology</a>
+            <a href="#kr" class="tag blue">Knowledge Representation</a>
+            <a href="#ke" class="tag white">Knowledge Extraction</a>
+        </div>
+        <a href="https://github.com/chiarapicardii/itsAlwaysSunnyOntology" target="_blank" style="
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 24px;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.72rem;
+            color: var(--muted);
+            text-decoration: none;
+            border: 1px solid var(--border);
+            padding: 8px 16px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            transition: color 0.2s, border-color 0.2s;
+        " onmouseover="this.style.color='var(--yellow)'; this.style.borderColor='var(--yellow)'" 
+        onmouseout="this.style.color='var(--muted)'; this.style.borderColor='var(--border)'">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.38.6.11.82-.26.82-.58v-2.03c-3.34.72-4.04-1.61-4.04-1.61-.54-1.38-1.33-1.75-1.33-1.75-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 3-.4c1.02 0 2.04.14 3 .4 2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.25 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.82.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+            GitHub Repository
+        </a>
+    </section>
+
+    <!-- 1. THEORETICAL FRAMEWORK -->
+    <section class="page-section" id="theoretical" style="border-bottom: none; padding-bottom: 40px;">
+        <p class="section-eyebrow">01 — Theoretical Framework</p>
+        <h2 class="section-heading">The Gang Reads the Literature</h2>
+        <p class="prose"> Despite being a fundamental mechanism of the human experience, there is not an universally accepted theory of humor. Consequently, different scholars decided to look at the problem from multiple angles.</p>
+        <p class="prose"> At the most basic level we can describe it as «an intended or unintended message interpreted as funny» (Lynch, 2002) </p>
+        <p class="prose"> Going a step further, and examining it with a focus on the cognitive mechanism, John Morreal (1983) highlights its rationality – distancing it from the more adaptive animal emotions – and linking humor to the «playful enjoyment of incongruity». Therefore, incongruity and surprise can be defined as the core of comedy. </p>
+        <p class="prose"> In general, we can divide humor into three main categories: arousal-safety, incongruity-resolution and <strong> humorous disparagement </strong> (Mills, 2005). The latter, in particular, is a social tool for criticizing censure and control. In this specific case, the main subjects involved in the power dynamics are: </p>
+        <ul class="prose" style="padding-left: 1.2em;">
+            <li> A joke teller </li>
+            <li> A joke hearer </li>
+            <li> A victim (target of the joke) </li> 
+        </ul>
+        <p class="prose">The respective relationships between these three subjects corresponds to a specific type of disparagement: if one, for example wants to offend the victim it’s put-down humor. (Millis, 2005) What we can gather from this theory is that, in this specific case of our interest, the joke has always an acting entity (Agent) and a Target, even if it’s self-deprecating humor.</p>
+        <p class="prose"> What is interesting, especially for our ontology, is that disparagement (detraction, denunciation) itself is not funny. What <em> It’s Always Sunny in Philadelphia </em> manages to do is exaggerate this element whilst keeping it humorous because its characters are clearly negative examples. In this specific framing laughter becomes, from a psychological point of view: «sudden glory experienced in the subject upon recognition of its <strong> superiority </strong> to some deformed object by “comparison whereof they suddenly applaud themselves”» (Hobbes, quoted in Wickberg, 1998) </p>
+        <p class="prose"> More specifically, the series, usually sets up a situation and makes its character behave in the opposite way they are expected to, according to the specific semantic frame the occasion served. What interests our research is the «transgression of decorum and verisimilitude: on deviation from any social or aesthetic rule, norm, model, convention or law.» (Neale&amp;Krutnik, 1990) </p>
+        <p class="prose"> They break the ethical and moral rules of western society offering both a <strong> relief </strong> (as a way of undermining the rigid schemes of society) and becoming a laughingstock for the spectator. In this context, there is a duality of emotions the spectator is able to experience: feeling superior but also recognizing that «their weakness…is ours», safely observed through the distance that TV gives us. (Durgnat, 1969) </p>
+        <p class="prose"> Consequently, one must keep in mind the three traditional perspectives of humor (Lynch, 2002): </p>
+        <ul class="prose" style="padding-left: 1.2em;"> 
+        <li> Superiority </li>
+        <li> Incongruity </li>
+        <li> Relief </li>
+        </ul>
+        <p class="prose"> The last fundamental element that contributes to the picture we are painting is that the characters <strong> always </strong> lose. As seen in the comedy of social embarrassment, the individual is at odds with the world, and the world inevitably wins. (Gray, 2006) The disruption of morality is not an example to follow, because they keep on losing, damned to be outside of society and its rules. </p>
+    </section>
+    <section class="page-section" id="bibliography" style="padding-top: 10px; padding-bottom: 60px;">
+        <div class="nacc-item">
+            <input type="checkbox" id="refs" class="nacc-toggle">
+            <label for="refs" class="nacc-label">References<span class="nacc-icon">+</span></label>
+            <div class="nacc-body"><div class="nacc-inner">
+                <p class="prose">
+                    Carriero, V.A., Gangemi, A., Nuzzolese, A.G., &amp; Presutti, V. (2021). An ontology design pattern for representing recurrent situations. <em>Amsterdam: IOS Press.</em> <a href="https://doi.org/10.3233/SSW210013" style="color: var(--green);">https://doi.org/10.3233/SSW210013</a><br><br>
+                    Durgnat, R. (1969). <em>The crazy mirror: Hollywood comedy and the American image.</em> London: Faber.<br><br>
+                    Gray, F. (2005). Privacy, embarrassment and social power: British sitcom. In S. Lockyer &amp; M. Pickering (Eds.), <em>Beyond a joke: The limits of humour</em> (pp. 146–161). Palgrave Macmillan.<br><br>
+                    Lynch, O. (2002). Humorous communication: Finding a place for humor in communication research. <em>Communication Theory, 12</em>(2), 423–445.<br><br>
+                    Mills, B. (2005). <em>Television sitcom.</em> London: BFI.<br><br>
+                    Morreall, J. (1983). <em>Taking laughter seriously.</em> Albany: State University of New York Press.<br><br>
+                    Neale, S., &amp; Krutnik, F. (1990). <em>Popular film and television comedy.</em> London: Routledge.<br><br>
+                    Wickberg, D. (1998). <em>The senses of humor.</em> Ithaca, NY: Cornell University Press.
+                </p>
+            </div></div>
+        </div>
+    </section>
+
+    <!-- 2. METHODOLOGY -->
+    <section class="page-section" id="methodology">
+        <p class="section-eyebrow">02 — Methodology</p>
+        <h2 class="section-heading">The Gang Collects the Data</h2>
+        <p class="prose"> Given the theoretical framework, we needed a structured approach to translate the show's dynamic humor into a formal ontology. Following a pattern-based methodology , we started by defining the scope through specific Competency Questions (CQs)  aimed at investigating the exact correlation between comedic mechanisms, character flaws, and moral subversion. To ground our model in actual data, we manually selected and analyzed 10 representative scenes from the series. We structured our initial data collection using an <strong>Excel</strong> spreadsheet, which was subsequently exported as a <strong>CSV</strong> file. This tabular format allowed us to systematically map out the core narrative components before the ontology population phase. For each occurrence, we identified the core narrative components within the situation, which we treat as a generalization over events, states, and actions: we mapped who acts as the instigator (Agent), who suffers the consequences (Target), which comedic theory is at play, and what specific societal norm is being shattered.</p>
+        <p class="prose">Moving to the modeling phase in Protégé, we faced a significant structural challenge. The characters in It's Always Sunny frequently shift their status—acting as cruel perpetrators in one scene and vulnerable victims in the next. To avoid "entity merging" (where a character's global traits would incorrectly overlap across different episodes), we decided to instantiate unique, scene-specific "Avatars" for each character. We then linked these specific instances using the standard <code>rdfs:label </code>property. This methodological approach allowed us to maintain the logical separation required by the machine to prevent false positives, while preserving the presentational continuity of the characters for our SPARQL knowledge extraction.</p>
+
+            <div class="nacc-item">
+                <input type="checkbox" id="ke0" class="nacc-toggle">
+                <label for="ke0" class="nacc-label">CSV Table<span class="nacc-icon">+</span></label>
+                <div class="nacc-body">
+                    <div class="nacc-inner">
+                        <div class="table-wrapper" style="overflow-x: auto; width: 100%; display: block; margin-bottom: 20px;">
+                            <table class="alignment-table" style="min-width: max-content;">
+                                <thead>
+                                    <tr>
+                                        <th>scene_id</th>
+                                        <th>episode_number</th>
+                                        <th>episode_title</th>
+                                        <th>timestamp</th>
+                                        <th>scene_description</th>
+                                        <th>agent_name</th>
+                                        <th>agent_quality_type</th>
+                                        <th>agent_quality_desc</th>
+                                        <th>target_name</th>
+                                        <th>target_quality_type</th>
+                                        <th>target_quality_desc</th>
+                                        <th>social_frame_id</th>
+                                        <th>social_frame_name</th>
+                                        <th>social_frame_definition</th>
+                                        <th>ethical_rule_id</th>
+                                        <th>ethical_rule_name</th>
+                                        <th>ethical_rule_definition</th>
+                                        <th>subversive_frame_id</th>
+                                        <th>subversive_frame_name</th>
+                                        <th>subversive_frame_definition</th>
+                                        <th>norm_occurrence_desc</th>
+                                        <th>subversive_occurrence_desc</th>
+                                        <th>theoretical_mechanism</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>HS_001</td>
+                                        <td>S12E02</td>
+                                        <td>The Gang Goes to a Water Park</td>
+                                        <td>00:02:32</td>
+                                        <td>Mac and Dee insult a lifeguard who tells them they are too big for the children&#x27;s slide, then they force their way down and get painfully stuck.</td>
+                                        <td>Mac, Dee</td>
+                                        <td>BehavioralQuality</td>
+                                        <td>Arrogant adults who believe their age makes them superior to rules.</td>
+                                        <td>Lifeguard</td>
+                                        <td>BehavioralQuality</td>
+                                        <td>A employee strictly enforcing safety protocols</td>
+                                        <td>ESF_RecreationalSafety</td>
+                                        <td>Recreational Facility Safety</td>
+                                        <td>A public setting where patrons must follow safety rules and staff instructions to prevent injury</td>
+                                        <td>ER_SafetyCompliance</td>
+                                        <td>Compliance with Safety Regulations</td>
+                                        <td>A social norm requiring patrons to strictly follow age/size restrictions and respect designated staff instructions</td>
+                                        <td>SubF_ChildishRebellion</td>
+                                        <td>Childish Rebellion by Adults</td>
+                                        <td>Adults exhibiting severe regression, throwing tantrums and breaking simple rules designed for children out of pure stubbornness</td>
+                                        <td>Mac and Dee should respect the lifeguard&#x27;s instructions, accept that the slide is for children only, and walk away to use the adult attractions</td>
+                                        <td>Mac and Dee dismiss the lifeguard&#x27;s warning, selfishly push their way down the slide, and get wedged in the tube.</td>
+                                        <td>SuperiorityTheory</td>
+                                    </tr>
+                                    <tr>
+                                        <td>HS_002</td>
+                                        <td>S08E05</td>
+                                        <td>The Gang Gets Analyzed</td>
+                                        <td>00:00:46</td>
+                                        <td>Dee brings the entire gang into her therapy session, and Frank dumps dirty dishes on the floor, demanding the therapist decide who should wash them</td>
+                                        <td>Dee, Gang</td>
+                                        <td>BehavioralQuality</td>
+                                        <td>Severe lack of social boundaries, and inability to resolve basic adult tasks</td>
+                                        <td>The Therapist</td>
+                                        <td>BehavioralQuality</td>
+                                        <td>Professional demeanor and strict adherence to clinical psychological standards</td>
+                                        <td>ESF_PsychotherapySession</td>
+                                        <td>Clinical Psychotherapy Session</td>
+                                        <td>A confidential, clinical setting where a patient works with a professional to address deep psychological issues.</td>
+                                        <td>ER_ClinicalBoundaries</td>
+                                        <td>Respect for Clinical Purpose and Boundaries</td>
+                                        <td>A professional norm requiring the patient to use therapy for psychological healing and to respect the sanctity of the clinical space</td>
+                                        <td>SubF_TherapyTrivialization</td>
+                                        <td>Trivialization and Hijacking of Therapy</td>
+                                        <td>The distorted belief that a highly trained medical professional is merely a referee for petty, mundane domestic disputes</td>
+                                        <td>Dee should use the private session to explore her personal feelings about the dinner conflict and work on her own psychological growth alone</td>
+                                        <td>Dee hijacks the session by bringing in the gang, while Frank dumps a tablecloth of dirty dishes on the therapist&#x27;s floor to demand a ruling on a chore</td>
+                                        <td>IncongruityTheory</td>
+                                    </tr>
+                                    <tr>
+                                        <td>HS_003</td>
+                                        <td>S11E05</td>
+                                        <td>Mac &amp; Dennis Move to the Suburbs</td>
+                                        <td>00:05:08</td>
+                                        <td>Mac and Dennis in their yard and aggressively stare in silence at a friendly neighbor who comes over to welcome them</td>
+                                        <td>Mac,  Dennis</td>
+                                        <td>BehavioralQuality</td>
+                                        <td>Extreme anti-social hostility, paranoia, and inability to comprehend basic friendly interactions.</td>
+                                        <td>Wally (The Neighbor)</td>
+                                        <td>BehavioralQuality</td>
+                                        <td>Polite, cheerful, and engaging in standard suburban pleasantries</td>
+                                        <td>ESF_SuburbanNeighborhood</td>
+                                        <td>Suburban Neighborhood Interaction</td>
+                                        <td>A residential community setting where neighbors are expected to be cordial, introduce themselves, and engage in polite small talk.</td>
+                                        <td>ER_NeighborlyEtiquette</td>
+                                        <td>Good Neighbor Etiquette and Basic Politeness</td>
+                                        <td>A social norm requiring individuals to acknowledge greetings, introduce themselves, and maintain a friendly demeanor with those living nearby</td>
+                                        <td>SubF_HostileParanoia</td>
+                                        <td>Urban Hostility and Paranoia in Suburbia</td>
+                                        <td>The distorted belief that friendly, unsolicited social interaction is a threat or an offensive intrusion of privacy that warrants aggressive silence</td>
+                                        <td>Mac and Dennis should smile back, introduce themselves, and exchange polite pleasantries with the neighbor welcoming them.</td>
+                                        <td>Mac and Dennis stare aggressively in dead silence at the greeting neighbor, refusing to speak, and later express genuine outrage that he dared to talk to them</td>
+                                        <td>IncongruityTheory</td>
+                                    </tr>
+                                    <tr>
+                                        <td>HS_004</td>
+                                        <td>S05E05</td>
+                                        <td>The Waitress Is Getting Married</td>
+                                        <td>00:06:18</td>
+                                        <td>Mac and Dennis try to create an online dating profile for Charlie, but get frustrated when he gives absurd answers</td>
+                                        <td>Charlie</td>
+                                        <td>BehavioralQuality</td>
+                                        <td>Profound detachment from reality, bizarre personal tastes, and inability to understand basic social conventions</td>
+                                        <td>Mac and Dennis</td>
+                                        <td>BehavioralQuality</td>
+                                        <td>Frustrated friends trying to apply standard societal dating norms to an abnormal person.</td>
+                                        <td>ESF_OnlineDatingProfile</td>
+                                        <td>Online Dating Profile Creation</td>
+                                        <td>A social ritual where an individual highlights their most attractive, relatable, and normal hobbies to find a romantic partner</td>
+                                        <td>ER_SocialRelatability</td>
+                                        <td>Relatability and Social Appeal in Dating</td>
+                                        <td>The expectation that one should present understandable and socially acceptable traits to be perceived as an attractive and safe partner</td>
+                                        <td>SubF_BizarreUnrelatability</td>
+                                        <td>Absurd and Repellent Personal Tastes</td>
+                                        <td>The genuine expression of nonsensical, grotesque, or deeply unsettling preferences that guarantee immediate social rejection</td>
+                                        <td>Charlie should provide normal, attractive answers like &quot;traveling,&quot; &quot;movies,&quot; or &quot;pizza&quot; to make himself appealing to women</td>
+                                        <td>Charlie answers the questions with absurd, repellent things like &quot;milk steak,&quot; &quot;magnets,&quot; and &quot;ghouls,&quot; completely ruining the profile</td>
+                                        <td>IncongruityTheory</td>
+                                    </tr>
+                                    <tr>
+                                        <td>HS_005</td>
+                                        <td>S13E05</td>
+                                        <td>The Gang Gets New Wheels</td>
+                                        <td>00:16:50</td>
+                                        <td>Mac and Charlie confront the thief who stole their bike, but intimidated by him, they retreat and instead brutally beat up his kid and friends to take the bike back</td>
+                                        <td>Mac, Charlie</td>
+                                        <td>BehavioralQuality</td>
+                                        <td>Extreme cowardice disguised as toughness, leading to completely disproportionate and misdirected violence</td>
+                                        <td>The Kids</td>
+                                        <td>PhysicalQuality</td>
+                                        <td>Small, physically weak children who are unable to defend themselves against two grown men</td>
+                                        <td>ESF_DisputeResolution</td>
+                                        <td>Adult Dispute Resolution</td>
+                                        <td>A social situation where mature adults resolve conflicts or thefts through verbal negotiation, law enforcement, or direct confrontation with the responsible party</td>
+                                        <td>ER_ProtectionOfMinors</td>
+                                        <td>Protection of Minors from Adult Violence</td>
+                                        <td>An absolute ethical and legal norm stating that grown adults must never physically assault children, regardless of the circumstances or provocation</td>
+                                        <td>SubF_DisplacedCowardice</td>
+                                        <td>Displaced Violence Due to Cowardice</td>
+                                        <td>The distorted logic of attacking innocent or weaker targets (children) to compensate for the fear of confronting the actual, physically intimidating perpetrator</td>
+                                        <td>Mac and Charlie should confront the intimidating father who stole their bike or call the police to resolve the theft legally</td>
+                                        <td>Too terrified to fight the adult thief, Mac and Charlie return and brutally beat up his young children instead to steal the bike back</td>
+                                        <td>IncongruityTheory</td>
+                                    </tr>
+                                    <tr>
+                                        <td>HS_006</td>
+                                        <td>S11E08</td>
+                                        <td>Charlie Catches a Leprechaun</td>
+                                        <td>00:04:40</td>
+                                        <td>Charlie suggests using green paint to dye the bar&#x27;s beer for St. Patrick&#x27;s Day, and Mac discovers Charlie has been casually drinking the toxic paint himself</td>
+                                        <td>Charlie</td>
+                                        <td>BehavioralQuality</td>
+                                        <td>Complete lack of basic survival instincts, severe ignorance, and self-destructive habits treated as normal behavior</td>
+                                        <td>Mac</td>
+                                        <td>BehavioralQuality</td>
+                                        <td>Acting as the voice of basic reason trying to prevent poisoning</td>
+                                        <td>ESF_FoodAndBeverageSafety</td>
+                                        <td>Food and Beverage Safety Standards</td>
+                                        <td>A baseline commercial and personal standard where consumable items must be non-toxic, and individuals avoid ingesting deadly chemicals</td>
+                                        <td>ER_SelfPreservation</td>
+                                        <td>Basic Self-Preservation and Health</td>
+                                        <td>The universal human instinct and ethical responsibility to protect one&#x27;s own body and others by not consuming or serving lethal toxins</td>
+                                        <td>SubF_ToxicConsumption</td>
+                                        <td>Casual Consumption of Toxic Substances</td>
+                                        <td>The absurd normalization of eating or drinking industrial, deadly chemicals as if they were harmless everyday food items</td>
+                                        <td>Charlie should use safe, edible food coloring for the beer and acknowledge the extreme danger of ingesting industrial paint</td>
+                                        <td>Charlie plans to serve paint to customers, reveals his green tongue to show he drinks it himself, and dismisses Mac&#x27;s horror about its toxicity</td>
+                                        <td>IncongruityTheory</td>
+                                    </tr>
+                                    <tr>
+                                        <td>HS_007</td>
+                                        <td>S08E06</td>
+                                        <td>Charlie&#x27;s Mom Has Cancer</td>
+                                        <td>00:17:57</td>
+                                        <td>During a bar fundraiser for her supposed cancer, Charlie&#x27;s mom reads a desperate speech but then casually admits to the crowd she faked the illness just for attention</td>
+                                        <td>Charlie&#x27;s Mom</td>
+                                        <td>BehavioralQuality</td>
+                                        <td>Extreme emotional manipulation, narcissism, and a complete disregard for moral boundaries regarding illness</td>
+                                        <td>The Fundraiser Crowd, Charlie</td>
+                                        <td>BehavioralQuality</td>
+                                        <td>Genuine empathy, grief, and willingness to donate money to a tragic cause</td>
+                                        <td>ESF_CharityFundraiser</td>
+                                        <td>Charity Fundraiser Event</td>
+                                        <td>A social gathering designed to elicit empathy and collect financial donations to help someone facing a severe tragedy or illness</td>
+                                        <td>ER_MedicalHonesty</td>
+                                        <td>Truthfulness Regarding Severe Illness</td>
+                                        <td>A fundamental moral rule prohibiting individuals from faking terminal diseases to exploit others&#x27; empathy or steal charitable funds</td>
+                                        <td>SubF_FakedIllness</td>
+                                        <td>Faking Illness for Attention</td>
+                                        <td>The sociopathic act of fabricating a deadly disease to manipulate loved ones into giving affection and strangers into giving money</td>
+                                        <td>Charlie’s mom should honestly disclose her health status, never fake a terminal illness, and seek her son&#x27;s attention through healthy communication</td>
+                                        <td>Charlie’s mom stands before a sympathetic crowd wearing makeup to look dying, and casually admits she made up the cancer just to get Charlie to care about her</td>
+                                        <td>ReliefTheory</td>
+                                    </tr>
+                                    <tr>
+                                        <td>HS_008</td>
+                                        <td>S04E09</td>
+                                        <td>Dennis Reynolds: An Erotic Life</td>
+                                        <td>00:09:20</td>
+                                        <td>Dee tries to perform stand-up comedy but gets severe stage fright, repeatedly dry heaving loudly into the microphone before fleeing</td>
+                                        <td>Dee</td>
+                                        <td>PhysicalQuality</td>
+                                        <td>Uncontrollable physical anxiety, nausea, and bodily distress manifesting as loud dry heaves</td>
+                                        <td>The Comedy Club Audience</td>
+                                        <td>BehavioralQuality</td>
+                                        <td>Attentive, expectant, and waiting to be entertained by a prepared comedic routine</td>
+                                        <td>ESF_PublicPerformance</td>
+                                        <td>Public Stand-Up Comedy Performance</td>
+                                        <td>An entertainment setting where a performer stands on stage to confidently deliver rehearsed jokes and amuse an audience</td>
+                                        <td>ER_PerformanceComposure</td>
+                                        <td>Theatrical Composure and Preparation</td>
+                                        <td>The social expectation that a public performer maintains basic composure, speaks clearly, and attempts to entertain rather than displaying severe bodily distress</td>
+                                        <td>SubF_BodilyPanic</td>
+                                        <td>Involuntary Bodily Panic and Failure</td>
+                                        <td>The complete physical and psychological collapse of a performer, resulting in grotesque bodily reflexes instead of rehearsed entertainment</td>
+                                        <td>Dee should confidently hold the microphone, tell her rehearsed jokes smoothly, and attempt to make the audience laugh</td>
+                                        <td>Dee stammers nervously, fails to tell a single joke, and repeatedly dry heave loudly into the microphone before running off stage</td>
+                                        <td>SuperiorityTheory</td>
+                                    </tr>
+                                    <tr>
+                                        <td>HS_009</td>
+                                        <td>S05E09</td>
+                                        <td>Mac and Dennis Break Up</td>
+                                        <td>00:09:56</td>
+                                        <td>Dennis demands Dee peel his apple because Mac used to do it to protect him from &quot;toxins,&quot; and screams when she tells him to just eat the skin</td>
+                                        <td>Dennis</td>
+                                        <td>BehavioralQuality</td>
+                                        <td>Extreme infantile dependence, narcissism, and bizarre paranoia regarding normal food</td>
+                                        <td>Dee</td>
+                                        <td>BehavioralQuality</td>
+                                        <td>Rational adult refusing to enable a grown man&#x27;s bizarre and childish demands</td>
+                                        <td>ESF_AdultSelfSufficiency</td>
+                                        <td>Basic Adult Self-Sufficiency</td>
+                                        <td>The social expectation that a grown adult is capable of preparing and eating basic foods, like an apple, without assistance</td>
+                                        <td>ER_PersonalIndependence</td>
+                                        <td>Personal Independence and Maturity</td>
+                                        <td>A social norm dictating that adults should not treat their peers as servants for trivial tasks or throw tantrums when denied</td>
+                                        <td>SubF_InfantileCodependency</td>
+                                        <td>Infantile Co-dependency and Tantrums</td>
+                                        <td>The regressive behavior of a grown adult demanding toddler-level care from others and reacting with explosive rage when treated like an adult</td>
+                                        <td>Dennis should either peel the apple himself or simply eat it with the skin like a normal, functioning adult</td>
+                                        <td>Dennis demands Dee peel his apple, cites absurd fears of skin toxins, and throws a screaming tantrum when she refuses to coddle him</td>
+                                        <td>IncongruityTheory</td>
+                                    </tr>
+                                    <tr>
+                                        <td>HS_010</td>
+                                        <td>S02E03</td>
+                                        <td>Dennis and Dee Go on Welfare</td>
+                                        <td>00:19:35</td>
+                                        <td>Dennis and Dee confess their severe crack addiction to Mac and Charlie, who immediately respond with total apathy and ruthlessly mock them for crying about it</td>
+                                        <td>Mac, Charlie</td>
+                                        <td>BehavioralQuality</td>
+                                        <td>Complete lack of human empathy, cruelty, and taking sadistic pleasure in the severe misfortune of their friends</td>
+                                        <td>Dennis, Dee</td>
+                                        <td>PhysicalQuality</td>
+                                        <td>Visibly strung out, physically deteriorated, and in a state of desperate withdrawal</td>
+                                        <td>ESF_CloseFriendship</td>
+                                        <td>Close Friendship and Mutual Support</td>
+                                        <td>A social bond between close friends where mutual support, empathy, and help are expected during times of severe personal crisis</td>
+                                        <td>ER_CompassionAndSupport</td>
+                                        <td>Compassion in Times of Crisis</td>
+                                        <td>The ethical obligation to provide emotional support and intervention when a loved one confesses to a life-threatening problem like severe drug addiction</td>
+                                        <td>SubF_CruelApathy</td>
+                                        <td>Callous Apathy and Cruel Mockery</td>
+                                        <td>The sociopathic reaction of finding immense amusement in the suffering of friends, completely discarding any sense of empathy or duty to help</td>
+                                        <td>Mac and Charlie should express deep shock and concern, offer immediate help, and suggest rehab for their friends&#x27; severe addiction</td>
+                                        <td>Mac and Charlie immediately state they do not care, laugh at their friends&#x27; degraded state, and aggressively pantomime them crying for crack</td>
+                                        <td>SuperiorityTheory</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--<div class="nacc-item">
+                <input type="checkbox" id="m2" class="nacc-toggle">
+                <label for="m2" class="nacc-label">Annotation Criteria<span class="nacc-icon">+</span></label>
+                <div class="nacc-body"><div class="nacc-inner">
+                    <p class="prose">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
+                </div></div>
+            </div>
+        </div> -->
+    </section>
+
+    <!-- 3. KNOWLEDGE REPRESENTATION -->
+    <section class="page-section" id="kr">
+        <p class="section-eyebrow">03 — Knowledge Representation</p>
+        <h2 class="section-heading">The Gang Models the Humor</h2>
+        <p class="prose">Given the challenge of mapping a mechanism as interpretational as humor, and especially subversive humor, the ontology is designed according to the Description and Situation (D&amp;S) pattern. This creates a model in which two different levels work simultaneously: an abstract level and a concrete one. This allowed us to keep structurally separated the explanation and the realization of comedic interactions.</p>
+        <p class="prose">However, one specification is needed. According to the D&amp;S pattern, theoretically, every situation satisfies some description (Carriero et al., 2021). In our work this never happens. In fact, the core of the ontology is based on the reiterated violation of the premises. What makes the humor subversive is that there is a set up, a situation where the viewer associates some kind of social or moral behaviour, and the show systematically decides to show its characters doing the complete opposite.</p>
+        <p class="prose">Applying this framework to map the series allowed us to do the same: set up a frame, contextualizing the situation, specifying also the ethical rule one would normally apply in the context, and then, with the property <code>violates</code>, we juxtaposed it to the real occurrence, where the description is completely reversed.</p>
+        <p class="prose">More specifically, the <code>EthicalRule</code> (Description level) is better explained in the <code>NormOccurence</code> (Situation layer) so as to define more precisely how the generic rule applies to the specific context, which is then violated by the <code>SubversiveOccurence</code> — what the characters decided to do.</p>
+    
+    <!-- 3.1 Ontology Design -->
+    <div class="nested-acc" style="margin-top: 20px; border-top: 1px solid var(--border);">
+        <div class="nacc-item">
+            <input type="checkbox" id="kr1" class="nacc-toggle">
+            <label for="kr1" class="nacc-label">3.1 — Ontology Design &amp; D&amp;S Pattern<span class="nacc-icon">+</span></label>
+            <div class="nacc-body"><div class="nacc-inner">
+                <p class="prose">Each humorous scene is modeled as a <strong>blending</strong> of two parallel layers: an abstract <em>Description</em> (the expected social norms) and a concrete <em>Situation</em> (what actually happens). These two classes — <code>HumorousFrame</code> and <code>HumorousSituation</code> — serve as collectors of the specific situations and descriptions, and help us model a complex multi-layered phenomenon: the humor that emerges from the contrast between them.</p>
+                <div class="ds-grid">
+                    <div class="ds-col">
+                        <p class="ds-col-title yellow">Description Layer — Abstract</p>
+                        <div class="ds-item"><div class="ds-dot yellow"></div><div>
+                            <p class="ds-item-name" style="color:var(--yellow)">ExpectedSocialFrame</p>
+                            <p class="ds-item-desc">The normal social context — a funeral, a therapy session, a water park.</p>
+                        </div></div>
+                        <div class="ds-item"><div class="ds-dot yellow"></div><div>
+                            <p class="ds-item-name" style="color:var(--yellow)">EthicalRule</p>
+                            <p class="ds-item-desc">The behavioural norm that applies in that context.</p>
+                        </div></div>
+                        <div class="ds-item"><div class="ds-dot yellow"></div><div>
+                            <p class="ds-item-name" style="color:var(--yellow)">SubversiveFrame</p>
+                            <p class="ds-item-desc">The distorted logic the characters operate by. No Situation counterpart — it is the explanation of the subversion itself.</p>
+                        </div></div>
+                        <div class="ds-item"><div class="ds-dot yellow"></div><div>
+                            <p class="ds-item-name" style="color:var(--yellow)">HumorousFrame</p>
+                            <p class="ds-item-desc">Blending node — collects all three Descriptions via <code style="font-family:monospace;color:var(--green);font-size:0.76rem">includesDescription</code>.</p>
+                        </div></div>
+                    </div>
+                    <div class="ds-col">
+                        <p class="ds-col-title green">Situation Layer — Concrete</p>
+                        <div class="ds-item"><div class="ds-dot green"></div><div>
+                            <p class="ds-item-name" style="color:var(--green)">NormOccurence</p>
+                            <p class="ds-item-desc">What the characters should have done in this specific scene.</p>
+                        </div></div>
+                        <div class="ds-item"><div class="ds-dot green"></div><div>
+                            <p class="ds-item-name" style="color:var(--green)">SubversiveOccurence</p>
+                            <p class="ds-item-desc">What they actually do. Violates the NormOccurence. Triggers the TheoreticalMechanism.</p>
+                        </div></div>
+                        <div class="ds-item"><div class="ds-dot green"></div><div>
+                            <p class="ds-item-name" style="color:var(--green)">HumorousSituation</p>
+                            <p class="ds-item-desc">Blending node — collects Norm and Subversive occurrences via <code style="font-family:monospace;color:var(--green);font-size:0.76rem">includesSituation</code>.</p>
+                        </div></div>
+                    </div>
+                </div>
+
+                <div class="arrow-row"><strong>HumorousSituation</strong><span class="arrow">→</span><span>isDescribedBy</span><span class="arrow">→</span><strong>HumorousFrame</strong></div>
+                <div class="arrow-row" style="margin-top:2px"><strong>SubversiveOccurence</strong><span class="arrow">→</span><span>violates</span><span class="arrow">→</span><strong>NormOccurence</strong><span style="color:var(--muted);font-size:0.7rem;margin-left:8px">// the core of subversive humor</span></div>
+            
+            <!-- The elements completing the picture -->
+            <p class="prose" style="margin-top: 40px;">Beyond the D&amp;S structure, three additional classes complement the model. They are structurally independent from the pattern but connected to it through object properties.</p>
+
+            <!-- TheoreticalMechanism — full width -->
+            <div class="ds-col" style="margin-top: 16px;">
+                <p class="ds-col-title" style="color: var(--blue); border-bottom: 1px solid var(--border); padding-bottom: 10px; margin-bottom: 18px; font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;">TheoreticalMechanism</p>
+                <p class="ds-item-desc" style="margin-bottom: 16px;">The academic explanation of what psychological behaviour triggers the humor — drawn directly from the three classical theories discussed in the Theoretical Framework.</p>
+                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2px;">
+                    <div style="background: var(--black); padding: 16px;">
+                        <p class="ds-item-name" style="color:var(--blue); margin-bottom: 4px;">SuperiorityTheory</p>
+                        <p class="ds-item-desc">The viewer laughs by recognising the characters' moral and social inferiority (Hobbes, in Wickberg, 1998).</p>
+                    </div>
+                    <div style="background: var(--black); padding: 16px;">
+                        <p class="ds-item-name" style="color:var(--blue); margin-bottom: 4px;">IncongruityTheory</p>
+                        <p class="ds-item-desc">Humor arises from the mismatch between expectation and outcome (Morreall, 1983).</p>
+                    </div>
+                    <div style="background: var(--black); padding: 16px;">
+                        <p class="ds-item-name" style="color:var(--blue); margin-bottom: 4px;">ReliefTheory</p>
+                        <p class="ds-item-desc">Laughter as release — the characters undermine rigid social schemes, offering the viewer a safe transgression (Durgnat, 1969).</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- HumorEntity + HumorQuality — side by side -->
+            <div class="ds-grid" style="margin-top: 2px;">
+                <div class="ds-col">
+                    <p class="ds-col-title" style="color: var(--red); border-bottom: 1px solid var(--border); padding-bottom: 10px; margin-bottom: 18px; font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;">HumorEntity</p>
+                    <p class="ds-item-desc" style="margin-bottom: 16px;">The necessary actors in any humorous action — as stated in the Theoretical Framework, every humorous scene involves a joke teller and a victim (Mills, 2005).</p>
+                    <div class="ds-item"><div class="ds-dot" style="background:var(--red)"></div><div>
+                        <p class="ds-item-name" style="color:var(--red)">Agent</p>
+                        <p class="ds-item-desc">The joke teller — the one who performs the subversive act.</p>
+                    </div></div>
+                    <div class="ds-item"><div class="ds-dot" style="background:var(--red)"></div><div>
+                        <p class="ds-item-name" style="color:var(--red)">Target</p>
+                        <p class="ds-item-desc">The victim of the joke — may coincide with the Agent in self-deprecating humor.</p>
+                    </div></div>
+                </div>
+                <div class="ds-col">
+                    <p class="ds-col-title" style="color: var(--yellow); border-bottom: 1px solid var(--border); padding-bottom: 10px; margin-bottom: 18px; font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;">HumorQuality</p>
+                    <p class="ds-item-desc" style="margin-bottom: 16px;">Inherent traits of the HumorEntity. They characterise the entity independently from any specific scene.</p>
+                    <div class="ds-item"><div class="ds-dot yellow"></div><div>
+                        <p class="ds-item-name" style="color:var(--yellow)">AestheticQuality</p>
+                        <p class="ds-item-desc">Visual or stylistic traits — e.g. how a character presents themselves.</p>
+                    </div></div>
+                    <div class="ds-item"><div class="ds-dot yellow"></div><div>
+                        <p class="ds-item-name" style="color:var(--yellow)">BehaviouralQuality</p>
+                        <p class="ds-item-desc">Recurring patterns of conduct — e.g. Mac's denial, Charlie's illiteracy.</p>
+                    </div></div>
+                    <div class="ds-item"><div class="ds-dot yellow"></div><div>
+                        <p class="ds-item-name" style="color:var(--yellow)">PhysicalQuality</p>
+                        <p class="ds-item-desc">Bodily characteristics relevant to the humor — e.g. Frank's appearance.</p>
+                    </div></div>
+                </div>
+            </div>
+        
+        <div style="margin-top: 32px; text-align: center;">
+            <img src="imgs/itsAlwaysGraph.png" alt="Ontology Graph" style="max-width: 100%; border: 1px solid var(--border); padding: 24px; background: #fff;">
+            <p style="font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem; color: var(--muted); margin-top: 12px;">Figure 1 — A representation of the classes and properties. It can be seen better <a href="https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/imgs/itsAlwaysGraph.png" target="_blank" style="color: var(--yellow)"> here</a></p>
+        </div>
+
+        <div class="scene-card">
+            <p class="scene-id">HS_001 · S12E02 · 00:02:32</p>
+            <p class="scene-title" style="margin-bottom: 8px;">The Gang Goes to a Water Park</p>
+            <p class="scene-desc" style="margin-bottom: 20px;">Mac and Dee insult a lifeguard who tells them they are too big for the children's slide, then force their way down and get painfully stuck.</p>
+            <div class="scene-triples">
+                <div>
+                    <p class="triple-group-title">Description Layer</p>
+                    <p class="triple"><span class="s">ESF_RecreationalSafety</span><span class="p"> a </span><span class="o">ExpectedSocialFrame</span></p>
+                    <p class="triple"><span class="s">ER_SafetyCompliance</span><span class="p"> a </span><span class="o">EthicalRule</span></p>
+                    <p class="triple"><span class="s">SubF_ChildishRebellion</span><span class="p"> a </span><span class="o">SubversiveFrame</span></p>
+                    <p class="triple"><span class="s">HS_001_frame</span><span class="p"> includesDescription </span><span class="o">all three above</span></p>
+                </div>
+                <div>
+                    <p class="triple-group-title">Situation Layer</p>
+                    <p class="triple"><span class="s">HS_001_norm</span><span class="p"> a </span><span class="o">NormOccurence</span></p>
+                    <p class="triple"><span class="s">HS_001_subversive</span><span class="p"> a </span><span class="o">SubversiveOccurence</span></p>
+                    <p class="triple"><span class="s">HS_001_subversive</span><span class="p"> violates </span><span class="o">HS_001_norm</span></p>
+                    <p class="triple"><span class="s">HS_001_mechanism</span><span class="p"> a </span><span class="o">SuperiorityTheory</span></p>
+                </div>
+            </div>
+        </div></div></div></div>
+
+        
+
+        <!-- 3.2 DUL Alignment -->
+        <div class="nacc-item" id="alignment">
+            <input type="checkbox" id="kr2" class="nacc-toggle">
+            <label for="kr2" class="nacc-label">3.2 — DUL Alignment<span class="nacc-icon">+</span></label>
+            <div class="nacc-body"><div class="nacc-inner">
+            <p class="prose">Since the core of the ontology relies on Description &amp; Situation, wanting to model human-centered knowledge, the most organic and logical choice was to align it with <em>DOLCE-UltraLite (DUL)</em>, as was also used by Carriero et al. (2021). The perfect integration between the pattern and the corresponding ontology allows the project to have a more solid structure — preventing inconsistencies — and more importantly, ensuring interoperability and authoritativeness.</p>
+            <p class="prose">One small detail is that DUL is imported from <code>http://www.loa-cnr.it/ontologies/DUL.owl</code>, hosted by the LOA-CNR server, but is a perfect mirror of the more canonical endpoint; the only difference is that it was more easily downloadable to be integrated into Protégé for a smoother alignment.</p>                <table class="alignment-table">
+            <p class="prose">Finally, to avoid inconsistencies, the alignment followed one logic: the only classes aligned as <code>owl:equivalentClass</code> are <code>Description</code> and <code>Situation</code>, along with the corresponding object property <code>isDescribedBy</code> as <code>owl:equivalentProperty</code>. All the others are considered <code>rdfs:subClassOf</code>, leaving more room for semantic differences between the SunnyOntology and DOLCE-UltraLite.</p>
+
+            <table class="alignment-table">
+                <thead><tr><th>Local</th><th>Relation</th><th>DUL</th><th>Rationale</th></tr></thead>
+                    <tbody>
+                        <tr><td class="local-cls">:Description</td><td class="rel">≡ equivalentClass</td><td class="dul-cls">dul:Description</td><td class="rationale">Identical concept — the abstract layer of D&S.</td></tr>
+                        <tr><td class="local-cls">:Situation</td><td class="rel">≡ equivalentClass</td><td class="dul-cls">dul:Situation</td><td class="rationale">Identical concept — the concrete layer of D&S.</td></tr>
+                        <tr><td class="local-cls">:SubversiveOccurence</td><td class="rel">⊆ subClassOf</td><td class="dul-cls">dul:Action</td><td class="rationale">The subversion is always intentional — an agent deliberately acts against the norm.</td></tr>
+                        <tr><td class="local-cls">:HumorEntity</td><td class="rel">⊆ subClassOf</td><td class="dul-cls">dul:SocialAgent</td><td class="rationale">Characters are social agents.</td></tr>
+                        <tr><td class="local-cls">:HumorQuality</td><td class="rel">⊆ subClassOf</td><td class="dul-cls">dul:Quality</td><td class="rationale">Behavioral, aesthetic and physical traits are inherent qualities of entities.</td></tr>
+                        <tr><td class="local-cls">:isDescribedBy</td><td class="rel">≡ equivalentProperty</td><td class="dul-cls">dul:isDescribedBy</td><td class="rationale">Same domain (Situation) and range (Description).</td></tr>
+                        <tr><td class="local-cls">:hasAgent :hasTarget</td><td class="rel">⊆ subPropertyOf</td><td class="dul-cls">dul:hasParticipant</td><td class="rationale">Both agent and target participate in the humorous situation.</td></tr>
+                        <tr><td class="local-cls">:includesSituation<br>:includesDescription</td><td class="rel">⊆ subPropertyOf</td><td class="dul-cls">dul:hasComponent</td><td class="rationale">Part-whole composition within their respective layers.</td></tr>
+                    </tbody>
+            </table>
+            </div></div>
+        </div>
+    </div></div>
+
+    </div> <!-- fine nested-acc -->
+
+    <div class="nacc-item" style="margin-top: 24px;">
+        <input type="checkbox" id="refs2" class="nacc-toggle">
+        <label for="refs2" class="nacc-label" style="padding: 12px 24px;">References<span class="nacc-icon">+</span></label>
+        <div class="nacc-body"><div class="nacc-inner">
+            <p class="prose">
+                Carriero, V.A., Gangemi, A., Nuzzolese, A.G., &amp; Presutti, V. (2021). An ontology design pattern for representing recurrent situations. <em>Amsterdam: IOS Press.</em> <a href="https://doi.org/10.3233/SSW210013" style="color: var(--green);">https://doi.org/10.3233/SSW210013</a>
+            </p>
+        </div></div>
+    </div>
+    </section> <!-- fine page-section kr -->
+
+
+    <!-- 4. KNOWLEDGE EXTRACTION -->
+    <section class="page-section" id="ke">
+        <p class="section-eyebrow">04 — Knowledge Extraction</p>
+        <h2 class="section-heading">The Gang Queries the Graph</h2>
+        <p class="prose">The ontology was populated with 10 scenes from the series. The full graph is available at <a href="https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/SunnyOntology_populated.ttl" target="_blank" style="color: var(--green);">SunnyOntology_populated.ttl</a>. Below are the <strong>complete</strong> results and logic for each Competency Question.</p>
+
+        <div class="nested-acc">
+            
+            <div class="nacc-item">
+                <input type="checkbox" id="ke1" class="nacc-toggle">
+                <label for="ke1" class="nacc-label">CQ1 — Vulnerability & Incongruity Theory<span class="nacc-icon">+</span></label>
+                <div class="nacc-body"><div class="nacc-inner">
+                    <div class="sparql-block">
+                        <div class="sparql-question"><span class="cq-label">CQ1</span>Which Agents enact subversive actions, and which ethical rules do they violate, when the mechanism is "Incongruity Theory" and the Target possesses a specific quality?</div>
+                        <div class="code-box"><div class="code-header">SPARQL</div><pre><span class="kw">SELECT DISTINCT</span> <span class="var">?scene ?agent ?targetQuality ?ethicalRuleName ?subversiveAction</span>
+    <span class="kw">WHERE</span> {
+    <span class="var">?scene</span> <span class="pfx">a</span> <span class="cls">sunny:HumorousSituation</span> .
+    <span class="var">?scene</span> <span class="prop">sunny:isExplainedBy</span> <span class="var">?mechanism</span> .
+    <span class="var">?scene</span> <span class="prop">sunny:hasTarget</span> <span class="var">?target</span> .
+    <span class="var">?scene</span> <span class="prop">sunny:hasAgent</span> <span class="var">?agent</span> .
+    <span class="var">?scene</span> <span class="prop">sunny:isDescribedBy</span> <span class="var">?frame</span> .
+    <span class="var">?scene</span> <span class="prop">sunny:includesSituation</span> <span class="var">?subversiveOcc</span> .
+    <span class="var">?mechanism</span> <span class="pfx">a</span> <span class="cls">sunny:IncongruityTheory</span> .
+    <span class="var">?target</span> <span class="pfx">a</span> <span class="cls">sunny:Target</span> ;
+            <span class="prop">sunny:hasQuality</span> <span class="var">?targetQuality</span> .
+    <span class="var">?frame</span> <span class="prop">sunny:includesDescription</span> <span class="var">?ethicalRule</span> .
+    <span class="var">?ethicalRule</span> <span class="pfx">a</span> <span class="cls">sunny:EthicalRule</span> ;
+                <span class="pfx">rdfs:label</span> <span class="var">?ethicalRuleName</span> .
+    <span class="var">?subversiveOcc</span> <span class="pfx">a</span> <span class="cls">sunny:SubversiveOccurence</span> ;
+                    <span class="pfx">rdfs:comment</span> <span class="var">?subversiveAction</span> .
+    }</pre></div>
+                    </div>
+                    <table class="alignment-table">
+                        <thead><tr><th>Scene</th><th>Agent</th><th>targetQuality</th><th>ethicalRuleName</th><th>subversiveAction</th></tr></thead>
+                        <tbody>
+                            <tr><td>HS_002</td><td>Gang</td><td>BehavioralQuality</td><td>Respect for Clinical Purpose and Boundaries</td><td>Dee hijacks the session by bringing in the gang, while Frank dumps a tablecloth of dirty dishes on the therapist's floor</td></tr>
+                            <tr><td>HS_002</td><td>Dee</td><td>BehavioralQuality</td><td>Respect for Clinical Purpose and Boundaries</td><td>Dee hijacks the session by bringing in the gang, while Frank dumps a tablecloth of dirty dishes</td></tr>
+                            <tr><td>HS_006</td><td>Charlie</td><td>BehavioralQuality</td><td>Basic Self-Preservation and Health</td><td>Charlie plans to serve paint to customers, reveals his green tongue, and dismisses toxicity</td></tr>
+                            <tr><td>HS_005</td><td>Charlie</td><td>PhysicalQuality</td><td>Protection of Minors from Adult Violence</td><td>Too terrified to fight the adult thief, they brutally beat up his young children instead</td></tr>
+                            <tr><td>HS_005</td><td>Mac</td><td>PhysicalQuality</td><td>Protection of Minors from Adult Violence</td><td>Too terrified to fight the adult thief, they brutally beat up his young children instead</td></tr>
+                            <tr><td>HS_003</td><td>Dennis</td><td>BehavioralQuality</td><td>Good Neighbor Etiquette and Basic Politeness</td><td>Mac and Dennis stare aggressively in dead silence at the greeting neighbor</td></tr>
+                            <tr><td>HS_003</td><td>Mac</td><td>BehavioralQuality</td><td>Good Neighbor Etiquette and Basic Politeness</td><td>Mac and Dennis stare aggressively in dead silence at the greeting neighbor</td></tr>
+                            <tr><td>HS_009</td><td>Dennis</td><td>BehavioralQuality</td><td>Personal Independence and Maturity</td><td>Dennis demands Dee peel his apple, cites absurd fears of toxins, and throws a tantrum</td></tr>
+                            <tr><td>HS_004</td><td>Charlie</td><td>BehavioralQuality</td><td>Relatability and Social Appeal in Dating</td><td>Charlie answers questions with "milk steak", "magnets", and "ghouls", ruining the profile</td></tr>
+                        </tbody>
+                    </table>
+                </div></div>
+            </div>
+
+            <div class="nacc-item">
+                <input type="checkbox" id="ke2" class="nacc-toggle">
+                <label for="ke2" class="nacc-label">CQ2 — Psychological Profiling & Superiority<span class="nacc-icon">+</span></label>
+                <div class="nacc-body"><div class="nacc-inner">
+                    <div class="sparql-block">
+                        <div class="sparql-question"><span class="cq-label">CQ2</span>Which subversive frames are enacted by agents characterised by a "Behavioral" defect when the comedic outcome leverages the Superiority Theory?</div>
+                        <div class="code-box"><div class="code-header">SPARQL</div><pre><span class="kw">SELECT DISTINCT</span> <span class="var">?scene ?agent ?agentQuality ?subversiveFrameName</span>
+    <span class="kw">WHERE</span> {
+    <span class="var">?scene</span> <span class="pfx">a</span> <span class="cls">sunny:HumorousSituation</span> .
+    <span class="var">?scene</span> <span class="prop">sunny:hasAgent</span> <span class="var">?agent</span> .
+    <span class="var">?scene</span> <span class="prop">sunny:isDescribedBy</span> <span class="var">?frame</span> .
+    <span class="var">?scene</span> <span class="prop">sunny:isExplainedBy</span> <span class="var">?mechanism</span> .
+    <span class="var">?mechanism</span> <span class="pfx">a</span> <span class="cls">sunny:SuperiorityTheory</span> .
+    <span class="var">?agent</span> <span class="pfx">a</span> <span class="cls">sunny:Agent</span> ;
+            <span class="prop">sunny:hasQuality</span> <span class="var">?agentQuality</span> .
+    <span class="var">?frame</span> <span class="prop">sunny:includesDescription</span> <span class="var">?subversiveFrame</span> .
+    <span class="var">?subversiveFrame</span> <span class="pfx">a</span> <span class="cls">sunny:SubversiveFrame</span> ;
+                    <span class="pfx">rdfs:label</span> <span class="var">?subversiveFrameName</span> .
+    }</pre></div>
+                    </div>
+                    <table class="alignment-table">
+                        <thead><tr><th>scene</th><th>agent</th><th>agentQuality</th><th>subversiveFrameName</th></tr></thead>
+                        <tbody>
+                            <tr><td>HS_001</td><td>Mac</td><td>BehavioralQuality</td><td>"Childish Rebellion by Adults"</td></tr>
+                            <tr><td>HS_001</td><td>Dee</td><td>BehavioralQuality</td><td>"Childish Rebellion by Adults"</td></tr>
+                            <tr><td>HS_010</td><td>Mac</td><td>BehavioralQuality</td><td>"Callous Apathy and Cruel Mockery"</td></tr>
+                            <tr><td>HS_010</td><td>Charlie</td><td>BehavioralQuality</td><td>"Callous Apathy and Cruel Mockery"</td></tr>
+                        </tbody>
+                    </table>
+                </div></div>
+            </div>
+
+            <div class="nacc-item">
+                <input type="checkbox" id="ke3" class="nacc-toggle">
+                <label for="ke3" class="nacc-label">CQ3 — The Anatomy of Chaos<span class="nacc-icon">+</span></label>
+                <div class="nacc-body"><div class="nacc-inner">
+                    <div class="sparql-block">
+                        <div class="sparql-question"><span class="cq-label">CQ3</span>When an Agent with behavioral flaws attacks a physically vulnerable Target, what is the social expectation and how is it brutally violated?</div>
+                        <div class="code-box"><div class="code-header">SPARQL</div><pre><span class="kw">SELECT DISTINCT</span> <span class="var">?scene ?agent ?target ?normExpected ?subversiveAction</span>
+    <span class="kw">WHERE</span> {
+    <span class="var">?scene</span> <span class="pfx">a</span> <span class="cls">sunny:HumorousSituation</span> .
+    <span class="var">?scene</span> <span class="prop">sunny:hasAgent</span> <span class="var">?agent</span> ;
+            <span class="prop">sunny:hasTarget</span> <span class="var">?target</span> .
+    <span class="var">?scene</span> <span class="prop">sunny:includesSituation</span> <span class="var">?normOcc</span> ;
+            <span class="prop">sunny:includesSituation</span> <span class="var">?subvOcc</span> .
+    <span class="var">?agent</span> <span class="prop">sunny:hasQuality</span> <span class="cls">sunny:BehavioralQuality</span> .
+    <span class="var">?target</span> <span class="prop">sunny:hasQuality</span> <span class="cls">sunny:PhysicalQuality</span> .
+    <span class="var">?normOcc</span> <span class="pfx">a</span> <span class="cls">sunny:NormOccurence</span> ;
+            <span class="pfx">rdfs:comment</span> <span class="var">?normExpected</span> .
+    <span class="var">?subvOcc</span> <span class="pfx">a</span> <span class="cls">sunny:SubversiveOccurence</span> ;
+            <span class="pfx">rdfs:comment</span> <span class="var">?subversiveAction</span> .
+    }</pre></div>
+                    </div>
+                    <table class="alignment-table">
+                        <thead><tr><th>scene</th><th>agent</th><th>target</th><th>normExpected</th><th>subversiveAction</th></tr></thead>
+                        <tbody>
+                            <tr><td>HS_005</td><td>Charlie</td><td>The_Kids</td><td>Confront the intimidating father or call the police</td><td>Brutally beat up his young children instead to steal the bike back</td></tr>
+                            <tr><td>HS_005</td><td>Mac</td><td>The_Kids</td><td>Confront the intimidating father or call the police</td><td>Brutally beat up his young children instead to steal the bike back</td></tr>
+                            <tr><td>HS_010</td><td>Mac</td><td>Dee</td><td>Express deep shock and concern, offer immediate help</td><td>Laugh at their friends' degraded state and pantomime them crying for crack</td></tr>
+                            <tr><td>HS_010</td><td>Mac</td><td>Dennis</td><td>Express deep shock and concern, offer immediate help</td><td>Laugh at their friends' degraded state and pantomime them crying for crack</td></tr>
+                            <tr><td>HS_010</td><td>Charlie</td><td>Dee</td><td>Express deep shock and concern, offer immediate help</td><td>Laugh at their friends' degraded state and pantomime them crying for crack</td></tr>
+                            <tr><td>HS_010</td><td>Charlie</td><td>Dennis</td><td>Express deep shock and concern, offer immediate help</td><td>Laugh at their friends' degraded state and pantomime them crying for crack</td></tr>
+                        </tbody>
+                    </table>
+                </div></div>
+            </div>
+
+            <div class="nacc-item">
+                <input type="checkbox" id="ke4" class="nacc-toggle">
+                <label for="ke4" class="nacc-label">CQ4 — The Universal "Karma" Effect<span class="nacc-icon">+</span></label>
+                <div class="nacc-body"><div class="nacc-inner">
+                    <div class="sparql-block">
+                        <div class="sparql-question"><span class="cq-label">CQ4</span>Across the different episodes, which characters experience a "karmic role reversal" by acting as the instigator (Agent) in one episode, only to become the victim (Target) in another?</div>
+                        <div class="code-box"><div class="code-header">SPARQL</div><pre><span class="kw">SELECT DISTINCT</span> <span class="var">?character ?agentEpisode ?targetEpisode</span>
+    <span class="kw">WHERE</span> {
+    <span class="var">?scene1</span> <span class="pfx">a</span> <span class="cls">sunny:HumorousSituation</span> ;
+            <span class="prop">sunny:hasTitle</span> <span class="var">?agentEpisodeTitle</span> ;
+            <span class="prop">sunny:hasAgent</span> <span class="var">?agentNode</span> .
+    <span class="var">?agentNode</span> <span class="pfx">rdfs:label</span> <span class="var">?characterName</span> .
+    <span class="var">?scene2</span> <span class="pfx">a</span> <span class="cls">sunny:HumorousSituation</span> ;
+            <span class="prop">sunny:hasTitle</span> <span class="var">?targetEpisodeTitle</span> ;
+            <span class="prop">sunny:hasTarget</span> <span class="var">?targetNode</span> .
+    <span class="var">?targetNode</span> <span class="pfx">rdfs:label</span> <span class="var">?characterName</span> .
+    <span class="kw">FILTER</span>(<span class="var">?scene1</span> != <span class="var">?scene2</span>)
+    <span class="kw">BIND</span>(<span class="kw">STR</span>(<span class="var">?characterName</span>) <span class="kw">AS</span> <span class="var">?character</span>)
+    <span class="kw">BIND</span>(<span class="kw">STR</span>(<span class="var">?agentEpisodeTitle</span>) <span class="kw">AS</span> <span class="var">?agentEpisode</span>)
+    <span class="kw">BIND</span>(<span class="kw">STR</span>(<span class="var">?targetEpisodeTitle</span>) <span class="kw">AS</span> <span class="var">?targetEpisode</span>)
+    }</pre></div>
+                    </div>
+                    <table class="alignment-table">
+                        <thead><tr><th>Character</th><th>agentEpisode</th><th>targetEpisode</th></tr></thead>
+                        <tbody>
+                            <tr><td>Charlie</td><td>The Gang Gets New Wheels</td><td>Charlie's Mom Has Cancer</td></tr>
+                            <tr><td>Mac</td><td>The Gang Gets New Wheels</td><td>Charlie Catches a Leprechaun</td></tr>
+                            <tr><td>Mac</td><td>The Gang Gets New Wheels</td><td>The Waitress Is Getting Married</td></tr>
+                            <tr><td>Charlie</td><td>Charlie Catches a Leprechaun</td><td>Charlie's Mom Has Cancer</td></tr>
+                            <tr><td>Charlie</td><td>The Waitress Is Getting Married</td><td>Charlie's Mom Has Cancer</td></tr>
+                            <tr><td>Mac</td><td>Dennis and Dee Go on Welfare</td><td>Charlie Catches a Leprechaun</td></tr>
+                            <tr><td>Mac</td><td>Dennis and Dee Go on Welfare</td><td>The Waitress Is Getting Married</td></tr>
+                            <tr><td>Charlie</td><td>Dennis and Dee Go on Welfare</td><td>Charlie's Mom Has Cancer</td></tr>
+                            <tr><td>Dennis</td><td>Mac and Dennis Break Up</td><td>The Waitress Is Getting Married</td></tr>
+                            <tr><td>Dennis</td><td>Mac and Dennis Break Up</td><td>Dennis and Dee Go on Welfare</td></tr>
+                            <tr><td>Mac</td><td>The Gang Goes to a Water Park</td><td>Charlie Catches a Leprechaun</td></tr>
+                            <tr><td>Mac</td><td>The Gang Goes to a Water Park</td><td>The Waitress Is Getting Married</td></tr>
+                            <tr><td>Dee</td><td>The Gang Goes to a Water Park</td><td>Dennis and Dee Go on Welfare</td></tr>
+                            <tr><td>Dee</td><td>The Gang Goes to a Water Park</td><td>Mac and Dennis Break Up</td></tr>
+                            <tr><td>Dee</td><td>The Gang Gets Analyzed</td><td>Dennis and Dee Go on Welfare</td></tr>
+                            <tr><td>Dee</td><td>The Gang Gets Analyzed</td><td>Mac and Dennis Break Up</td></tr>
+                            <tr><td>Dennis</td><td>Mac & Dennis Move to the Suburbs</td><td>The Waitress Is Getting Married</td></tr>
+                            <tr><td>Dennis</td><td>Mac & Dennis Move to the Suburbs</td><td>Dennis and Dee Go on Welfare</td></tr>
+                            <tr><td>Mac</td><td>Mac & Dennis Move to the Suburbs</td><td>Charlie Catches a Leprechaun</td></tr>
+                            <tr><td>Mac</td><td>Mac & Dennis Move to the Suburbs</td><td>The Waitress Is Getting Married</td></tr>
+                        </tbody>
+                    </table>
+                </div></div>
+            </div>
+        </div>
+    </section>    
+
+<!-- 5. CONCLUSION -->
+    <section class="page-section" id="conclusion">
+        <p class="section-eyebrow">05 — Conclusion</p>
+        <h2 class="section-heading">The Gang Wraps It Up</h2>
+        <p class="prose">This project developed a formal ontology to conceptualize and map the humor mechanisms behind <em>It's Always Sunny in Philadelphia</em>. Our primary goal was to move beyond a simple classification of scenes and formalize the dynamic, often chaotic structure of comedic subversion. By querying the populated graph, we managed to uncover the underlying formula of the show's success: the comedy relies on the systematic and brutal collision between abstract societal expectations and the characters' concrete behavioral flaws. The descriptive power of the Description and Situation (D&S) pattern , where every situation theoretically satisfies some description, was validated through our SPARQL competency questions. These queries confirmed the model's consistency by retrieving the logical clashes we mapped.</p>
+        <p class="prose"> Ultimately, the ontology helps us answer our initial research question: if this behavior is so wrong, <em>what makes it funny?</em> It is funny because the characters are trapped in a self-destructive loop. As highlighted by our "Karma" query (CQ4), those who act as cruel Agents inevitably become vulnerable Targets in a universe that constantly punishes their transgressions. Future work could extend the dataset to the entire series, or even apply this same formal framework to compare the subversion of norms across different television shows.</p>
+
+    </section>
+
+    <footer>
+        <span> Project made for a University project for the <a href="https://www.unibo.it/it/studiare/insegnamenti-competenze-trasversali-moocs/insegnamenti/insegnamento/2024/490896" target="_blank"> Knowledge Representation &amp; Knowledge Extraction </a> course at the <em> Digital Humanities and Digital Knowledge</em> master's degree in Bologna.</span>
+        <span>©itsAlwaysSunnyOntology</span>
+        <p>Realized by<a href="mailto:chiara.picardi2@studio.unibo.it" target="_blank"> Chiara Picardi</a></span> and <a href="mailto:cecilia.vesci@studio.unibo.it" target="_blank"> Cecilia Vesci</p>
+        <span><a href="https://github.com/chiarapicardii/itsAlwaysSunnyOntology" target="_blank">github.com/chiarapicardii/itsAlwaysSunnyOntology</a></span>
+    </footer>
+
+</main>
+
+<script>
+    // Close sidebar when a nav link is clicked
+    document.querySelectorAll('.sidebar-nav a').forEach(link => {
+        link.addEventListener('click', () => {
+            document.querySelector('.sidebar').classList.remove('open');
+        });
+    });
+
+    // Highlight active sidebar link on scroll
+    const sections = document.querySelectorAll('[id]');
+    const navLinks = document.querySelectorAll('.sidebar-nav a');
+    window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(s => {
+            if (window.scrollY >= s.offsetTop - 120) current = s.id;
+        });
+        navLinks.forEach(a => {
+            a.classList.remove('active');
+            if (a.getAttribute('href') === '#' + current) a.classList.add('active');
+        });
+    });
+</script>
+
+</body>
+</html>
