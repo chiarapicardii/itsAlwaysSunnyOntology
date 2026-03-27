@@ -447,7 +447,7 @@
         <p class="prose"> Given the challenge of mapping a mechanism as interpretational as humor, and especially subversive humor, the ontology is designed according to the <strong>Description and Situation (D&S)</strong> pattern. This creates a model in which two different levels work simultaneously: an abstract level and a concrete one. This allowed us to keep structurally separated the explanation and the realization of comedic interactions.</p>
         <p class="prose"> However, one specification is needed. According to the D&S pattern, theoretically, every situation satisfies some description (Carriero et al., 2021). In our work, <strong>this satisfaction is intentionally misaligned</strong>: the core of the ontology is based on the reiterated violation of the <strong>expected</strong> premises. What makes the humor subversive is that there is a set up, a situation where the viewer associates some kind of social or moral behaviour, and the show systematically decides to show its characters doing the complete opposite. </p>
         <p class="prose"> Applying this framework to map the series allowed us to do the same: set up a frame, contextualizing the situation, specifying also the ethical rule one would normally apply in the context, and then, with the property <code>violates</code>, we juxtaposed it to the real occurrence, where the <strong>expected</strong> description is completely reversed. </p>
-        <p class="prose"> More specifically, the <code>EthicalRule</code> (Description level) is better explained in the <code>NormOccurrence</code> (Situation layer) so as to define more precisely how the generic rule applies to the specific context, which is then violated by the <code>SubversiveOccurrence</code> — what the characters decided to do. </p>
+        <p class="prose"> More specifically, the <code>EthicalRule</code> (Description level) is better explained in the <code>NormOccurrence</code> (Situation layer) so as to define more precisely how the generic rule applies to the specific context, which is then violated by the <code>SubversiveOccurrence</code>, showing what the characters decided to do. </p>
     
     <!-- 3.1 Ontology Design -->
     <div class="nested-acc" style="margin-top: 20px; border-top: 1px solid var(--border);">
@@ -479,12 +479,12 @@
                     <div class="ds-col">
                         <p class="ds-col-title green">Situation Layer — Concrete</p>
                         <div class="ds-item"><div class="ds-dot green"></div><div>
-                            <p class="ds-item-name" style="color:var(--green)">NormOccurence</p>
+                            <p class="ds-item-name" style="color:var(--green)">Normoccurrence</p>
                             <p class="ds-item-desc">What the characters should have done in this specific scene.</p>
                         </div></div>
                         <div class="ds-item"><div class="ds-dot green"></div><div>
-                            <p class="ds-item-name" style="color:var(--green)">SubversiveOccurence</p>
-                            <p class="ds-item-desc">What they actually do. Violates the NormOccurence. Triggers the TheoreticalMechanism.</p>
+                            <p class="ds-item-name" style="color:var(--green)">Subversiveoccurrence</p>
+                            <p class="ds-item-desc">What they actually do. Violates the Normoccurrence. Triggers the TheoreticalMechanism.</p>
                         </div></div>
                         <div class="ds-item"><div class="ds-dot green"></div><div>
                             <p class="ds-item-name" style="color:var(--green)">HumorousSituation</p>
@@ -494,7 +494,7 @@
                 </div>
 
                 <div class="arrow-row"><strong>HumorousSituation</strong><span class="arrow">→</span><span>isDescribedBy</span><span class="arrow">→</span><strong>HumorousFrame</strong></div>
-                <div class="arrow-row" style="margin-top:2px"><strong>SubversiveOccurence</strong><span class="arrow">→</span><span>violates</span><span class="arrow">→</span><strong>NormOccurence</strong><span style="color:var(--muted);font-size:0.7rem;margin-left:8px">// the core of subversive humor</span></div>
+                <div class="arrow-row" style="margin-top:2px"><strong>Subversiveoccurrence</strong><span class="arrow">→</span><span>violates</span><span class="arrow">→</span><strong>Normoccurrence</strong><span style="color:var(--muted);font-size:0.7rem;margin-left:8px">// the core of subversive humor</span></div>
             
             <!-- The elements completing the picture -->
             <p class="prose" style="margin-top: 40px;">Beyond the D&amp;S structure, three additional classes complement the model. They are structurally independent from the pattern but connected to it through object properties.</p>
@@ -570,8 +570,8 @@
                 </div>
                 <div>
                     <p class="triple-group-title">Situation Layer</p>
-                    <p class="triple"><span class="s">HS_001_norm</span><span class="p"> a </span><span class="o">NormOccurence</span></p>
-                    <p class="triple"><span class="s">HS_001_subversive</span><span class="p"> a </span><span class="o">SubversiveOccurence</span></p>
+                    <p class="triple"><span class="s">HS_001_norm</span><span class="p"> a </span><span class="o">Normoccurrence</span></p>
+                    <p class="triple"><span class="s">HS_001_subversive</span><span class="p"> a </span><span class="o">Subversiveoccurrence</span></p>
                     <p class="triple"><span class="s">HS_001_subversive</span><span class="p"> violates </span><span class="o">HS_001_norm</span></p>
                     <p class="triple"><span class="s">HS_001_mechanism</span><span class="p"> a </span><span class="o">SuperiorityTheory</span></p>
                 </div>
@@ -594,7 +594,7 @@
                     <tbody>
                         <tr><td class="local-cls">:Description</td><td class="rel">≡ equivalentClass</td><td class="dul-cls">dul:Description</td><td class="rationale">Identical concept — the abstract layer of D&S.</td></tr>
                         <tr><td class="local-cls">:Situation</td><td class="rel">≡ equivalentClass</td><td class="dul-cls">dul:Situation</td><td class="rationale">Identical concept — the concrete layer of D&S.</td></tr>
-                        <tr><td class="local-cls">:SubversiveOccurence</td><td class="rel">⊆ subClassOf</td><td class="dul-cls">dul:Action</td><td class="rationale">The subversion is always intentional — an agent deliberately acts against the norm.</td></tr>
+                        <tr><td class="local-cls">:Subversiveoccurrence</td><td class="rel">⊆ subClassOf</td><td class="dul-cls">dul:Action</td><td class="rationale">The subversion is always intentional — an agent deliberately acts against the norm.</td></tr>
                         <tr><td class="local-cls">:HumorEntity</td><td class="rel">⊆ subClassOf</td><td class="dul-cls">dul:SocialAgent</td><td class="rationale">Characters are social agents.</td></tr>
                         <tr><td class="local-cls">:HumorQuality</td><td class="rel">⊆ subClassOf</td><td class="dul-cls">dul:Quality</td><td class="rationale">Behavioral, aesthetic and physical traits are inherent qualities of entities.</td></tr>
                         <tr><td class="local-cls">:isDescribedBy</td><td class="rel">≡ equivalentProperty</td><td class="dul-cls">dul:isDescribedBy</td><td class="rationale">Same domain (Situation) and range (Description).</td></tr>
@@ -621,10 +621,46 @@
 
 
     <!-- 4. KNOWLEDGE EXTRACTION -->
-    <section class="page-section" id="ke">
-        <p class="section-eyebrow">04 — Knowledge Extraction</p>
-        <h2 class="section-heading">The Gang Queries the Graph</h2>
-        <p class="prose">The ontology was populated with 10 scenes from the series. The full graph is available at <a href="https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/SunnyOntology_populated.ttl" target="_blank" style="color: var(--green);">SunnyOntology_populated.ttl</a>. Below are the <strong>complete</strong> results and logic for each Competency Question.</p>
+    <style>
+    .code-block {
+        background-color: #1e1e1e;
+        color: #d4d4d4;
+        padding: 20px;
+        border-radius: 8px;
+        font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+        line-height: 1.5;
+        overflow-x: auto;
+        border: 1px solid #333;
+    }
+    .code-comment { color: #6a9955; } /* Verde per i commenti */
+    .code-keyword { color: #569cd6; } /* Blu per gli 'if' */
+    .code-func { color: #dcdcaa; }    /* Giallo per i metodi come .add() */
+    .code-var { color: #9cdcfe; }     /* Azzurro per le variabili */
+    .code-const { color: #4fc1ff; }   /* Blu chiaro per SUNNY/RDF */
+</style>
+
+<section class="page-section" id="ke">
+    <p class="section-eyebrow">04 — Knowledge Extraction</p>
+    <h2 class="section-heading">The Gang Queries the Graph</h2>
+    <p class="prose">
+        The ontology was populated with 10 scenes from the series. The full graph is available at 
+        <a href="https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/SunnyOntology_populated.ttl" target="_blank" style="color: var(--green);">SunnyOntology_populated.ttl</a>. 
+        To automate this process and ensure ontological consistency, we developed a Python script using <code>rdflib</code>. 
+        While the structure of the ontology was consciously left more flexible and open (just connecting the superclasses Description and Situation), 
+        in this population part the logic was made stricter, <strong>expliciting</strong> the relationship between the specific instances of the Descriptions and their correspondent in the Situation part. 
+        This also helps understanding the <strong>misalignment</strong> previously cited, seeing how the two classes, in the real occurrence, contrast one another.
+    </p>
+
+        <pre class="code-block"><code><span class="code-comment"># Linking the NormOccurrence (S) to the EthicalRule (D)</span>
+<span class="code-keyword">if</span> <span class="code-var">rule_uri</span>:
+    <span class="code-var">g</span>.<span class="code-func">add</span>((<span class="code-var">norm_uri</span>, <span class="code-const">SUNNY</span>.isDescribedBy, <span class="code-var">rule_uri</span>))
+
+<span class="code-comment"># Linking the SubversiveOccurence (S) to the SubversiveFrame (D)</span>
+<span class="code-keyword">if</span> <span class="code-var">subversive_frame_uri</span>:
+    <span class="code-var">g</span>.<span class="code-func">add</span>((<span class="code-var">subversive_uri</span>, <span class="code-const">SUNNY</span>.isDescribedBy, <span class="code-var">subversive_frame_uri</span>))</code></pre>
+        <p class="prose">
+            Below are the <strong>complete</strong> results and logic for each Competency Question.
+        </p>
 
         <div class="nested-acc">
             
@@ -648,7 +684,7 @@
     <span class="var">?frame</span> <span class="prop">sunny:includesDescription</span> <span class="var">?ethicalRule</span> .
     <span class="var">?ethicalRule</span> <span class="pfx">a</span> <span class="cls">sunny:EthicalRule</span> ;
                 <span class="pfx">rdfs:label</span> <span class="var">?ethicalRuleName</span> .
-    <span class="var">?subversiveOcc</span> <span class="pfx">a</span> <span class="cls">sunny:SubversiveOccurence</span> ;
+    <span class="var">?subversiveOcc</span> <span class="pfx">a</span> <span class="cls">sunny:Subversiveoccurrence</span> ;
                     <span class="pfx">rdfs:comment</span> <span class="var">?subversiveAction</span> .
     }</pre></div>
                     </div>
@@ -716,9 +752,9 @@
             <span class="prop">sunny:includesSituation</span> <span class="var">?subvOcc</span> .
     <span class="var">?agent</span> <span class="prop">sunny:hasQuality</span> <span class="cls">sunny:BehavioralQuality</span> .
     <span class="var">?target</span> <span class="prop">sunny:hasQuality</span> <span class="cls">sunny:PhysicalQuality</span> .
-    <span class="var">?normOcc</span> <span class="pfx">a</span> <span class="cls">sunny:NormOccurence</span> ;
+    <span class="var">?normOcc</span> <span class="pfx">a</span> <span class="cls">sunny:Normoccurrence</span> ;
             <span class="pfx">rdfs:comment</span> <span class="var">?normExpected</span> .
-    <span class="var">?subvOcc</span> <span class="pfx">a</span> <span class="cls">sunny:SubversiveOccurence</span> ;
+    <span class="var">?subvOcc</span> <span class="pfx">a</span> <span class="cls">sunny:Subversiveoccurrence</span> ;
             <span class="pfx">rdfs:comment</span> <span class="var">?subversiveAction</span> .
     }</pre></div>
                     </div>
