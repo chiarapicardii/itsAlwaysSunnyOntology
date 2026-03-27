@@ -16,6 +16,7 @@ The model is designed to be flexible, allowing future mapping of the entire seri
 * from_csv_to_rdf.py — Python script used to populate the graph
 * imgs/ — ontology graph and WebVOWL visualization
 * index.html — project documentation website
+* SPRQL-query — the complete sprql file 
 
 ---
 
