@@ -1,6 +1,7 @@
 import csv
 from rdflib import Graph, Namespace, Literal, RDF, RDFS, XSD, URIRef
 
+
 SUNNY = Namespace("https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#")
 g = Graph()
 g.parse("itsAlwaysSunnyOntology.ttl", format="turtle")
@@ -97,24 +98,18 @@ with open("ontologia_IASIP.csv", newline='', encoding='utf-8') as csv_file:
             g.add((subversive_frame_uri, RDFS.comment, Literal(row["subversive_frame_definition"], datatype=XSD.string)))
             g.add((frame_uri, SUNNY.includesDescription, subversive_frame_uri))
 
-        #NormOccurrence: concrete instance of the expected behaviour in this specific scene
+        #NormOccurence: concrete instance of the expected behaviour in this specific scene
         norm_uri = sunny_node(scene_id + "_norm")
-        g.add((norm_uri, RDF.type, SUNNY.NormOccurrence))
+        g.add((norm_uri, RDF.type, SUNNY.NormOccurence))
         g.add((norm_uri, RDFS.comment, Literal(row["norm_occurrence_desc"], datatype=XSD.string)))
         g.add((scene_uri, SUNNY.includesSituation, norm_uri))
-        
-        if rule_uri:
-        g.add((norm_uri, SUNNY.isDescribedBy, rule_uri)) #connecting specifically the EthicalRule to the NormOccurrence, which will then be violated
 
-        #SubversiveOccureence: concrete act of subversion, violates the NormOccurrence
+        #SubversiveOccurence: concrete act of subversion, violates the NormOccurence
         subversive_uri = sunny_node(scene_id + "_subversive")
-        g.add((subversive_uri, RDF.type, SUNNY.SubversiveOccurrence))
+        g.add((subversive_uri, RDF.type, SUNNY.SubversiveOccurence))
         g.add((subversive_uri, RDFS.comment, Literal(row["subversive_occurrence_desc"], datatype=XSD.string)))
         g.add((scene_uri, SUNNY.includesSituation, subversive_uri))
-        g.add((subversive_uri, SUNNY.violates, norm_uri)) # SubversiveOccurrence violates NormOccurrence
-
-        if subversive_frame_uri:
-        g.add((subversive_uri, SUNNY.isDescribedBy, subversive_frame_uri))
+        g.add((subversive_uri, SUNNY.violates, norm_uri)) # SubversiveOccurence violates NormOccurence
 
         #TheoreticalMechanism: explains the scene and is triggered by the subversion
         theo_mech = row.get("theoretical_mechanism", "").strip()
@@ -124,6 +119,6 @@ with open("ontologia_IASIP.csv", newline='', encoding='utf-8') as csv_file:
             g.add((scene_uri, SUNNY.isExplainedBy, mech_uri)) 
             g.add((mech_uri, SUNNY.isTriggeredBy, subversive_uri)) #this means that the instance is triggered not the class itself
 
-# serialization
-g.serialize(destination="SunnyOntology_populated.ttl", format="turtle")
-print("Ontology successfully saved!")
+    # serialization
+    g.serialize(destination="SunnyOntology_populated.ttl", format="turtle")
+    print("Ontology successfully saved!")
