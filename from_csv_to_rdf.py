@@ -1,7 +1,7 @@
 import csv
 from rdflib import Graph, Namespace, Literal, RDF, RDFS, XSD, URIRef
 
-SUNNY = Namespace("http://www.semanticweb.org/lachi/ontologies/2026/nameholder#")
+SUNNY = Namespace("https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#")
 g = Graph()
 g.parse("itsAlwaysSunnyOntology.ttl", format="turtle")
 g.bind("sunny", SUNNY)
