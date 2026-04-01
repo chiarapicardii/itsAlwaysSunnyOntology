@@ -17,7 +17,8 @@ The model is designed to be flexible, allowing future mapping of the entire seri
 * imgs/ — ontology graph and WebVOWL visualization
 * index.html — project documentation website
 * SPRQL-query — the complete sprql file
-* Gemini_A-Box — Populated graph using our T-Box (itsAlwaysSunnyOntology.ttl) as a logical framework and asking Gemini to authomatically categorize all the episodes in season 3. This proved the ontology is robust enought to allow the LLM to discrimate the main mechanism of subversive humor (SubversiveOccurence violates NormOccurence) and managed to individuate the TheoreticalMechanism and to distinguish Agent and Target. 
+* Gemini_A-Box — Populated graph using our T-Box (itsAlwaysSunnyOntology.ttl) as a logical framework and asking Gemini to authomatically categorize all the episodes in season 3. This proved the ontology is robust enought to allow the LLM to discrimate the main mechanism of subversive humor (SubversiveOccurence violates NormOccurence) and managed to individuate the TheoreticalMechanism and to distinguish Agent and Target. [The whole conversation can be found in the following link, allowing replicability. 
+https://gemini.google.com/share/6ef264ed8b45 ] 
 
 ---
 
