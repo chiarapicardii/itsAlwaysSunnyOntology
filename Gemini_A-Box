@@ -1,0 +1,188 @@
+@prefix : <https://github.com/chiarapicardii/itsAlwaysSunnyOntology/blob/main/itsAlwaysSunnyOntology.ttl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+#################################################################
+#    A-BOX: SEASON 3 FULL POPULATION
+#################################################################
+
+### --- EP 18 (3x01): The Gang Finds a Dumpster Baby ---
+:Sit_3x01 rdf:type :HumorousSituation ;
+    :hasTitle "The Gang Finds a Dumpster Baby" ;
+    :hasEpisodeNumber 18 ;
+    :hasAgent :Dee, :Mac, :Frank, :Charlie, :Dennis ;
+    :includesSituation :Sub_TanningBaby, :Sub_DumpsterLiving ;
+    :isExplainedBy :SuperiorityTheory .
+
+:Sub_TanningBaby rdf:type :SubversiveOccurence ;
+    rdfs:label "Portare un neonato in un centro abbronzante per scopi commerciali" ;
+    :violates :Norm_ChildSafety .
+
+:Sub_DumpsterLiving rdf:type :SubversiveOccurence ;
+    rdfs:label "Frank e Charlie scelgono di dormire in un cassonetto dei rifiuti" ;
+    :violates :Norm_SocialHygiene .
+
+### --- EP 19 (3x02): The Gang Gets Invincible ---
+:Sit_3x02 rdf:type :HumorousSituation ;
+    :hasTitle "The Gang Gets Invincible" ;
+    :hasEpisodeNumber 19 ;
+    :hasAgent :Frank, :Dee ;
+    :includesSituation :Sub_DruggingFriend, :Sub_GenderDisguise ;
+    :isExplainedBy :IncongruityTheory .
+
+:Sub_DruggingFriend rdf:type :SubversiveOccurence ;
+    rdfs:label "Frank somministra LSD a Charlie a sua insaputa" ;
+    :violates :Norm_Consent .
+
+:Sub_GenderDisguise rdf:type :SubversiveOccurence ;
+    rdfs:label "Dee si traveste da uomo per partecipare a un provino della NFL" ;
+    :violates :Norm_FairPlay .
+
+### --- EP 20 (3x03): Dennis and Dee's Mom Is Dead ---
+:Sit_3x03 rdf:type :HumorousSituation ;
+    :hasTitle "Dennis and Dee's Mom Is Dead" ;
+    :hasEpisodeNumber 20 ;
+    :hasAgent :Frank, :Dee, :Dennis, :Mac ;
+    :includesSituation :Sub_FakeMarriage ;
+    :isExplainedBy :SuperiorityTheory .
+
+:Sub_FakeMarriage rdf:type :SubversiveOccurence ;
+    rdfs:label "Frank e Dee fingono di essere fidanzati per manipolare l'eredità di Bruce" ;
+    :violates :Norm_FamilyEthics .
+
+### --- EP 21 (3x04): The Gang Gets Held Hostage ---
+:Sit_3x04 rdf:type :HumorousSituation ;
+    :hasTitle "The Gang Gets Held Hostage" ;
+    :hasEpisodeNumber 21 ;
+    :hasAgent :McPoyles ;
+    :hasTarget :TheGang ;
+    :includesSituation :Sub_StockholmSyndrome ;
+    :isExplainedBy :ReliefTheory .
+
+:Sub_StockholmSyndrome rdf:type :SubversiveOccurence ;
+    rdfs:label "Dee sviluppa la sindrome di Stoccolma e Dennis seduce l'ostaggio" ;
+    :violates :Norm_VictimBehavior .
+
+### --- EP 22 (3x05): The Aluminum Monster vs. Fatty Magoo ---
+:Sit_3x05 rdf:type :HumorousSituation ;
+    :hasTitle "The Aluminum Monster vs. Fatty Magoo" ;
+    :hasEpisodeNumber 22 ;
+    :hasAgent :Frank, :Mac ;
+    :includesSituation :Sub_Sweatshop ;
+    :isExplainedBy :SuperiorityTheory .
+
+:Sub_Sweatshop rdf:type :SubversiveOccurence ;
+    rdfs:label "Frank riapre una fabbrica sfruttatrice (sweatshop)" ;
+    :violates :Norm_LaborRights .
+
+### --- EP 23 (3x06): The Gang Solves the North Korea Situation ---
+:Sit_3x06 rdf:type :HumorousSituation ;
+    :hasTitle "The Gang Solves the North Korea Situation" ;
+    :hasEpisodeNumber 23 ;
+    :hasAgent :TheGang ;
+    :includesSituation :Sub_Xenophobia ;
+    :isExplainedBy :IncongruityTheory .
+
+:Sub_Xenophobia rdf:type :SubversiveOccurence ;
+    rdfs:label "La Gang applica pregiudizi geopolitici a un proprietario di un pub coreano locale" ;
+    :violates :Norm_CulturalRespect .
+
+### --- EP 24 (3x07): The Gang Sells Out ---
+:Sit_3x07 rdf:type :HumorousSituation ;
+    :hasTitle "The Gang Sells Out" ;
+    :hasEpisodeNumber 24 ;
+    :hasAgent :TheGang ;
+    :includesSituation :Sub_SellingPaddys ;
+    :isExplainedBy :IncongruityTheory .
+
+### --- EP 25 (3x08): Frank Sets Sweet Dee on Fire ---
+:Sit_3x08 rdf:type :HumorousSituation ;
+    :hasTitle "Frank Sets Sweet Dee on Fire" ;
+    :hasEpisodeNumber 25 ;
+    :hasAgent :Frank, :TheGang ;
+    :includesSituation :Sub_DangerousStunt ;
+    :isExplainedBy :ReliefTheory .
+
+### --- EP 26 (3x09): Sweet Dee's Dating a Retarded Person ---
+:Sit_3x09 rdf:type :HumorousSituation ;
+    :hasTitle "Sweet Dee's Dating a Retarded Person" ;
+    :hasEpisodeNumber 26 ;
+    :hasAgent :Dee, :Charlie ;
+    :includesSituation :Sub_MockingDisability, :Sub_NightmanSong ;
+    :isExplainedBy :SuperiorityTheory .
+
+:Sub_MockingDisability rdf:type :SubversiveOccurence ;
+    rdfs:label "Dennis e la Gang deridono il fidanzato di Dee sospettando una disabilità" ;
+    :violates :Norm_SocialDecorum .
+
+:Sub_NightmanSong rdf:type :SubversiveOccurence ;
+    rdfs:label "Charlie scrive una canzone disturbante su abusi subiti" ;
+    :violates :Norm_MusicalConventions .
+
+### --- EP 27 (3x10): Mac Is a Serial Killer ---
+:Sit_3x10 rdf:type :HumorousSituation ;
+    :hasTitle "Mac Is a Serial Killer" ;
+    :hasEpisodeNumber 27 ;
+    :hasAgent :TheGang ;
+    :includesSituation :Sub_AccusingFriend ;
+    :isExplainedBy :IncongruityTheory .
+
+### --- EP 28 (3x11): Dennis Looks Like a Registered Sex Offender ---
+:Sit_3x11 rdf:type :HumorousSituation ;
+    :hasTitle "Dennis Looks Like a Registered Sex Offender" ;
+    :hasEpisodeNumber 28 ;
+    :hasAgent :Dennis, :Mac, :Charlie ;
+    :includesSituation :Sub_SexOffenderMistake ;
+    :isExplainedBy :SuperiorityTheory .
+
+:Sub_SexOffenderMistake rdf:type :SubversiveOccurence ;
+    rdfs:label "Dennis viene scambiato per un molestatore e Mac/Charlie temono che Luther sia un killer" ;
+    :violates :Norm_CommunitySafety .
+
+### --- EP 29/30 (3x12/13): The Gang Gets Whacked (Part 1 & 2) ---
+:Sit_3x12_13 rdf:type :HumorousSituation ;
+    :hasTitle "The Gang Gets Whacked" ;
+    :hasEpisodeNumber 29 ;
+    :hasAgent :TheGang ;
+    :includesSituation :Sub_DrugDealing, :Sub_Prostitution ;
+    :isExplainedBy :ReliefTheory .
+
+:Sub_DrugDealing rdf:type :SubversiveOccurence ;
+    rdfs:label "Vendere cocaina trovata per caso in un country club" ;
+    :violates :Norm_Legality .
+
+:Sub_Prostitution rdf:type :SubversiveOccurence ;
+    rdfs:label "Frank cerca di far prostituire Dennis con donne anziane per debiti" ;
+    :violates :Norm_Dignity .
+
+### --- EP 31 (3x14): Bums: Making a Mess All Over the City ---
+:Sit_3x14 rdf:type :HumorousSituation ;
+    :hasTitle "Bums: Making a Mess All Over the City" ;
+    :hasEpisodeNumber 31 ;
+    :hasAgent :Dennis, :Frank, :Mac, :Dee ;
+    :includesSituation :Sub_PoliceImpersonation ;
+    :isExplainedBy :SuperiorityTheory .
+
+:Sub_PoliceImpersonation rdf:type :SubversiveOccurence ;
+    rdfs:label "Impersonare agenti di polizia per molestare i senzatetto" ;
+    :violates :Norm_LegalAuthority .
+
+### --- EP 32 (3x15): The Gang Dances Their Asses Off ---
+:Sit_3x15 rdf:type :HumorousSituation ;
+    :hasTitle "The Gang Dances Their Asses Off" ;
+    :hasEpisodeNumber 32 ;
+    :hasAgent :TheGang, :Charlie ;
+    :includesSituation :Sub_GamblingBar ;
+    :isExplainedBy :IncongruityTheory .
+
+:Sub_GamblingBar rdf:type :SubversiveOccurence ;
+    rdfs:label "Charlie mette in palio il bar Paddy's in una maratona di danza per errore" ;
+    :violates :Norm_Responsibility .
+
+#################################################################
+#    Agents and Qualities
+#################################################################
+:Dennis rdf:type :Agent ; :hasQuality :AestheticQuality_Narcissist .
+:Dee rdf:type :Agent ; :hasQuality :BehavioralQuality_Delusional .
+:Charlie rdf:type :Agent ; :hasQuality :PhysicalQuality_Dirt .
+:Frank rdf:type :Agent ; :hasQuality :BehavioralQuality_Unethical .
+:Mac rdf:type :Agent ; :hasQuality :AestheticQuality_Vigilante .
